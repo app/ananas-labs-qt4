@@ -1,0 +1,212 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>eField</class>
+  <widget class="QDialog" name="eField" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>313</width>
+        <height>186</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Input field</string>
+    </property>
+    <layout class="QGridLayout" >
+      <item rowspan="1" row="3" column="0" colspan="4" >
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QCheckBox" name="ePositive" >
+              <property name="text" >
+                <string>Positive</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QCheckBox" name="eNotNull" >
+              <property name="text" >
+                <string>Required</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item rowspan="1" row="1" column="1" colspan="3" >
+        <widget class="QComboBox" name="eType" />
+      </item>
+      <item row="1" column="0" >
+        <widget class="QLabel" name="textLabel2" >
+          <property name="maximumSize" >
+            <size>
+              <width>100</width>
+              <height>32767</height>
+            </size>
+          </property>
+          <property name="text" >
+            <string>Type</string>
+          </property>
+          <property name="wordWrap" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="0" column="1" colspan="3" >
+        <widget class="QLineEdit" name="eName" />
+      </item>
+      <item row="0" column="0" >
+        <widget class="QLabel" name="textLabel1" >
+          <property name="maximumSize" >
+            <size>
+              <width>100</width>
+              <height>32767</height>
+            </size>
+          </property>
+          <property name="text" >
+            <string>Name</string>
+          </property>
+          <property name="wordWrap" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item row="4" column="0" >
+        <spacer name="spacer4" >
+          <property name="sizeHint" >
+            <size>
+              <width>31</width>
+              <height>16</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+      <item rowspan="1" row="5" column="0" colspan="2" >
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QPushButton" name="pushButton1" >
+              <property name="text" >
+                <string>OK</string>
+              </property>
+              <property name="default" >
+                <bool>true</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="pushButton2" >
+              <property name="text" >
+                <string>Cancel</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item rowspan="1" row="5" column="2" colspan="2" >
+        <spacer name="spacer2" >
+          <property name="sizeHint" >
+            <size>
+              <width>91</width>
+              <height>31</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Horizontal</enum>
+          </property>
+        </spacer>
+      </item>
+      <item row="2" column="0" >
+        <widget class="QLabel" name="tWidth" >
+          <property name="maximumSize" >
+            <size>
+              <width>100</width>
+              <height>32767</height>
+            </size>
+          </property>
+          <property name="text" >
+            <string>Width</string>
+          </property>
+          <property name="wordWrap" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item row="2" column="1" >
+        <widget class="QSpinBox" name="eWidth" >
+          <property name="maximum" >
+            <number>254</number>
+          </property>
+          <property name="minimum" >
+            <number>1</number>
+          </property>
+        </widget>
+      </item>
+      <item row="2" column="2" >
+        <widget class="QLabel" name="tDec" >
+          <property name="maximumSize" >
+            <size>
+              <width>100</width>
+              <height>32767</height>
+            </size>
+          </property>
+          <property name="text" >
+            <string>Decimals</string>
+          </property>
+          <property name="wordWrap" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item row="2" column="3" >
+        <widget class="QSpinBox" name="eDec" >
+          <property name="maximum" >
+            <number>9</number>
+          </property>
+        </widget>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <includes>
+    <include location="local" >ananas.h</include>
+    <include location="local" >acfg.h</include>
+    <include location="local" >wfield.h</include>
+  </includes>
+  <connections>
+    <connection>
+      <sender>pushButton1</sender>
+      <signal>clicked()</signal>
+      <receiver>eField</receiver>
+      <slot>accept()</slot>
+    </connection>
+    <connection>
+      <sender>pushButton2</sender>
+      <signal>clicked()</signal>
+      <receiver>eField</receiver>
+      <slot>reject()</slot>
+    </connection>
+    <connection>
+      <sender>eType</sender>
+      <signal>activated(QString)</signal>
+      <receiver>eField</receiver>
+      <slot>typechanged(QString)</slot>
+    </connection>
+    <connection>
+      <sender>eType</sender>
+      <signal>activated(int)</signal>
+      <receiver>eField</receiver>
+      <slot>typeSelect(int)</slot>
+    </connection>
+  </connections>
+</ui>

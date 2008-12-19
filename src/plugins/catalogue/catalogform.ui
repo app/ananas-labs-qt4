@@ -1,0 +1,50 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>CatalogForm</class>
+  <widget class="Q3MainWindow" name="CatalogForm" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>610</width>
+        <height>466</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Catalogue</string>
+    </property>
+    <widget class="QWidget" >
+      <widget class="QPushButton" name="bCancel" >
+        <property name="geometry" >
+          <rect>
+            <x>530</x>
+            <y>410</y>
+            <width>70</width>
+            <height>24</height>
+          </rect>
+        </property>
+        <property name="text" >
+          <string>Cancel</string>
+        </property>
+      </widget>
+    </widget>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <includes>
+    <include location="local" >wfield.h</include>
+    <include location="local" >catalogformwidgets.h</include>
+    <include location="global" >qmap.h</include>
+    <include location="local" >qstatusbar.h</include>
+  </includes>
+  <connections>
+    <connection>
+      <sender>bCancel</sender>
+      <signal>clicked()</signal>
+      <receiver>CatalogForm</receiver>
+      <slot>close()</slot>
+    </connection>
+  </connections>
+</ui>

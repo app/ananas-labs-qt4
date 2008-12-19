@@ -1,0 +1,448 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>eDBTable</class>
+  <widget class="QDialog" name="eDBTable" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>479</width>
+        <height>348</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>aDBTable</string>
+    </property>
+    <layout class="QGridLayout" >
+      <item rowspan="1" row="0" column="0" colspan="2" >
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel3" >
+              <property name="enabled" >
+                <bool>true</bool>
+              </property>
+              <property name="sizePolicy" >
+                <sizepolicy>
+                  <hsizetype>0</hsizetype>
+                  <vsizetype>0</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                </sizepolicy>
+              </property>
+              <property name="frameShape" >
+                <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow" >
+                <enum>QFrame::Plain</enum>
+              </property>
+              <property name="text" >
+                <string>Table name</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QComboBox" name="ComboBoxTable" >
+              <item>
+                <property name="text" >
+                  <string/>
+                </property>
+              </item>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item rowspan="1" row="2" column="0" colspan="2" >
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QPushButton" name="bOK" >
+              <property name="text" >
+                <string>OK</string>
+              </property>
+              <property name="default" >
+                <bool>true</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="bCancel" >
+              <property name="text" >
+                <string>Cancel</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <spacer name="spacer1" >
+              <property name="sizeHint" >
+                <size>
+                  <width>301</width>
+                  <height>21</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Horizontal</enum>
+              </property>
+            </spacer>
+          </item>
+        </layout>
+      </item>
+      <item row="1" column="0" >
+        <widget class="Q3GroupBox" name="groupBox2" >
+          <property name="title" >
+            <string>Column list</string>
+          </property>
+          <layout class="QGridLayout" >
+            <item row="0" column="0" >
+              <widget class="Q3ListBox" name="ListCol" >
+                <property name="lineWidth" >
+                  <number>1</number>
+                </property>
+                <property name="margin" >
+                  <number>0</number>
+                </property>
+                <property name="midLineWidth" >
+                  <number>1</number>
+                </property>
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+      <item row="1" column="1" >
+        <widget class="Q3GroupBox" name="groupBox1" >
+          <property name="title" >
+            <string>Column</string>
+          </property>
+          <layout class="QGridLayout" >
+            <item rowspan="1" row="0" column="0" colspan="2" >
+              <layout class="QHBoxLayout" >
+                <item>
+                  <widget class="QLabel" name="textLabel2" >
+                    <property name="sizePolicy" >
+                      <sizepolicy>
+                        <hsizetype>0</hsizetype>
+                        <vsizetype>5</vsizetype>
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                      </sizepolicy>
+                    </property>
+                    <property name="minimumSize" >
+                      <size>
+                        <width>120</width>
+                        <height>0</height>
+                      </size>
+                    </property>
+                    <property name="text" >
+                      <string>Header</string>
+                    </property>
+                    <property name="wordWrap" >
+                      <bool>false</bool>
+                    </property>
+                  </widget>
+                </item>
+                <item>
+                  <widget class="QLineEdit" name="eColHeader" >
+                    <property name="maxLength" >
+                      <number>100</number>
+                    </property>
+                  </widget>
+                </item>
+              </layout>
+            </item>
+            <item rowspan="1" row="1" column="0" colspan="2" >
+              <layout class="QHBoxLayout" >
+                <item>
+                  <widget class="QLabel" name="textLabel1_2" >
+                    <property name="sizePolicy" >
+                      <sizepolicy>
+                        <hsizetype>0</hsizetype>
+                        <vsizetype>5</vsizetype>
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                      </sizepolicy>
+                    </property>
+                    <property name="minimumSize" >
+                      <size>
+                        <width>120</width>
+                        <height>0</height>
+                      </size>
+                    </property>
+                    <property name="text" >
+                      <string>Column width</string>
+                    </property>
+                    <property name="wordWrap" >
+                      <bool>false</bool>
+                    </property>
+                  </widget>
+                </item>
+                <item>
+                  <widget class="QSpinBox" name="eColWidth" >
+                    <property name="maximum" >
+                      <number>9999</number>
+                    </property>
+                  </widget>
+                </item>
+              </layout>
+            </item>
+            <item row="4" column="0" >
+              <layout class="QHBoxLayout" >
+                <item>
+                  <widget class="QLabel" name="textLabel2_2" >
+                    <property name="text" >
+                      <string>Width</string>
+                    </property>
+                    <property name="wordWrap" >
+                      <bool>false</bool>
+                    </property>
+                  </widget>
+                </item>
+                <item>
+                  <widget class="QSpinBox" name="eColTWidth" >
+                    <property name="enabled" >
+                      <bool>false</bool>
+                    </property>
+                    <property name="maximum" >
+                      <number>255</number>
+                    </property>
+                  </widget>
+                </item>
+              </layout>
+            </item>
+            <item rowspan="1" row="5" column="0" colspan="2" >
+              <layout class="QGridLayout" >
+                <item row="1" column="1" >
+                  <widget class="QPushButton" name="bColDel" >
+                    <property name="text" >
+                      <string>Delete</string>
+                    </property>
+                  </widget>
+                </item>
+                <item row="0" column="0" >
+                  <widget class="QPushButton" name="bColL" >
+                    <property name="text" >
+                      <string>Up</string>
+                    </property>
+                  </widget>
+                </item>
+                <item row="1" column="0" >
+                  <widget class="QPushButton" name="bColR" >
+                    <property name="text" >
+                      <string>Down</string>
+                    </property>
+                  </widget>
+                </item>
+                <item row="0" column="1" >
+                  <widget class="QPushButton" name="bColAdd" >
+                    <property name="text" >
+                      <string>Add</string>
+                    </property>
+                  </widget>
+                </item>
+              </layout>
+            </item>
+            <item rowspan="1" row="2" column="0" colspan="2" >
+              <layout class="QHBoxLayout" >
+                <item>
+                  <widget class="QLabel" name="textLabel2_3" >
+                    <property name="sizePolicy" >
+                      <sizepolicy>
+                        <hsizetype>0</hsizetype>
+                        <vsizetype>5</vsizetype>
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                      </sizepolicy>
+                    </property>
+                    <property name="minimumSize" >
+                      <size>
+                        <width>120</width>
+                        <height>0</height>
+                      </size>
+                    </property>
+                    <property name="text" >
+                      <string>Field name</string>
+                    </property>
+                    <property name="wordWrap" >
+                      <bool>false</bool>
+                    </property>
+                  </widget>
+                </item>
+                <item>
+                  <widget class="QLineEdit" name="eColName" >
+                    <property name="maxLength" >
+                      <number>300</number>
+                    </property>
+                    <property name="readOnly" >
+                      <bool>true</bool>
+                    </property>
+                  </widget>
+                </item>
+              </layout>
+            </item>
+            <item rowspan="1" row="3" column="0" colspan="2" >
+              <layout class="QHBoxLayout" >
+                <item>
+                  <widget class="QLabel" name="textLabel1" >
+                    <property name="sizePolicy" >
+                      <sizepolicy>
+                        <hsizetype>0</hsizetype>
+                        <vsizetype>0</vsizetype>
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                      </sizepolicy>
+                    </property>
+                    <property name="minimumSize" >
+                      <size>
+                        <width>120</width>
+                        <height>0</height>
+                      </size>
+                    </property>
+                    <property name="text" >
+                      <string>Field type</string>
+                    </property>
+                    <property name="wordWrap" >
+                      <bool>false</bool>
+                    </property>
+                  </widget>
+                </item>
+                <item>
+                  <widget class="QLabel" name="eType" >
+                    <property name="text" >
+                      <string/>
+                    </property>
+                    <property name="wordWrap" >
+                      <bool>false</bool>
+                    </property>
+                  </widget>
+                </item>
+              </layout>
+            </item>
+            <item row="4" column="1" >
+              <layout class="QHBoxLayout" >
+                <item>
+                  <widget class="QLabel" name="textLabel3_2" >
+                    <property name="text" >
+                      <string>decimal</string>
+                    </property>
+                    <property name="wordWrap" >
+                      <bool>false</bool>
+                    </property>
+                  </widget>
+                </item>
+                <item>
+                  <widget class="QSpinBox" name="eColTDec" >
+                    <property name="enabled" >
+                      <bool>false</bool>
+                    </property>
+                    <property name="maximum" >
+                      <number>9</number>
+                    </property>
+                  </widget>
+                </item>
+              </layout>
+            </item>
+          </layout>
+        </widget>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="5" margin="5" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <includes>
+    <include location="local" >wdbtable.h</include>
+    <include location="local" >ananas.h</include>
+    <include location="local" >addfdialog.h</include>
+  </includes>
+  <connections>
+    <connection>
+      <sender>bOK</sender>
+      <signal>clicked()</signal>
+      <receiver>eDBTable</receiver>
+      <slot>accept()</slot>
+    </connection>
+    <connection>
+      <sender>bCancel</sender>
+      <signal>clicked()</signal>
+      <receiver>eDBTable</receiver>
+      <slot>reject()</slot>
+    </connection>
+    <connection>
+      <sender>bColAdd</sender>
+      <signal>clicked()</signal>
+      <receiver>eDBTable</receiver>
+      <slot>ColumnAdd()</slot>
+    </connection>
+    <connection>
+      <sender>bColDel</sender>
+      <signal>clicked()</signal>
+      <receiver>eDBTable</receiver>
+      <slot>ColumnDel()</slot>
+    </connection>
+    <connection>
+      <sender>bColL</sender>
+      <signal>clicked()</signal>
+      <receiver>eDBTable</receiver>
+      <slot>ColumnL()</slot>
+    </connection>
+    <connection>
+      <sender>bColR</sender>
+      <signal>clicked()</signal>
+      <receiver>eDBTable</receiver>
+      <slot>ColumnR()</slot>
+    </connection>
+    <connection>
+      <sender>ListCol</sender>
+      <signal>highlighted(int)</signal>
+      <receiver>eDBTable</receiver>
+      <slot>ColumnSel(int)</slot>
+    </connection>
+    <connection>
+      <sender>ComboBoxTable</sender>
+      <signal>activated(QString)</signal>
+      <receiver>eDBTable</receiver>
+      <slot>ColumnUpd()</slot>
+    </connection>
+    <connection>
+      <sender>eColHeader</sender>
+      <signal>textChanged(QString)</signal>
+      <receiver>eDBTable</receiver>
+      <slot>ColumnTextUpd(QString)</slot>
+    </connection>
+    <connection>
+      <sender>eColWidth</sender>
+      <signal>valueChanged(int)</signal>
+      <receiver>eDBTable</receiver>
+      <slot>ColWidthChange(int)</slot>
+    </connection>
+    <connection>
+      <sender>ComboBoxTable</sender>
+      <signal>activated(QString)</signal>
+      <receiver>ListCol</receiver>
+      <slot>setFocus()</slot>
+    </connection>
+    <connection>
+      <sender>bCancel</sender>
+      <signal>clicked()</signal>
+      <receiver>eDBTable</receiver>
+      <slot>doCancel()</slot>
+    </connection>
+    <connection>
+      <sender>eDBTable</sender>
+      <signal>closeEvent()</signal>
+      <receiver>eDBTable</receiver>
+      <slot>doCancel()</slot>
+    </connection>
+    <connection>
+      <sender>bColAdd</sender>
+      <signal>clicked()</signal>
+      <receiver>ListCol</receiver>
+      <slot>setFocus()</slot>
+    </connection>
+  </connections>
+</ui>

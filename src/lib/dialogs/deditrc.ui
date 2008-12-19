@@ -1,0 +1,460 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro>ANANAS_EXPORT</exportmacro>
+  <class>dEditRC</class>
+  <widget class="QDialog" name="dEditRC" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>777</width>
+        <height>402</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Resource file</string>
+    </property>
+    <layout class="QVBoxLayout" >
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel4_2" >
+              <property name="minimumSize" >
+                <size>
+                  <width>180</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Resource file name</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QLineEdit" name="eRCFile" />
+          </item>
+          <item>
+            <widget class="QPushButton" name="bFileRC" >
+              <property name="maximumSize" >
+                <size>
+                  <width>30</width>
+                  <height>32767</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>...</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel3_2" >
+              <property name="minimumSize" >
+                <size>
+                  <width>180</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Data base header</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QLineEdit" name="eDBTitle" />
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel6_2" >
+              <property name="minimumSize" >
+                <size>
+                  <width>180</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Data base name</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QLineEdit" name="eDBName" />
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel3" >
+              <property name="minimumSize" >
+                <size>
+                  <width>180</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="maximumSize" >
+                <size>
+                  <width>160</width>
+                  <height>32767</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Data base server type</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QComboBox" name="eDBType" >
+              <property name="editable" >
+                <bool>false</bool>
+              </property>
+              <property name="duplicatesEnabled" >
+                <bool>false</bool>
+              </property>
+              <item>
+                <property name="text" >
+                  <string>Unknown</string>
+                </property>
+              </item>
+              <item>
+                <property name="text" >
+                  <string>internal</string>
+                </property>
+              </item>
+              <item>
+                <property name="text" >
+                  <string>mysql</string>
+                </property>
+              </item>
+              <item>
+                <property name="text" >
+                  <string>postgres</string>
+                </property>
+              </item>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel4" >
+              <property name="minimumSize" >
+                <size>
+                  <width>180</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Data base server address</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QLineEdit" name="eDBHost" />
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel5_2" >
+              <property name="minimumSize" >
+                <size>
+                  <width>180</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Data base server port</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QLineEdit" name="eDBPort" />
+          </item>
+          <item>
+            <spacer name="spacer7" >
+              <property name="sizeHint" >
+                <size>
+                  <width>146</width>
+                  <height>21</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Horizontal</enum>
+              </property>
+            </spacer>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel1" >
+              <property name="minimumSize" >
+                <size>
+                  <width>180</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Data base server user</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QLineEdit" name="eDBUserName" />
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel2" >
+              <property name="minimumSize" >
+                <size>
+                  <width>180</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Data base server password</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QLineEdit" name="ePass" >
+              <property name="echoMode" >
+                <enum>QLineEdit::Password</enum>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel7_2" >
+              <property name="minimumSize" >
+                <size>
+                  <width>180</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Work directory</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QLineEdit" name="eWorkDir" />
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel8_2" >
+              <property name="minimumSize" >
+                <size>
+                  <width>180</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Configuration file name</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QLineEdit" name="eCfgName" />
+          </item>
+          <item>
+            <widget class="QPushButton" name="bFileCFG" >
+              <property name="maximumSize" >
+                <size>
+                  <width>30</width>
+                  <height>32767</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>...</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <spacer name="spacer6" >
+          <property name="sizeHint" >
+            <size>
+              <width>130</width>
+              <height>16</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <item>
+            <spacer name="spacer7_2_2" >
+              <property name="sizeHint" >
+                <size>
+                  <width>470</width>
+                  <height>21</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Horizontal</enum>
+              </property>
+            </spacer>
+          </item>
+          <item>
+            <widget class="QPushButton" name="bOK" >
+              <property name="maximumSize" >
+                <size>
+                  <width>80</width>
+                  <height>32767</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>OK</string>
+              </property>
+              <property name="default" >
+                <bool>true</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <spacer name="spacer7_2" >
+              <property name="sizeHint" >
+                <size>
+                  <width>20</width>
+                  <height>21</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Fixed</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Horizontal</enum>
+              </property>
+            </spacer>
+          </item>
+          <item>
+            <widget class="QPushButton" name="bCancel" >
+              <property name="maximumSize" >
+                <size>
+                  <width>80</width>
+                  <height>32767</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>Cancel</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="5" margin="5" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>eRCFile</tabstop>
+    <tabstop>bFileRC</tabstop>
+    <tabstop>eDBTitle</tabstop>
+    <tabstop>eDBName</tabstop>
+    <tabstop>eDBType</tabstop>
+    <tabstop>eDBHost</tabstop>
+    <tabstop>eDBPort</tabstop>
+    <tabstop>eDBUserName</tabstop>
+    <tabstop>ePass</tabstop>
+    <tabstop>eWorkDir</tabstop>
+    <tabstop>eCfgName</tabstop>
+    <tabstop>bFileCFG</tabstop>
+    <tabstop>bOK</tabstop>
+    <tabstop>bCancel</tabstop>
+  </tabstops>
+  <includes>
+    <include location="global" >rclistviewitem.h</include>
+    <include location="local" >qstringlist.h</include>
+    <include location="local" >ananasglobal.h</include>
+  </includes>
+  <connections>
+    <connection>
+      <sender>bCancel</sender>
+      <signal>clicked()</signal>
+      <receiver>dEditRC</receiver>
+      <slot>reject()</slot>
+    </connection>
+    <connection>
+      <sender>bFileRC</sender>
+      <signal>clicked()</signal>
+      <receiver>dEditRC</receiver>
+      <slot>onRCFile()</slot>
+    </connection>
+    <connection>
+      <sender>bOK</sender>
+      <signal>clicked()</signal>
+      <receiver>dEditRC</receiver>
+      <slot>onOK()</slot>
+    </connection>
+    <connection>
+      <sender>bFileCFG</sender>
+      <signal>clicked()</signal>
+      <receiver>dEditRC</receiver>
+      <slot>onCFGFile()</slot>
+    </connection>
+  </connections>
+</ui>

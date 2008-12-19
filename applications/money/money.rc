@@ -1,0 +1,9 @@
+dbpass=111111
+workdir=/usr/share/ananas4/applications/money/
+dbhost=localhost
+dbtitle=Ananas-money
+dbtype=mysql
+dbuser=root
+dbname=ananas_money
+configfile=/usr/share/ananas4/applications/money/money.cfg
+dbport=0

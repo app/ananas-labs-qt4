@@ -1,0 +1,22 @@
+<!DOCTYPE RCC><RCC version="1.1">
+    <qresource prefix="/">
+	<file>../../icons/a-system.png</file>
+	<file>images/administrator-splash-en.png</file>
+	<file>images/administrator-splash-ru.png</file>
+	<file>images/cat.png</file>
+	<file>images/cat_g.png</file>
+	<file>images/doc.png</file>
+	<file>images/doc_g.png</file>
+	<file>images/journ.png</file>
+	<file>images/journ_g.png</file>
+	<file>images/reg_g.png</file>
+	<file>images/reg.png</file>
+	<file>images/user.png</file>
+	<file>images/users.png</file>
+	<file>images/metadata.png</file>
+	<file>images/role.png</file>
+	<file>images/regs.png</file>
+	<file>images/report.png</file>
+	<file>images/report_g.png</file>
+    </qresource>
+</RCC>

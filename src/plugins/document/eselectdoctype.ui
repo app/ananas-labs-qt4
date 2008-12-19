@@ -1,0 +1,102 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>eSelectDocType</class>
+  <widget class="QDialog" name="eSelectDocType" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>304</width>
+        <height>272</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Select document type</string>
+    </property>
+    <layout class="QGridLayout" >
+      <item row="1" column="1" >
+        <widget class="QPushButton" name="bCancel" >
+          <property name="text" >
+            <string>Cancel</string>
+          </property>
+        </widget>
+      </item>
+      <item row="0" column="1" >
+        <widget class="QPushButton" name="bOK" >
+          <property name="text" >
+            <string>OK</string>
+          </property>
+          <property name="default" >
+            <bool>true</bool>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="3" row="0" column="0" colspan="1" >
+        <widget class="Q3ListView" name="listDocs" >
+          <property name="hScrollBarMode" >
+            <enum>Q3ScrollView::AlwaysOff</enum>
+          </property>
+          <column>
+            <property name="text" >
+              <string>Document type</string>
+            </property>
+            <property name="clickable" >
+              <bool>true</bool>
+            </property>
+            <property name="resizable" >
+              <bool>true</bool>
+            </property>
+          </column>
+          <column>
+            <property name="text" >
+              <string>ID</string>
+            </property>
+            <property name="clickable" >
+              <bool>true</bool>
+            </property>
+            <property name="resizable" >
+              <bool>true</bool>
+            </property>
+          </column>
+        </widget>
+      </item>
+      <item row="2" column="1" >
+        <spacer name="spacer1" >
+          <property name="sizeHint" >
+            <size>
+              <width>21</width>
+              <height>171</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="5" margin="5" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <includes>
+    <include location="local" >ananas.h</include>
+  </includes>
+  <connections>
+    <connection>
+      <sender>bOK</sender>
+      <signal>clicked()</signal>
+      <receiver>eSelectDocType</receiver>
+      <slot>accepted()</slot>
+    </connection>
+    <connection>
+      <sender>bCancel</sender>
+      <signal>clicked()</signal>
+      <receiver>eSelectDocType</receiver>
+      <slot>reject()</slot>
+    </connection>
+  </connections>
+</ui>

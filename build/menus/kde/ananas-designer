@@ -1,0 +1,6 @@
+?package(ananas):command="ananas-designer"\
+needs="x11" section="Applications/Development/Development environments"\
+title="Ananas.Designer"\
+longtitle="Design and develop Ananas applications"\
+icon="ananas-designer.png"\
+extra_opt="\\nName[ru]=Ананас.Дизайнер\\nComment[ru]=Разработка и настройка бизнес схем для Ананаса"

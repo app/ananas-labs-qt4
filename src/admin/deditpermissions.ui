@@ -1,0 +1,218 @@
+<ui version="4.0" >
+ <class>dEditPermissions</class>
+ <widget class="QDialog" name="dEditPermissions" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>331</width>
+    <height>204</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Edit permissions</string>
+  </property>
+  <layout class="QGridLayout" >
+   <item rowspan="2" row="0" column="0" >
+    <widget class="Q3ButtonGroup" name="buttonGroup1" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title" >
+      <string>Permissions</string>
+     </property>
+     <widget class="QCheckBox" name="checkBox7" >
+      <property name="geometry" >
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>84</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>turn off</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBoxAll" >
+      <property name="geometry" >
+       <rect>
+        <x>10</x>
+        <y>160</y>
+        <width>84</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>all</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox1" >
+      <property name="geometry" >
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>73</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>view</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox2" >
+      <property name="geometry" >
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>73</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>update</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox3" >
+      <property name="geometry" >
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>73</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>insert</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox4" >
+      <property name="geometry" >
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>73</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>delete</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox5" >
+      <property name="geometry" >
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>73</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>execute</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox6" >
+      <property name="geometry" >
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>73</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>turn on</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <layout class="QVBoxLayout" >
+     <item>
+      <widget class="QPushButton" name="pushButton1" >
+       <property name="text" >
+        <string>Ok</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton2" >
+       <property name="text" >
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>51</width>
+       <height>114</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3ButtonGroup</class>
+   <extends>Q3GroupBox</extends>
+   <header>Qt3Support/Q3ButtonGroup</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local" >acfg.h</include>
+  <include location="global" >qmap.h</include>
+ </includes>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton1</sender>
+   <signal>clicked()</signal>
+   <receiver>dEditPermissions</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>190</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton2</sender>
+   <signal>clicked()</signal>
+   <receiver>dEditPermissions</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>190</x>
+     <y>67</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

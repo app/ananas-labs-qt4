@@ -1,0 +1,5 @@
+?package(ananas):command="ananas"\
+needs="x11" section="Office" title="Ananas.Inventory"\
+longtitle="Inventory management and accounting system" \
+icon="ananas-32x32.png"\
+extra_opt="\\nName[ru]=Ананас.Оперативный учет\\nComment[ru]=Складской и бухгалтерсий учет"

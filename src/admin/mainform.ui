@@ -1,0 +1,127 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>MainForm</class>
+  <widget class="QMainWindow" name="MainForm" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>724</width>
+        <height>599</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Ananas: Administrator</string>
+    </property>
+    <property name="windowIcon" >
+      <pixmap>a-system.png</pixmap>
+    </property>
+    <widget class="QWidget" />
+    <widget class="QToolBar" name="toolBar" >
+      <property name="label" >
+        <string>Tools</string>
+      </property>
+      <addaction name="fileExitAction" />
+    </widget>
+    <widget class="QMenuBar" name="MenuBar" >
+      <property name="geometry" >
+        <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>724</width>
+          <height>28</height>
+        </rect>
+      </property>
+      <widget class="QMenu" name="fileMenu" >
+        <property name="title" >
+          <string>&amp;File</string>
+        </property>
+        <addaction name="separator" />
+        <addaction name="separator" />
+        <addaction name="fileExitAction" />
+      </widget>
+      <widget class="QMenu" name="unnamed" >
+        <property name="title" >
+          <string>&amp;Administrator</string>
+        </property>
+        <addaction name="administratorUsersAction" />
+        <addaction name="administratorRolesAction" />
+      </widget>
+      <addaction name="fileMenu" />
+      <addaction name="unnamed" />
+    </widget>
+    <action name="fileExitAction" >
+      <property name="name" >
+        <cstring>fileExitAction</cstring>
+      </property>
+      <property name="iconText" >
+        <string>Exit</string>
+      </property>
+      <property name="text" >
+        <string>E&amp;xit</string>
+      </property>
+      <property name="shortcut" >
+        <string/>
+      </property>
+    </action>
+    <action name="administratorUsersAction" >
+      <property name="name" >
+        <cstring>administratorUsersAction</cstring>
+      </property>
+      <property name="iconText" >
+        <string>&amp;Users</string>
+      </property>
+      <property name="text" >
+        <string>&amp;Users</string>
+      </property>
+    </action>
+    <action name="administratorRolesAction" >
+      <property name="name" >
+        <cstring>administratorRolesAction</cstring>
+      </property>
+      <property name="iconText" >
+        <string>Roles</string>
+      </property>
+      <property name="text" >
+        <string>Roles</string>
+      </property>
+    </action>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <includes>
+    <include location="local" >ananas.h</include>
+    <include location="local" >qworkspace.h</include>
+    <include location="local" >awindowslist.h</include>
+    <include location="global" >q3vbox.h</include>
+    <include location="local" >usersform.h</include>
+  </includes>
+  <connections>
+    <connection>
+      <sender>fileExitAction</sender>
+      <signal>activated()</signal>
+      <receiver>MainForm</receiver>
+      <slot>fileExit()</slot>
+    </connection>
+    <connection>
+      <sender>administratorUsersAction</sender>
+      <signal>activated()</signal>
+      <receiver>MainForm</receiver>
+      <slot>adminUsers()</slot>
+    </connection>
+    <connection>
+      <sender>fileExitAction</sender>
+      <signal>activated()</signal>
+      <receiver>MainForm</receiver>
+      <slot>fileExit()</slot>
+    </connection>
+    <connection>
+      <sender>administratorRolesAction</sender>
+      <signal>activated()</signal>
+      <receiver>MainForm</receiver>
+      <slot>adminRoles()</slot>
+    </connection>
+  </connections>
+</ui>

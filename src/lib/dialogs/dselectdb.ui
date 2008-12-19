@@ -1,0 +1,181 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro>ANANAS_EXPORT</exportmacro>
+  <class>dSelectDB</class>
+  <widget class="QDialog" name="dSelectDB" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>443</width>
+        <height>415</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Information base</string>
+    </property>
+    <property name="sizeGripEnabled" >
+      <bool>true</bool>
+    </property>
+    <layout class="QGridLayout" >
+      <item row="0" column="1" >
+        <layout class="QVBoxLayout" >
+          <item>
+            <widget class="QPushButton" name="buttonOk" >
+              <property name="text" >
+                <string>&amp;OK</string>
+              </property>
+              <property name="shortcut" >
+                <string/>
+              </property>
+              <property name="autoDefault" >
+                <bool>true</bool>
+              </property>
+              <property name="default" >
+                <bool>true</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="buttonCancel" >
+              <property name="text" >
+                <string>&amp;Cancel</string>
+              </property>
+              <property name="shortcut" >
+                <string>Alt+C</string>
+              </property>
+              <property name="autoDefault" >
+                <bool>true</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="buttonHelp" >
+              <property name="text" >
+                <string>&amp;Help</string>
+              </property>
+              <property name="shortcut" >
+                <string>Alt+H</string>
+              </property>
+              <property name="autoDefault" >
+                <bool>true</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <spacer name="Spacer1" >
+              <property name="sizeHint" >
+                <size>
+                  <width>20</width>
+                  <height>80</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Vertical</enum>
+              </property>
+            </spacer>
+          </item>
+        </layout>
+      </item>
+      <item row="0" column="0" >
+        <layout class="QVBoxLayout" >
+          <item>
+            <widget class="QLabel" name="textLabel1" >
+              <property name="text" >
+                <string>Select data base</string>
+              </property>
+              <property name="wordWrap" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="Q3ListView" name="listDBRC" >
+              <property name="hScrollBarMode" >
+                <enum>Q3ScrollView::AlwaysOff</enum>
+              </property>
+              <property name="allColumnsShowFocus" >
+                <bool>true</bool>
+              </property>
+              <column>
+                <property name="text" >
+                  <string>Name</string>
+                </property>
+                <property name="clickable" >
+                  <bool>true</bool>
+                </property>
+                <property name="resizable" >
+                  <bool>true</bool>
+                </property>
+              </column>
+              <column>
+                <property name="text" >
+                  <string>Resource file</string>
+                </property>
+                <property name="clickable" >
+                  <bool>true</bool>
+                </property>
+                <property name="resizable" >
+                  <bool>true</bool>
+                </property>
+              </column>
+            </widget>
+          </item>
+          <item>
+            <widget class="Q3ProgressBar" name="progressBar1" >
+              <property name="percentageVisible" >
+                <bool>true</bool>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="5" margin="5" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <includes>
+    <include location="local" >ananasglobal.h</include>
+    <include location="local" >qmenubar.h</include>
+    <include location="local" >q3popupmenu.h</include>
+    <include location="local" >qsettings.h</include>
+    <include location="local" >rclistviewitem.h</include>
+    <include location="local" >qmessagebox.h</include>
+  </includes>
+  <connections>
+    <connection>
+      <sender>buttonOk</sender>
+      <signal>clicked()</signal>
+      <receiver>dSelectDB</receiver>
+      <slot>onOK()</slot>
+    </connection>
+    <connection>
+      <sender>buttonCancel</sender>
+      <signal>clicked()</signal>
+      <receiver>dSelectDB</receiver>
+      <slot>onCancel()</slot>
+    </connection>
+    <connection>
+      <sender>listDBRC</sender>
+      <signal>selectionChanged(Q3ListViewItem*)</signal>
+      <receiver>dSelectDB</receiver>
+      <slot>itemSelect(Q3ListViewItem*)</slot>
+    </connection>
+    <connection>
+      <sender>buttonHelp</sender>
+      <signal>clicked()</signal>
+      <receiver>dSelectDB</receiver>
+      <slot>onHelp()</slot>
+    </connection>
+    <connection>
+      <sender>listDBRC</sender>
+      <signal>doubleClicked(Q3ListViewItem*)</signal>
+      <receiver>dSelectDB</receiver>
+      <slot>onDblClick(Q3ListViewItem*)</slot>
+    </connection>
+  </connections>
+</ui>

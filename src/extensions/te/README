@@ -1,0 +1,55 @@
+Ananas script examples for trade equipment drivers:
+TEDisplayVF2029, TEReaderBarcode
+
+1.global module:
+
+var TradeEq = 0;   // global trade equipment manager
+var TEDisplay = 0; // Display object
+var TEReader = 0;  // Reader object
+
+// EVENTS GLOBAL HANDLER
+function on_event( src, data )
+{
+    sys.Message(1,"Global module: on_event from "+src+" data="+data);
+}
+
+function on_systemstart()
+{
+    TradeEq = new TradeEquipment();
+    TEDisplay = TradeEq.newDriver("TEDisplayVF2029");
+    if (TEDisplay) {
+      TEDisplay.setPortBaudRate(12); //9600
+      TEDisplay.setPortNumberAndInit(2); // COM2
+    }
+    TEReader = TradeEq.newDriver("TEReaderBarcode");
+    if (TEReader) {
+        TEReader.PortNumber = 1;
+        TEReader.PortBaudRate = 9600;
+        TEReader.startDriver();
+   }
+}
+
+2.Document module
+
+// 
+function on_formstart(){
+    TEReader.clearBuffer(); // clear unprocessed barcodescodes
+}
+	
+// DISPLAY TEXT ON ROW CHANGED.
+function on_tablerow( name ){
+    print("Table "+name+" row changed");
+    TEDisplay.showText("ROW CHANGED","line1","scroll/left");
+}
+
+// EVENTS DOCUMENT HANDLER	
+function on_event( src, data )
+{
+    sys.Message(1,"Document module: on_event from "+src+" data="+data);
+    if (src=="TradeEquipment") {
+    // NEED CHECK 'data' VALUE FOR READER EVENT FILTERS
+	 bc = TEReader.text();
+         SetValue("Barcode", bc); // SET FIELD VALUE TO BARCODE READED
+         TEReader.next();
+     }
+}

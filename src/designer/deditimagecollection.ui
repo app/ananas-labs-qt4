@@ -1,0 +1,84 @@
+<ui version="4.0" >
+ <class>dEditImageCollection</class>
+ <widget class="Q3MainWindow" name="dEditImageCollection" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>523</width>
+    <height>320</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Image Collection</string>
+  </property>
+  <widget class="QWidget" name="widget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>523</width>
+     <height>320</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" >
+    <item row="0" column="1" >
+     <layout class="QVBoxLayout" >
+      <item>
+       <widget class="QPushButton" name="bAdd" >
+        <property name="text" >
+         <string>Add</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bRename" >
+        <property name="text" >
+         <string>Rename</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bDelete" >
+        <property name="text" >
+         <string>Remove</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="1" >
+     <spacer>
+      <property name="orientation" >
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType" >
+       <enum>QSizePolicy::Expanding</enum>
+      </property>
+      <property name="sizeHint" >
+       <size>
+        <width>31</width>
+        <height>81</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="5" margin="5" />
+ <pixmapfunction>rcIcon</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3MainWindow</class>
+   <extends>QWidget</extends>
+   <header>q3mainwindow.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local" >acfg.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

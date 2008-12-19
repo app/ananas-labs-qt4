@@ -1,0 +1,39 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>eAddObj</class>
+  <widget class="Q3MainWindow" name="eAddObj" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>417</width>
+        <height>297</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Form1</string>
+    </property>
+    <widget class="QWidget" >
+      <layout class="QGridLayout" >
+        <item row="0" column="0" >
+          <widget class="Q3Table" name="table1" >
+            <property name="numRows" >
+              <number>0</number>
+            </property>
+            <property name="numCols" >
+              <number>0</number>
+            </property>
+          </widget>
+        </item>
+      </layout>
+    </widget>
+  </widget>
+  <layoutdefault spacing="5" margin="5" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <includes>
+    <include location="local" >adocument.h</include>
+    <include location="local" >acatalogue.h</include>
+  </includes>
+</ui>

@@ -1,0 +1,26 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>RolesForm</class>
+  <widget class="QWidget" name="RolesForm" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>398</width>
+        <height>400</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Ananas: Roles</string>
+    </property>
+    <layout class="QGridLayout" />
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <includes>
+    <include location="local" >mdtree.h</include>
+    <include location="local" >acfg.h</include>
+  </includes>
+</ui>

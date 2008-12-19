@@ -1,0 +1,44 @@
+ANANAS EXTENSIONS SYSTEM
+author: Valery Grazdankin, Leader InfoTech
+
+Ananas engine finding extentions
+in 'extensions' directory 
+below application path directory (by default).
+For Linux will be moving to /usr/share/ananas/extensions
+
+SHORT WAY FOR CREATE EXTENSION:
+
+1. Define object with AExtension parent
+2. In constructor of the object call AExtension constructor
+   with Extension name string parameter. For example:
+   
+   AExtensionMy::AExtensionMy() : AExtension("MyExtension")
+   {
+   ...
+   } 
+   This name will be used in Ananas script for 'new'
+   operator without parameters, for example: 
+   
+   Ext = new MyExtension();
+   
+3. Define public slots: 
+    it will be functions, callable from Ananas script.
+4. Define Q_PROPERTY ( see demo )
+    it will be object variables
+5. 
+   At end of extension implementation (*.cpp) file define and export 
+   AnanasExtensionPlugin object for the extension, using template: 
+
+   #include <aextensionplugin.h>   
+   typedef AExtensionPlugin<extension_object_name> plugin_object_name;
+   A_EXPORT_PLUGIN( plugin_object_name )
+
+   For example:
+
+   #include <aextensionplugin.h>   
+   typedef AExtensionPlugin<AExtensionMy> AExtensionMyPlugin;
+   A_EXPORT_PLUGIN( AExtensionMyPlugin )
+
+6. Compile plugin
+7. Move it to Ananas extensions directory.
+8. USE IT AND ENJOY

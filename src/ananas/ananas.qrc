@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/a-system.png</file>
+        <file>images/cat.png</file>
+        <file>images/d_document_turned.png</file>
+        <file>images/document_turned.png</file>
+        <file>images/editdelete.png</file>
+        <file>images/editdelete2.png</file>
+        <file>images/engine-splash-en.png</file>
+        <file>images/engine-splash-ru.png</file>
+        <file>images/field.png</file>
+        <file>images/field2.png</file>
+        <file>images/group.png</file>
+        <file>images/group2.png</file>
+        <file>images/lib_database.png</file>
+        <file>images/lib_dbgroup.png</file>
+        <file>images/msg_error.png</file>
+        <file>images/msg_fatal.png</file>
+        <file>images/msg_info.png</file>
+        <file>images/msg_warning.png</file>
+        <file>images/object_markdeleted.png</file>
+        <file>images/t_cat_e.png</file>
+        <file>images/t_cat_ed.png</file>
+        <file>images/t_cat_g.png</file>
+        <file>images/t_cat_gd.png</file>
+        <file>images/t_doc.png</file>
+        <file>images/t_doc_d.png</file>
+        <file>images/t_doc_m.png</file>
+        <file>images/t_doc_t.png</file>
+        <file>images/t_doc_tm.png</file>
+        <file>images/t_doc_to.png</file>
+        <file>images/t_doc_tom.png</file>
+    </qresource>
+</RCC>

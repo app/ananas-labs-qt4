@@ -1,0 +1,1391 @@
+<ui version="4.0" >
+ <class>MainForm</class>
+ <widget class="Q3MainWindow" name="MainForm" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>677</width>
+    <height>570</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="font" >
+   <font/>
+  </property>
+  <property name="windowTitle" >
+   <string>Ananas: Designer</string>
+  </property>
+  <widget class="QWidget" name="widget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>54</y>
+     <width>677</width>
+     <height>516</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="Q3ToolBar" name="Toolbar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>105</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="label" >
+    <string/>
+   </property>
+   <addaction name="configNewAction" />
+   <addaction name="configOpenAction" />
+   <addaction name="configSaveAction" />
+  </widget>
+  <widget class="Q3ToolBar" name="tbInterface" >
+   <property name="geometry" >
+    <rect>
+     <x>105</x>
+     <y>0</y>
+     <width>135</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="label" >
+    <string/>
+   </property>
+   <addaction name="objInterfaceNewCommandAction" />
+   <addaction name="objInterfaceNewSubmenuAction" />
+   <addaction name="objInterfaceNewSeparatorAction" />
+   <addaction name="objInterfaceEditAction" />
+  </widget>
+  <widget class="Q3ToolBar" name="tbMetadata" >
+   <property name="geometry" >
+    <rect>
+     <x>240</x>
+     <y>0</y>
+     <width>75</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="label" >
+    <string/>
+   </property>
+   <addaction name="objMetadataNewAction" />
+   <addaction name="objMetadataEditAction" />
+  </widget>
+  <widget class="Q3ToolBar" name="tbActions" >
+   <property name="geometry" >
+    <rect>
+     <x>315</x>
+     <y>0</y>
+     <width>105</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="label" >
+    <string/>
+   </property>
+   <addaction name="objActionsNewAction" />
+   <addaction name="objActionsNewGroupAction" />
+   <addaction name="objActionsEditAction" />
+  </widget>
+  <widget class="Q3ToolBar" name="tbRights" >
+   <property name="geometry" >
+    <rect>
+     <x>420</x>
+     <y>0</y>
+     <width>105</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="label" >
+    <string/>
+   </property>
+   <addaction name="objRoleNewAction" />
+   <addaction name="objRoleEditAction" />
+   <addaction name="objRoleClearAction" />
+  </widget>
+  <widget class="Q3ToolBar" name="tbLanguages" >
+   <property name="geometry" >
+    <rect>
+     <x>525</x>
+     <y>0</y>
+     <width>105</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="label" >
+    <string/>
+   </property>
+   <addaction name="objLanguagesNewAction" />
+   <addaction name="objLanguagesEditAction" />
+   <addaction name="objLanguagesClearAction" />
+  </widget>
+  <widget class="Q3ToolBar" name="tbImageCollection" >
+   <property name="geometry" >
+    <rect>
+     <x>630</x>
+     <y>0</y>
+     <width>45</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="label" >
+    <string/>
+   </property>
+   <addaction name="objImageCollectionAddAction" />
+  </widget>
+  <widget class="Q3ToolBar" name="TBToolbar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>30</y>
+     <width>135</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="label" >
+    <string/>
+   </property>
+   <addaction name="objTBRenameAction" />
+   <addaction name="objTBMoveUpAction" />
+   <addaction name="objTBMoveDownAction" />
+   <addaction name="objTBDeleteAction" />
+  </widget>
+  <widget class="Q3ToolBar" name="tbTabs" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>19</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="movingEnabled" >
+    <bool>true</bool>
+   </property>
+   <property name="newLine" >
+    <bool>true</bool>
+   </property>
+   <property name="label" >
+    <string>Tabs</string>
+   </property>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="enabled" >
+    <bool>true</bool>
+   </property>
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>677</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="defaultUp" >
+    <bool>false</bool>
+   </property>
+   <widget class="QMenu" name="fileMenu" >
+    <property name="title" >
+     <string>&amp;File</string>
+    </property>
+    <addaction name="fileNewAction" />
+    <addaction name="fileSaveAction" />
+    <addaction name="fileOpenAction" />
+    <addaction name="separator" />
+    <addaction name="filePrintAction" />
+    <addaction name="separator" />
+    <addaction name="fileExitAction" />
+   </widget>
+   <widget class="QMenu" name="editMenu" >
+    <property name="title" >
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="editUndoAction" />
+    <addaction name="editRedoAction" />
+    <addaction name="separator" />
+    <addaction name="editCutAction" />
+    <addaction name="editCopyAction" />
+    <addaction name="editPasteAction" />
+    <addaction name="separator" />
+    <addaction name="editFindAction" />
+   </widget>
+   <widget class="QMenu" name="ConfigurationMenu" >
+    <property name="title" >
+     <string>Configuration</string>
+    </property>
+    <addaction name="configOpenAction" />
+    <addaction name="configSaveAction" />
+    <addaction name="separator" />
+    <addaction name="configNewAction" />
+   </widget>
+   <widget class="QMenu" name="ObjectMenu" >
+    <property name="title" >
+     <string>Object</string>
+    </property>
+    <addaction name="objEditAction" />
+    <addaction name="objRenameAction" />
+    <addaction name="objDeleteAction" />
+    <addaction name="separator" />
+    <addaction name="objNewObjAction" />
+    <addaction name="objNewFieldAction" />
+    <addaction name="objNewFormAction" />
+    <addaction name="objNewTableAction" />
+   </widget>
+   <addaction name="fileMenu" />
+   <addaction name="editMenu" />
+   <addaction name="ConfigurationMenu" />
+   <addaction name="ObjectMenu" />
+  </widget>
+  <action name="fileNewAction" >
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>&amp;New</string>
+   </property>
+   <property name="iconText" >
+    <string>&amp;New</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+N</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileNewAction</string>
+   </property>
+  </action>
+  <action name="fileOpenAction" >
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>&amp;Open...</string>
+   </property>
+   <property name="iconText" >
+    <string>&amp;Open...</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+O</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileOpenAction</string>
+   </property>
+  </action>
+  <action name="fileSaveAction" >
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>&amp;Save</string>
+   </property>
+   <property name="iconText" >
+    <string>&amp;Save</string>
+   </property>
+   <property name="whatsThis" >
+    <string>actFileSave</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+S</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileSaveAction</string>
+   </property>
+  </action>
+  <action name="fileSaveAsAction" >
+   <property name="text" >
+    <string>Save &amp;as...</string>
+   </property>
+   <property name="iconText" >
+    <string>Save &amp;as...</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileSaveAsAction</string>
+   </property>
+  </action>
+  <action name="filePrintAction" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>&amp;Print</string>
+   </property>
+   <property name="iconText" >
+    <string>&amp;Print</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+P</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>filePrintAction</string>
+   </property>
+  </action>
+  <action name="fileExitAction" >
+   <property name="text" >
+    <string>E&amp;xit</string>
+   </property>
+   <property name="iconText" >
+    <string>E&amp;xit</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileExitAction</string>
+   </property>
+  </action>
+  <action name="editUndoAction" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>Undo</string>
+   </property>
+   <property name="iconText" >
+    <string>Undo</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+Z</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>editUndoAction</string>
+   </property>
+  </action>
+  <action name="editRedoAction" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>Redo</string>
+   </property>
+   <property name="iconText" >
+    <string>Redo</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+Y</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>editRedoAction</string>
+   </property>
+  </action>
+  <action name="editCutAction" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>Cut</string>
+   </property>
+   <property name="iconText" >
+    <string>Cut</string>
+   </property>
+   <property name="toolTip" >
+    <string>Вырезать</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+X</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>editCutAction</string>
+   </property>
+  </action>
+  <action name="editCopyAction" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>Copy</string>
+   </property>
+   <property name="iconText" >
+    <string>Copy</string>
+   </property>
+   <property name="toolTip" >
+    <string>Копировать</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+C</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>editCopyAction</string>
+   </property>
+  </action>
+  <action name="editPasteAction" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>Paste</string>
+   </property>
+   <property name="iconText" >
+    <string>Paste</string>
+   </property>
+   <property name="toolTip" >
+    <string>Вставить</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+V</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>editPasteAction</string>
+   </property>
+  </action>
+  <action name="editFindAction" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>Find</string>
+   </property>
+   <property name="iconText" >
+    <string>Find</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+F</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>editFindAction</string>
+   </property>
+  </action>
+  <action name="helpContentsAction" >
+   <property name="text" >
+    <string>&amp;Содержание...</string>
+   </property>
+   <property name="iconText" >
+    <string>Содержание</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>helpContentsAction</string>
+   </property>
+  </action>
+  <action name="helpIndexAction" >
+   <property name="text" >
+    <string>&amp;Индекс...</string>
+   </property>
+   <property name="iconText" >
+    <string>Индекс</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>helpIndexAction</string>
+   </property>
+  </action>
+  <action name="helpAboutAction" >
+   <property name="text" >
+    <string>&amp;О программе</string>
+   </property>
+   <property name="iconText" >
+    <string>О программе</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>helpAboutAction</string>
+   </property>
+  </action>
+  <action name="new_itemAction" >
+   <property name="text" >
+    <string>new item</string>
+   </property>
+   <property name="iconText" >
+    <string>new item</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>new_itemAction</string>
+   </property>
+  </action>
+  <action name="new_itemAction_2" >
+   <property name="text" >
+    <string>new item</string>
+   </property>
+   <property name="iconText" >
+    <string>new item</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>new_itemAction_2</string>
+   </property>
+  </action>
+  <action name="configurationnew_itemAction" >
+   <property name="text" >
+    <string>Image Collection</string>
+   </property>
+   <property name="iconText" >
+    <string>Image Collection</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>configurationnew_itemAction</string>
+   </property>
+  </action>
+  <actiongroup name="configGroup" >
+   <action name="configNewAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/filenew.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New</string>
+    </property>
+    <property name="iconText" >
+     <string>New</string>
+    </property>
+    <property name="toolTip" >
+     <string>Create new configuration</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>configNewAction</string>
+    </property>
+   </action>
+   <action name="configOpenAction" >
+    <property name="checked" >
+     <bool>false</bool>
+    </property>
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/hi22-action-project_open.png</iconset>
+    </property>
+    <property name="text" >
+     <string>&amp;Open</string>
+    </property>
+    <property name="iconText" >
+     <string>&amp;Open</string>
+    </property>
+    <property name="toolTip" >
+     <string>Open configuration</string>
+    </property>
+    <property name="statusTip" >
+     <string>Open configuration</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>configOpenAction</string>
+    </property>
+   </action>
+   <action name="configSaveAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/filesave.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Save</string>
+    </property>
+    <property name="iconText" >
+     <string>Save</string>
+    </property>
+    <property name="toolTip" >
+     <string>Save configuration</string>
+    </property>
+    <property name="shortcut" >
+     <string>Ctrl+S</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>configSaveAction</string>
+    </property>
+   </action>
+   <action name="config_DBCreateAction" >
+    <property name="text" >
+     <string>Создать/обновить БД</string>
+    </property>
+    <property name="iconText" >
+     <string>Создать/обновить БД</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>config_DBCreateAction</string>
+    </property>
+   </action>
+   <property name="name" stdset="0" >
+    <string>configGroup</string>
+   </property>
+  </actiongroup>
+  <actiongroup name="formGroup" >
+   <action name="NewButtonAction" >
+    <property name="text" >
+     <string>Новая кнопка</string>
+    </property>
+    <property name="iconText" >
+     <string>Новая кнопка</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>NewButtonAction</string>
+    </property>
+   </action>
+   <action name="NewAttributeAction" >
+    <property name="text" >
+     <string>Новый атрибут</string>
+    </property>
+    <property name="iconText" >
+     <string>Новый атрибут</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>NewAttributeAction</string>
+    </property>
+   </action>
+   <action name="NewFieldAction" >
+    <property name="text" >
+     <string>Новое поле</string>
+    </property>
+    <property name="iconText" >
+     <string>Новое поле</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>NewFieldAction</string>
+    </property>
+   </action>
+   <property name="name" stdset="0" >
+    <string>formGroup</string>
+   </property>
+  </actiongroup>
+  <actiongroup name="objectGroup" >
+   <action name="objNewFormAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/form.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New form</string>
+    </property>
+    <property name="iconText" >
+     <string>New form</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objNewFormAction</string>
+    </property>
+   </action>
+   <action name="objDeleteAction" >
+    <property name="text" >
+     <string>Delete</string>
+    </property>
+    <property name="iconText" >
+     <string>Delete</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objDeleteAction</string>
+    </property>
+   </action>
+   <action name="objNewFieldAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/field.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New field</string>
+    </property>
+    <property name="iconText" >
+     <string>New field</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objNewFieldAction</string>
+    </property>
+   </action>
+   <action name="objRenameAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editrename.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Rename</string>
+    </property>
+    <property name="iconText" >
+     <string>Rename</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objRenameAction</string>
+    </property>
+   </action>
+   <action name="objEditAction" >
+    <property name="text" >
+     <string>Edit</string>
+    </property>
+    <property name="iconText" >
+     <string>Edit</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objEditAction</string>
+    </property>
+   </action>
+   <action name="objNewTableAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/table.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New table</string>
+    </property>
+    <property name="iconText" >
+     <string>New table</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objNewTableAction</string>
+    </property>
+   </action>
+   <action name="objNewObjAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/object.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New in group</string>
+    </property>
+    <property name="iconText" >
+     <string>New in group</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objNewObjAction</string>
+    </property>
+   </action>
+   <action name="objTBDeleteAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editdelete.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Delete</string>
+    </property>
+    <property name="iconText" >
+     <string>Delete</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objTBDeleteAction</string>
+    </property>
+   </action>
+   <action name="objMetadataNewAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/doc.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New</string>
+    </property>
+    <property name="iconText" >
+     <string>New</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objMetadataNewAction</string>
+    </property>
+   </action>
+   <action name="objTBRenameAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editrename.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Rename</string>
+    </property>
+    <property name="iconText" >
+     <string>Rename</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objTBRenameAction</string>
+    </property>
+   </action>
+   <action name="objTBMoveUpAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/arrow_up.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Move Up</string>
+    </property>
+    <property name="iconText" >
+     <string>Move Up</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objTBMoveUpAction</string>
+    </property>
+   </action>
+   <action name="objTBMoveDownAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/arrow_down.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Move Down</string>
+    </property>
+    <property name="iconText" >
+     <string>Move Down</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objTBMoveDownAction</string>
+    </property>
+   </action>
+   <action name="objMetadataEditAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editedit.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Edit</string>
+    </property>
+    <property name="iconText" >
+     <string>Edit</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objMetadataEditAction</string>
+    </property>
+   </action>
+   <action name="objActionsNewGroupAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/function.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New Group</string>
+    </property>
+    <property name="iconText" >
+     <string>New Group</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objActionsNewGroupAction</string>
+    </property>
+   </action>
+   <action name="objActionsNewAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/filenew.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New</string>
+    </property>
+    <property name="iconText" >
+     <string>New</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objActionsNewAction</string>
+    </property>
+   </action>
+   <action name="objActionsEditAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editedit.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Action</string>
+    </property>
+    <property name="iconText" >
+     <string>Action</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objActionsEditAction</string>
+    </property>
+   </action>
+   <action name="objInterfaceNewSubmenuAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/report_g.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New Submenu</string>
+    </property>
+    <property name="iconText" >
+     <string>New Submenu</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objInterfaceNewSubmenuAction</string>
+    </property>
+   </action>
+   <action name="objInterfaceNewCommandAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/report.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New Command</string>
+    </property>
+    <property name="iconText" >
+     <string>New Command</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objInterfaceNewCommandAction</string>
+    </property>
+   </action>
+   <action name="objInterfaceNewSeparatorAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editsep.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New Separator</string>
+    </property>
+    <property name="iconText" >
+     <string>New Separator</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objInterfaceNewSeparatorAction</string>
+    </property>
+   </action>
+   <action name="objInterfaceEditAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editedit.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Edit</string>
+    </property>
+    <property name="iconText" >
+     <string>Edit</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objInterfaceEditAction</string>
+    </property>
+   </action>
+   <action name="objInterfaceRenameAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editrename.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Rename</string>
+    </property>
+    <property name="iconText" >
+     <string>Rename</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objInterfaceRenameAction</string>
+    </property>
+   </action>
+   <action name="objLanguagesNewAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/filenew.png</iconset>
+    </property>
+    <property name="text" >
+     <string>New</string>
+    </property>
+    <property name="iconText" >
+     <string>New</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objLanguagesNewAction</string>
+    </property>
+   </action>
+   <action name="objLanguagesEditAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editedit.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Edit</string>
+    </property>
+    <property name="iconText" >
+     <string>Edit</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objLanguagesEditAction</string>
+    </property>
+   </action>
+   <action name="objLanguagesClearAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editcut.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Clear dead aliases</string>
+    </property>
+    <property name="iconText" >
+     <string>Clear dead aliases</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objLanguagesClearAction</string>
+    </property>
+   </action>
+   <action name="objImageCollectionAddAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/filenew.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Add</string>
+    </property>
+    <property name="iconText" >
+     <string>Add</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objImageCollectionAddAction</string>
+    </property>
+   </action>
+   <action name="objRoleNewAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/doc.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Add new role</string>
+    </property>
+    <property name="iconText" >
+     <string>Add new role</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objRoleNewAction</string>
+    </property>
+   </action>
+   <action name="objRoleClearAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editcut.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Clear dead roles</string>
+    </property>
+    <property name="iconText" >
+     <string>Clear dead roles</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objRoleClearAction</string>
+    </property>
+   </action>
+   <action name="objRoleEditAction" >
+    <property name="icon" >
+     <iconset resource="designer.qrc" >:/images/editedit.png</iconset>
+    </property>
+    <property name="text" >
+     <string>Edit role</string>
+    </property>
+    <property name="iconText" >
+     <string>Edit role</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objRoleEditAction</string>
+    </property>
+   </action>
+   <property name="name" stdset="0" >
+    <string>objectGroup</string>
+   </property>
+  </actiongroup>
+ </widget>
+ <layoutdefault spacing="5" margin="5" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3ToolBar</class>
+   <extends>Q3Frame</extends>
+   <header>q3listview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Q3MainWindow</class>
+   <extends>QWidget</extends>
+   <header>q3mainwindow.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local" >qworkspace.h</include>
+  <include location="local" >q3vbox.h</include>
+  <include location="local" >cfgform.h</include>
+  <include location="local" >q3popupmenu.h</include>
+  <include location="local" >awindowslist.h</include>
+  <include location="local" >qsettings.h</include>
+ </includes>
+ <resources>
+  <include location="designer.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>fileSaveAsAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>fileSaveAs()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filePrintAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>filePrint()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileExitAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editUndoAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>editUndo()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editRedoAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>editRedo()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editCutAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>editCut()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editCopyAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>editCopy()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editPasteAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>editPaste()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editFindAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>editFind()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpIndexAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>helpIndex()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpContentsAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>helpContents()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpAboutAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>helpAbout()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>configNewAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>configNew()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>configOpenAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>configOpen()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>configSaveAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>configSave()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>objTBDeleteAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>fileOpen()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileNewAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>configNew()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileOpenAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>configOpen()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSaveAction</sender>
+   <signal>activated()</signal>
+   <receiver>MainForm</receiver>
+   <slot>configSave()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

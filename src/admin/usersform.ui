@@ -1,0 +1,24 @@
+<ui version="4.0" >
+ <class>UsersForm</class>
+ <widget class="QWidget" name="UsersForm" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>330</width>
+    <height>291</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Ananas: Users</string>
+  </property>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <includes>
+  <include location="local" >mdtree.h</include>
+  <include location="local" >acfg.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

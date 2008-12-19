@@ -1,0 +1,91 @@
+<ui version="4.0" >
+ <class>dEditRole</class>
+ <widget class="Q3MainWindow" name="dEditRole" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>365</width>
+    <height>198</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Role</string>
+  </property>
+  <widget class="QWidget" name="widget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>365</width>
+     <height>198</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" >
+    <item row="0" column="0" >
+     <widget class="QTabWidget" name="tabWidget7" >
+      <widget class="QWidget" name="tab" >
+       <attribute name="title" >
+        <string>Common</string>
+       </attribute>
+       <layout class="QGridLayout" >
+        <item row="1" column="0" >
+         <widget class="QLabel" name="textLabel2" >
+          <property name="text" >
+           <string>Description:</string>
+          </property>
+          <property name="wordWrap" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" >
+         <layout class="QHBoxLayout" >
+          <item>
+           <widget class="QLabel" name="textLabel1" >
+            <property name="text" >
+             <string>Name:</string>
+            </property>
+            <property name="wordWrap" >
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="eName" />
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0" >
+         <widget class="Q3TextEdit" name="eDescription" />
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="5" margin="5" />
+ <pixmapfunction>rcIcon</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3MainWindow</class>
+   <extends>QWidget</extends>
+   <header>q3mainwindow.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3TextEdit</class>
+   <extends>Q3Frame</extends>
+   <header>q3textedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local" >mdtree.h</include>
+  <include location="local" >cfgform.h</include>
+  <include location="local" >mainform.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

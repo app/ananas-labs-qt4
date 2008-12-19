@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Дизайнер для Ананаса
+Name[ru]=Дизайнер для Ананаса
+Comment=Design and develop Ananas applications
+Comment[ru]=Разработка и настройка бизнес схем для Ананаса
+Exec=ananas-designer
+Icon=ananas-designer.png
+Terminal=false
+Type=Application
+Categories=Application;Development;X-Red-Hat;

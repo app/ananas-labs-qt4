@@ -1,0 +1,248 @@
+<ui version="4.0" >
+ <author></author>
+  <comment>*********************************************************************
+**
+** Copyright (C) 1992-2006 Trolltech ASA. All rights reserved.
+**
+** This file is part of the Qt Designer of the Qt Toolkit.
+**
+** This file may be used under the terms of the GNU General Public
+** License version 2.0 as published by the Free Software Foundation
+** and appearing in the file LICENSE.GPL included in the packaging of
+** this file.  Please review the following information to ensure GNU
+** General Public Licensing requirements will be met:
+** http://www.trolltech.com/products/qt/opensource.html
+**
+** If you are unsure which license is appropriate for your use, please
+** review the following information:
+** http://www.trolltech.com/products/qt/licensing.html or contact the
+** sales department at sales@trolltech.com.
+**
+** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+**
+*********************************************************************</comment>
+ <exportmacro></exportmacro>
+ <class>SaveFormAsTemplate</class>
+ <widget class="QDialog" name="SaveFormAsTemplate" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>391</width>
+    <height>149</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Save Form As Template...</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QGridLayout" >
+     <property name="margin" >
+      <number>1</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item row="0" column="1" >
+      <widget class="QLineEdit" name="templateNameEdit" >
+       <property name="geometry" >
+        <rect>
+         <x>67</x>
+         <y>1</y>
+         <width>285</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="echoMode" >
+        <enum>QLineEdit::Normal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" >
+      <widget class="QComboBox" name="categoryCombo" >
+       <property name="geometry" >
+        <rect>
+         <x>67</x>
+         <y>29</y>
+         <width>285</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" >
+      <widget class="QLabel" name="label_2" >
+       <property name="geometry" >
+        <rect>
+         <x>1</x>
+         <y>29</y>
+         <width>60</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="frameShape" >
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text" >
+        <string>&amp;Category:</string>
+       </property>
+       <property name="textFormat" >
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="buddy" >
+        <cstring>categoryCombo</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" >
+      <widget class="QLabel" name="label" >
+       <property name="geometry" >
+        <rect>
+         <x>1</x>
+         <y>1</y>
+         <width>60</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="frameShape" >
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text" >
+        <string>&amp;Name:</string>
+       </property>
+       <property name="textFormat" >
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="buddy" >
+        <cstring>templateNameEdit</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer>
+     <property name="geometry" >
+      <rect>
+       <x>9</x>
+       <y>71</y>
+       <width>373</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QFrame" name="horizontalLine" >
+     <property name="geometry" >
+      <rect>
+       <x>9</x>
+       <y>97</y>
+       <width>373</width>
+       <height>3</height>
+      </rect>
+     </property>
+     <property name="frameShape" >
+      <enum>QFrame::HLine</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Sunken</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>1</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="geometry" >
+        <rect>
+         <x>1</x>
+         <y>1</y>
+         <width>197</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okButton" >
+       <property name="geometry" >
+        <rect>
+         <x>204</x>
+         <y>1</y>
+         <width>81</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="text" >
+        <string>OK</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton" >
+       <property name="geometry" >
+        <rect>
+         <x>291</x>
+         <y>1</y>
+         <width>81</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="text" >
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <resources/>
+ <connections/>
+</ui>

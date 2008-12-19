@@ -1,0 +1,775 @@
+<ui version="4.0" >
+ <author>Leader</author>
+ <class>CfgForm</class>
+ <widget class="Q3MainWindow" name="CfgForm" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>482</width>
+    <height>412</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle" >
+   <string>CfgForm</string>
+  </property>
+  <widget class="QWidget" name="widget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>482</width>
+     <height>412</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" >
+    <item row="0" column="0" >
+     <widget class="QTabWidget" name="tabWidget" >
+      <property name="font" >
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <widget class="QWidget" name="TabPage" >
+       <attribute name="title" >
+        <string>Metadata</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="TabPage" >
+       <attribute name="title" >
+        <string>Actions</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab" >
+       <attribute name="title" >
+        <string>Interface</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="TabPage" >
+       <attribute name="title" >
+        <string>Rights</string>
+       </attribute>
+       <layout class="QGridLayout" >
+        <item row="0" column="0" >
+         <widget class="Q3Table" name="tRole" >
+          <property name="numRows" >
+           <number>0</number>
+          </property>
+          <property name="numCols" >
+           <number>2</number>
+          </property>
+          <property name="readOnly" >
+           <bool>true</bool>
+          </property>
+          <property name="selectionMode" >
+           <enum>Q3Table::Multi</enum>
+          </property>
+          <column>
+           <property name="text" >
+            <string>Role name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Description</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item row="0" column="1" >
+         <layout class="QVBoxLayout" >
+          <item>
+           <widget class="QPushButton" name="bAddRole" >
+            <property name="text" >
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bDeleteRole" >
+            <property name="text" >
+             <string>Remove</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bEditRole" >
+            <property name="text" >
+             <string>Edit</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bKillRole" >
+            <property name="text" >
+             <string>Clear dead roles</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType" >
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>21</width>
+              <height>250</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabPage" >
+       <attribute name="title" >
+        <string>Languages</string>
+       </attribute>
+       <layout class="QGridLayout" >
+        <item row="0" column="1" >
+         <layout class="QVBoxLayout" >
+          <item>
+           <widget class="QPushButton" name="bAdd" >
+            <property name="text" >
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bDelete" >
+            <property name="text" >
+             <string>Remove</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bEdit" >
+            <property name="text" >
+             <string>Edit</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bKill" >
+            <property name="text" >
+             <string>Clear dead aliases</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType" >
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>20</width>
+              <height>250</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0" >
+         <widget class="Q3Table" name="tLang" >
+          <property name="numRows" >
+           <number>0</number>
+          </property>
+          <property name="numCols" >
+           <number>3</number>
+          </property>
+          <property name="readOnly" >
+           <bool>true</bool>
+          </property>
+          <property name="selectionMode" >
+           <enum>Q3Table::Multi</enum>
+          </property>
+          <column>
+           <property name="text" >
+            <string>Tag</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Translation file</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabPage" >
+       <attribute name="title" >
+        <string>Image collection</string>
+       </attribute>
+       <layout class="QGridLayout" >
+        <item rowspan="2" row="0" column="0" >
+         <widget class="Q3IconView" name="vImageCollection" >
+          <property name="maxItemWidth" >
+           <number>50</number>
+          </property>
+          <property name="maxItemTextLength" >
+           <number>50</number>
+          </property>
+          <property name="itemsMovable" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" >
+         <layout class="QVBoxLayout" >
+          <item>
+           <widget class="QPushButton" name="bAddImage" >
+            <property name="text" >
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bRemoveImage" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="text" >
+             <string>Remove</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="1" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>20</width>
+            <height>240</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <action name="fileNewAction" >
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>&amp;New</string>
+   </property>
+   <property name="iconText" >
+    <string>New</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+N</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileNewAction</string>
+   </property>
+  </action>
+  <action name="fileOpenAction" >
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>&amp;Open...</string>
+   </property>
+   <property name="iconText" >
+    <string>Open</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+O</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileOpenAction</string>
+   </property>
+  </action>
+  <action name="fileSaveAction" >
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>&amp;Save</string>
+   </property>
+   <property name="iconText" >
+    <string>Save</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+S</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileSaveAction</string>
+   </property>
+  </action>
+  <action name="fileSaveAsAction" >
+   <property name="text" >
+    <string>Save &amp;As...</string>
+   </property>
+   <property name="iconText" >
+    <string>Save As</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileSaveAsAction</string>
+   </property>
+  </action>
+  <action name="filePrintAction" >
+   <property name="icon" >
+    <iconset/>
+   </property>
+   <property name="text" >
+    <string>&amp;Print...</string>
+   </property>
+   <property name="iconText" >
+    <string>Print</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+P</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>filePrintAction</string>
+   </property>
+  </action>
+  <action name="fileExitAction" >
+   <property name="text" >
+    <string>E&amp;xit</string>
+   </property>
+   <property name="iconText" >
+    <string>Exit</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileExitAction</string>
+   </property>
+  </action>
+  <actiongroup name="objGroup" >
+   <action name="objEdit" >
+    <property name="icon" >
+     <iconset/>
+    </property>
+    <property name="iconText" >
+     <string>Action</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objEdit</string>
+    </property>
+   </action>
+   <action name="objNew" >
+    <property name="icon" >
+     <iconset/>
+    </property>
+    <property name="iconText" >
+     <string>Action</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objNew</string>
+    </property>
+   </action>
+   <action name="objDelete" >
+    <property name="icon" >
+     <iconset>editdelete.png</iconset>
+    </property>
+    <property name="iconText" >
+     <string>Action</string>
+    </property>
+    <property name="name" stdset="0" >
+     <string>objDelete</string>
+    </property>
+   </action>
+   <property name="name" stdset="0" >
+    <string>objGroup</string>
+   </property>
+  </actiongroup>
+ </widget>
+ <layoutdefault spacing="2" margin="1" />
+ <pixmapfunction>rcIcon</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3IconView</class>
+   <extends>Q3Frame</extends>
+   <header>q3iconview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Q3MainWindow</class>
+   <extends>QWidget</extends>
+   <header>q3mainwindow.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3Table</class>
+   <extends>Q3Frame</extends>
+   <header>q3table.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+ </tabstops>
+ <includes>
+  <include location="local" >acfg.h</include>
+  <include location="local" >qworkspace.h</include>
+  <include location="local" >q3socket.h</include>
+  <include location="local" >q3serversocket.h</include>
+  <include location="local" >acfgrc.h</include>
+  <include location="local" >mdtree.h</include>
+  <include location="local" >actiontree.h</include>
+  <include location="local" >interfacetree.h</include>
+  <include location="local" >pixmappreview.h</include>
+  <include location="local" >awindowslist.h</include>
+ </includes>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>fileExitAction</sender>
+   <signal>activated()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>fileExit()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filePrintAction</sender>
+   <signal>activated()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>filePrint()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSaveAsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>fileSaveAs()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSaveAction</sender>
+   <signal>activated()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>fileSave()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileOpenAction</sender>
+   <signal>activated()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>fileOpen()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileNewAction</sender>
+   <signal>activated()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>fileNew()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bAdd</sender>
+   <signal>clicked()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>bAdd_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bDelete</sender>
+   <signal>clicked()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>bDelete_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bEdit</sender>
+   <signal>clicked()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>bEdit_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tLang</sender>
+   <signal>doubleClicked(int,int,int,QPoint)</signal>
+   <receiver>CfgForm</receiver>
+   <slot>tLang_doubleClicked(int,int,int,QPoint)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bKill</sender>
+   <signal>clicked()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>bKill_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bAddImage</sender>
+   <signal>clicked()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>bAddImage_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bRemoveImage</sender>
+   <signal>clicked()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>bRemoveImage_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vImageCollection</sender>
+   <signal>itemRenamed(Q3IconViewItem*,QString)</signal>
+   <receiver>CfgForm</receiver>
+   <slot>vImageCollection_itemRenamed(Q3IconViewItem*,QString)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tabWidget</sender>
+   <signal>selected(QString)</signal>
+   <receiver>CfgForm</receiver>
+   <slot>tabWidget_selected(QString)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bAddRole</sender>
+   <signal>clicked()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>bAddRole_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bEditRole</sender>
+   <signal>clicked()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>bEditRole_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tRole</sender>
+   <signal>doubleClicked(int,int,int,QPoint)</signal>
+   <receiver>CfgForm</receiver>
+   <slot>tRole_doubleClicked(int,int,int,QPoint)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bDeleteRole</sender>
+   <signal>clicked()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>bDeleteRole_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bKillRole</sender>
+   <signal>clicked()</signal>
+   <receiver>CfgForm</receiver>
+   <slot>bKillRole_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

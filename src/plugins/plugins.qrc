@@ -1,0 +1,20 @@
+<!DOCTYPE RCC><RCC version="1.1">
+    <qresource prefix="/">
+        <file>images/acombobox.png</file>
+        <file>images/doc_copy.png</file>
+        <file>images/doc_delete.png</file>
+        <file>images/doc_edit.png</file>
+        <file>images/doc_new.png</file>
+        <file>images/doc_view.png</file>
+        <file>images/wactionbutton.png</file>
+        <file>images/wcatalogue.png</file>
+        <file>images/wdbfield.png</file>
+        <file>images/wdbtable.png</file>
+        <file>images/wdocument.png</file>
+        <file>images/wfield.png</file>
+        <file>images/wgrouptree.png</file>
+        <file>images/wjournal.png</file>
+        <file>images/wreport.png</file>
+        <file>images/wtable.png</file>
+    </qresource>
+</RCC>

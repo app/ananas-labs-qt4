@@ -1,0 +1,83 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>addfdialog</class>
+  <widget class="QDialog" name="addfdialog" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>363</width>
+        <height>224</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>select field</string>
+    </property>
+    <layout class="QGridLayout" >
+      <item row="0" column="1" >
+        <layout class="QVBoxLayout" >
+          <item>
+            <widget class="QPushButton" name="OkButton" >
+              <property name="text" >
+                <string>OK</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="CButton" >
+              <property name="text" >
+                <string>Cancel</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <spacer name="spacer3" >
+              <property name="sizeHint" >
+                <size>
+                  <width>20</width>
+                  <height>120</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Vertical</enum>
+              </property>
+            </spacer>
+          </item>
+        </layout>
+      </item>
+      <item row="0" column="0" >
+        <widget class="Q3ListBox" name="ListBox" />
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <includes>
+    <include location="local" >wdbtable.h</include>
+  </includes>
+  <connections>
+    <connection>
+      <sender>OkButton</sender>
+      <signal>clicked()</signal>
+      <receiver>addfdialog</receiver>
+      <slot>doOk()</slot>
+    </connection>
+    <connection>
+      <sender>CButton</sender>
+      <signal>clicked()</signal>
+      <receiver>addfdialog</receiver>
+      <slot>reject()</slot>
+    </connection>
+    <connection>
+      <sender>ListBox</sender>
+      <signal>doubleClicked(Q3ListBoxItem*)</signal>
+      <receiver>addfdialog</receiver>
+      <slot>doOk()</slot>
+    </connection>
+  </connections>
+</ui>

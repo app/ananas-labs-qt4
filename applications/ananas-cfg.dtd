@@ -1,0 +1,150 @@
+<!--
+ DTD for Ananas v.0.4 configuration metadata
+ Author: Andrey Paskal <app@linux.ru.net>,
+	 Valery Grazdankin <vg@leaderit.ru>
+ Copyright (C) 2003-2004 Andrey Paskal, Valery Grazdankin
+ Licensed under the GPL, version 2
+
+-->
+
+<!-- Top-level element -->
+<!ELEMENT ananas_configuration (info,metadata,languages,image_collection,actions,interface)>
+
+<!-- Info -->
+<!ELEMENT info (name?|author?|date?|mdate?|lastid)*>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT copyright (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT mdate (#PCDATA)>
+<!ELEMENT remark (#PCDATA)>
+<!ELEMENT lastid (#PCDATA)>
+
+<!-- Metadata -->
+<!ELEMENT metadata (globals,catalogues,documents,registers,journals)>
+
+<!ELEMENT globals (sourcecode+)>
+
+<!ELEMENT catalogues (catalog+)>
+
+<!ELEMENT documents (document+)>
+
+<!ELEMENT registers (iregisters, aregisters)>
+
+<!ELEMENT iregisters (iregister+)>
+
+<!ELEMENT aregisters (aregister+)>
+
+<!ELEMENT journals (journal)>
+<!ELEMENT journal (columns,forms,description)>
+<!ATTLIST journal
+	id	CDATA #REQUIRED
+	name	CDATA #REQUIRED
+	type	CDATA #REQUIRED
+>
+
+<!ELEMENT columns (used_docs)>
+<!ELEMENT used_docs (#CDATA)>
+
+<!ELEMENT sourcecode (#CDATA)>
+<!ATTLIST sourcecode
+	name		CDATA
+	id		CDATA #REQUIRED
+>
+
+<!ELEMENT catalog (element, groups, forms)>
+<!ATTLIST catalog
+	name		CDATA #REQUIRED
+	id		CDATA #REQUIRED
+>
+
+<!ELEMENT element (field*)>
+
+<!ELEMENT groups (field*)>
+
+<!ELEMENT forms (description|sourcecode|defaultmod|dialogform)>
+
+<!ATTLIST forms
+	type		CDATA #REQUIRED
+	name		CDATA #REQUIRED
+	id		CDATA #REQUIRED
+	readonly	CDATA
+	
+>
+
+<!ELEMENT description (#CDATA)>
+<!ELEMENT defaulmod (#CDATA)>
+<!ELEMENT dialogform (#CDATA)>
+
+<!ELEMENT document (header,table*)>
+<!ATTLIST document
+	name		CDATA #REQUIRED
+	id		CDATA #REQUIRED
+>
+
+<!ELEMENT iregister (field+)>
+<!ATTLIST iregister
+	name		CDATA #REQUIRED
+	id		CDATA #REQUIRED
+	no_unconduct	CDATA
+>
+
+<!ELEMENT aregister (field+)>
+<!ATTLIST aregister
+	name		CDATA #REQUIRED
+	id		CDATA #REQUIRED
+>
+
+<!ELEMENT header (field+)>
+
+<!ELEMENT table (field+)>
+<!ATTLIST table
+	name		CDATA #REQUIRED
+	id		CDATA #REQUIRED
+>
+
+<!ELEMENT field (description)>
+<!ATTLIST field
+	name		CDATA #REQUIRED
+	id		CDATA #REQUIRED
+	type		CDATA #REQUIRED
+	sum		CDATA #REQUIRED
+	plus		CDATA #REQUIRED
+	nz		CDATA #REQUIRED
+	sort		CDATA #REQUIRED
+>
+
+
+<!ELEMENT actions (action+|actiongroup+)>
+<!ELEMENT actiongroup (action+)>
+<!ATTLIST actiongroup
+	name		CDATA #REQUIRED
+	id		CDATA #REQUIRED
+>
+<!ELEMENT action (description|sourcecode|activ_picture|passiv_picture|objectid|argument)>
+<!ATTLIST action
+	name		CDATA #REQUIRED
+	id		CDATA #REQUIRED
+	type		CDATA #REQUIRED
+>
+
+<!ELEMENT activ_picture (#CDATA)>
+<!ELEMENT passiv_picture (#CDATA)>
+<!ELEMENT objectid (#CDATA)>
+<!ELEMENT argument (#CDATA)>
+
+<!ELEMENT interface (submenu+|separator+|command+)>
+<!ELEMENT submenu (submenu+|separator+|command+)>
+<!ATTLIST submenu
+	name		CDATA #REQUIRED
+	id		CDATA #REQUIRED
+>
+<!ATTLIST separator
+	id		CDATA #REQUIRED
+>
+
+<!ELEMENT command (description|menutext|key|comaction+)>
+<!ELEMENT description (#CDATA)>
+<!ELEMENT menutext (#CDATA)>
+<!ELEMENT key (#CDATA)>
+<!ELEMENT comaction (#CDATA)>

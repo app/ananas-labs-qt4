@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/lib_database.png</file>
+        <file>images/lib_dbgroup.png</file>
+        <file>images/print.png</file>
+    </qresource>
+</RCC>
