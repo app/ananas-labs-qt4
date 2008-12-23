@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadataio.h,v 1.3 2008/12/15 22:22:48 leader Exp $
+** $Id: ametadataio.h,v 1.4 2008/12/19 20:15:50 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -42,7 +42,7 @@ public:
     virtual int write( const QString &name, AMetaData *md = 0);
     virtual QObject *createObject( const QString &name ); 
     //virtual void storeGroup( AMetaObjectGroup *g );
-    virtual void storeGroupBegin( AMetaObjectGroup *g );
+//    virtual void storeGroupBegin( AMetaObjectGroup *g );
 
 signals:
     void message( int msg_class, const QString & msg );

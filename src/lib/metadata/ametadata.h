@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadata.h,v 1.3 2008/12/14 10:53:02 leader Exp $
+** $Id: ametadata.h,v 1.4 2008/12/20 21:17:49 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -36,6 +36,7 @@
 
 #include "ametaobject.h"
 #include "ametaobjectgroup.h"
+#include "ametadocument.h"
 
 
 #ifdef __BORLANDC__
@@ -66,7 +67,7 @@
  *	Наследует QObject.
  *\_ru
  */
-class AMetaData: public AMetaObjectGroup
+class AMetaData: public AMetaGroup
 {
 Q_OBJECT
 //Q_PROPERTY( AMetaDataInfo info READ info SCRIPTABLE true )

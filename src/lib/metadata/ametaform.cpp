@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaform.cpp,v 1.1 2008/12/15 22:22:48 leader Exp $
+** $Id: ametaform.cpp,v 1.2 2008/12/20 21:17:49 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -37,4 +37,15 @@
 AMetaForm::AMetaForm()
 :AMetaObject("MetaForm")
 {
+}
+
+
+/*!
+ * \class AMetaForms
+ *
+ */
+AMetaForms::AMetaForms()
+:AMetaGroup("MetaForms")
+{
+
 }

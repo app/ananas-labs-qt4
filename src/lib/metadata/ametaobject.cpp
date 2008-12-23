@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaobject.cpp,v 1.2 2008/12/15 22:22:48 leader Exp $
+** $Id: ametaobject.cpp,v 1.5 2008/12/20 21:17:49 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -34,6 +34,7 @@
 #include <qstringlist.h>
 #include <QTextStream>
 #include <QDomDocument>
+#include <QMutex>
 
 #include "ametaobject.h"
 #include "ametaobjectgroup.h"
@@ -51,16 +52,28 @@
  *	Наследует QObject.
  *\_ru
  */
+int AMetaObject::v_lastId = 101;
 
 AMetaObject::AMetaObject(const QString &objectclass, 
                      const QString &objectname, 
-                     AMetaObjectGroup *parent)
+                     AMetaObject *parent)
 :QObject( parent )
 {
     setObjectName( objectname );
     setClassName( objectclass );
     setDescription("");
+    setId( 0 );
+    if ( parent ) parent->addChild( this );
+//    if ( !this->inherits("AMetaObjectGroup") ) setId( lastId() );
 }
+
+
+AMetaObject::~AMetaObject()
+{
+    AMetaObject *p = ( AMetaObject *) parent();
+    if ( p && p->inherits("AMetaObject") ) p->removeChild( this );
+}
+
 
 
 Q_ULONG 
@@ -98,16 +111,46 @@ AMetaObject::name()
 }
 
 
+AMetaObject *
+AMetaObject::rootObject()
+{
+    AMetaObject *o = parentMetaObject();
+    while ( o->parentMetaObject() ) o = o->parentMetaObject();
+    if ( !o->inherits("AMetaData" ) ) o = 0;
+    return o;
+}
+
+
+
+AMetaObject *
+AMetaObject::parentMetaObject()
+{
+    AMetaObject *p = (AMetaObject *) parent();
+    if ( !p ) p = v_parent;
+    else if ( !p->inherits("AMetaObject") ) p = 0;
+    return p;
+}
+
+
+
+void 
+AMetaObject::setParentMetaObject( AMetaObject * parent )
+{
+    v_parent = parent;
+}
+
+
+
 QString 
 AMetaObject::description()
 {
-    return text("description");
+    return v_description;
 }
 
 void 
 AMetaObject::setDescription( const QString &descr )
 {
-    setText( "description", descr );
+    v_description = descr;
 }
 
 
@@ -120,43 +163,10 @@ AMetaObject::setAttr( const QString &name, const QVariant &value )
 
 
 
-void 
-AMetaObject::setText( const QString &name, const QString &text )
-{
-    if ( text.isNull() && textExists( name ) ) v_text.remove( name );
-    else v_text[ name ] = text;
-}
-
-
-void 
-AMetaObject::setRawdata( const QString &name, const QByteArray &data )
-{
-    if ( data.isNull() && rawdataExists( name ) ) v_rawdata.remove( name );
-    else v_rawdata[ name ] = data;
-}
-
-
-
 QVariant
 AMetaObject::attr( const QString &name ) const
 {
     return v_attr.value( name, QVariant() );
-}
-
-
-
-QString 
-AMetaObject::text( const QString &name ) const
-{
-    return v_text.value( name, QString::null );
-}
-
-
-
-QByteArray 
-AMetaObject::rawdata( const QString &name ) const
-{
-    return v_rawdata.value( name, QByteArray() );
 }
 
 
@@ -170,22 +180,6 @@ AMetaObject::attr( int idx ) const
 
 
 QString 
-AMetaObject::text( int idx ) const
-{
-    return text( textName( idx ) );
-}
-
-
-
-QByteArray 
-AMetaObject::rawdata( int idx ) const
-{
-    return rawdata( rawdataName( idx ) );
-}
-
-
-
-QString 
 AMetaObject::attrName( int idx ) const
 {
     if ( idx < 0 || idx >= attrCount() ) return QString::null;
@@ -194,44 +188,10 @@ AMetaObject::attrName( int idx ) const
 
 
 
-QString 
-AMetaObject::textName( int idx ) const
-{
-    if ( idx < 0 || idx >= textCount() ) return QString::null;
-    return v_text.keys().at( idx );
-}
-
-
-
-QString 
-AMetaObject::rawdataName( int idx ) const
-{
-    if ( idx < 0 || idx >= rawdataCount() ) return QString::null;
-    return v_rawdata.keys().at( idx );
-}
-
-
-
 bool 
 AMetaObject::attrExists( const QString &name )
 {
     return v_attr.contains( name );
-}
-
-
-
-bool 
-AMetaObject::textExists( const QString &name )
-{
-    return v_text.contains( name );
-}
-
-
-
-bool 
-AMetaObject::rawdataExists( const QString &name )
-{
-    return v_rawdata.contains( name );
 }
 
 
@@ -245,16 +205,69 @@ AMetaObject::attrCount() const
 
 
 int 
-AMetaObject::textCount() const
+AMetaObject::lastId()
 {
-    return v_text.size();
+    static QMutex m;
+
+    m.lock();
+    int res = v_lastId;
+    v_lastId++;
+    m.unlock();
+    return res;
+}
+
+
+
+void 
+AMetaObject::setLastId( int id )
+{
+    v_lastId = id;
 }
 
 
 int 
-AMetaObject::rawdataCount() const
+AMetaObject::childCount()
 {
-    return v_rawdata.size();
+    return v_child.count();
+}
+
+
+
+AMetaObject *
+AMetaObject::child( int idx )
+{
+    if ( idx < 0 || idx >= childCount() ) return 0;
+    return v_child.values().at( idx );
+}
+
+
+
+AMetaObject *
+AMetaObject::child( const QString &name )
+{
+    return v_child.value( name, 0 );
+}
+
+
+
+void
+AMetaObject::addChild( AMetaObject * c )
+{
+    QString name;
+
+    if ( c ) {
+        name = c->name();
+        if ( name.isEmpty() ) name = c->className();
+        v_child.insertMulti( name, c );
+    }
+}
+
+
+
+void
+AMetaObject::removeChild( AMetaObject * c )
+{
+    if ( c ) v_child.remove( v_child.key( c ) );
 }
 
 
@@ -266,6 +279,8 @@ AMetaObject::rawdataCount() const
 AMetaCatalogue::AMetaCatalogue()
 :AMetaObject("Catalogue")
 {
+    setId( lastId() );
+    setName( QString("%1_%2").arg( tr("Catalogue") ).arg( id() ) );
 }
 
 
@@ -306,56 +321,56 @@ AMetaDataInfo::operator=(const AMetaDataInfo&)
 QString 
 AMetaDataInfo::appName()
 {
-    return text("name");
+    return attr("name").toString();
 }
 
 
 void 
 AMetaDataInfo::setAppName( const QString &name )
 {
-    setText( "name", name );
+    setAttr( "name", name );
 }
 
 
-long 
+int
 AMetaDataInfo::lastId()
 {
-    return text( "lastid" ).toLong();
+    return attr( "lastid" ).toInt();
 }
 
 
 void 
-AMetaDataInfo::setLastId( long id )
+AMetaDataInfo::setLastId( int id )
 {
-    setText( "lastid", QString::number( id ) );
+    setAttr( "lastid", id );
 }
 
 
 QString 
 AMetaDataInfo::author()
 {
-    return text("author");
+    return attr("author").toString();
 }
 
 
 void 
 AMetaDataInfo::setAuthor( const QString &name )
 {
-    setText( "author", name );
+    setAttr( "author", name );
 }
 
 
 QDate 
 AMetaDataInfo::date()
 {
-    return QDate::fromString( text("date"), Qt::ISODate );
+    return attr("date").toDate();
 }
 
 
 void 
 AMetaDataInfo::setDate( QDate d )
 {
-    setText( "date", d.toString( Qt::ISODate ) );
+    setAttr( "date", d );
 }
 
 
@@ -374,13 +389,13 @@ AMetaDataGlobal::AMetaDataGlobal()
 QString 
 AMetaDataGlobal::sourceCode()
 {
-    return text("sourcecode");
+    return attr("sourcecode").toString();
 }
 
 
 void 
 AMetaDataGlobal::setSourceCode( const QString &src )
 {
-    setText( "sourcecode", src );
+    setAttr( "sourcecode", src );
 }
 

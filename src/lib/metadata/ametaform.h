@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaform.h,v 1.1 2008/12/15 22:22:48 leader Exp $
+** $Id: ametaform.h,v 1.2 2008/12/20 21:17:49 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -40,6 +40,18 @@ public:
     AMetaForm();
 private:
     
+};
+
+
+class AMetaForms: public AMetaGroup
+{
+Q_OBJECT
+public:
+    AMetaForms();
+
+public slots:
+
+
 };
 
 #endif

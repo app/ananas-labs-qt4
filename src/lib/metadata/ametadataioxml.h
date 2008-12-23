@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadataioxml.h,v 1.2 2008/12/13 22:19:15 leader Exp $
+** $Id: ametadataioxml.h,v 1.4 2008/12/20 21:17:49 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications

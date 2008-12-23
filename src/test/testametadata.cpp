@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: testametadata.cpp,v 1.5 2008/12/15 22:22:48 leader Exp $
+** $Id: testametadata.cpp,v 1.8 2008/12/20 21:17:49 leader Exp $
 ** 
 ** Tool for automatic running Ananas tests
 **
@@ -88,9 +88,9 @@ void TestAMetaData::testAMetaObject()
 
     o->setAttr("String","String");
     o->setAttr("Int", 123456 );
-    o->setText("Text", QString::fromUtf8("Проверочный текст"));
-    o->setRawdata("RAW1", ba );
-    o->setRawdata("RAW2", ba );
+//    o->setText("Text", QString::fromUtf8("Проверочный текст"));
+//    o->setRawdata("RAW1", ba );
+//    o->setRawdata("RAW2", ba );
 
 // Test attr functions
     QVERIFY( o->attrCount() == 2 );
@@ -99,40 +99,46 @@ void TestAMetaData::testAMetaObject()
     QVERIFY( o->attrExists("IntX") == false );
     QVERIFY( o->attr("String") == "String" );
     QVERIFY( o->attr("Int") == 123456 );
-    QVERIFY( o->attr( 0 ) == "String" );
-    QVERIFY( o->attr( 1 ) == 123456 );
+    QVERIFY( o->attr( 1 ) == "String" );
+    QVERIFY( o->attr( 0 ) == 123456 );
     QVERIFY( o->attr( -1 ) == QVariant() );
     QVERIFY( o->attr( 10 ) == QVariant() );
 // Test text functions
-    QVERIFY( o->textCount() == 1+1 );
-    QVERIFY( o->textExists("Text") );
-    QVERIFY( o->textExists("Text0") == false );
-    QVERIFY( o->text("Text") == QString::fromUtf8("Проверочный текст") );
-    QVERIFY( o->text( 1 ) == QString::fromUtf8("Проверочный текст") );
-    QVERIFY( o->text( -1 ) == QString::null );
-    QVERIFY( o->text( 10 ) == QString::null );
+//    QVERIFY( o->textCount() == 1+1 );
+//    QVERIFY( o->textExists("Text") );
+//    QVERIFY( o->textExists("Text0") == false );
+//    QVERIFY( o->text("Text") == QString::fromUtf8("Проверочный текст") );
+//    QVERIFY( o->text( 1 ) == QString::fromUtf8("Проверочный текст") );
+//    QVERIFY( o->text( -1 ) == QString::null );
+//    QVERIFY( o->text( 10 ) == QString::null );
 // Test rawdata functions
-    QVERIFY( o->rawdataCount() == 2 );
-    QVERIFY( o->rawdataExists("RAW1") );
-    QVERIFY( o->rawdataExists("RAW2") );
-    QVERIFY( o->rawdataExists("RAW3") == false );
-    QVERIFY( o->rawdata("RAW1") == QString( ba.data() ) );
-    QVERIFY( o->rawdata("RAW2") == QString( ba.data() ) );
-    QVERIFY( o->rawdata( 0 ) == QString( ba.data() ) );
-    QVERIFY( o->rawdata( 1 ) == QString( ba.data() ) );
-    QVERIFY( o->rawdata( -1 ) == QByteArray() );
-    QVERIFY( o->rawdata( 10 ) == QByteArray() );
+//    QVERIFY( o->rawdataCount() == 2 );
+//    QVERIFY( o->rawdataExists("RAW1") );
+//    QVERIFY( o->rawdataExists("RAW2") );
+//    QVERIFY( o->rawdataExists("RAW3") == false );
+//    QVERIFY( o->rawdata("RAW1") == QString( ba.data() ) );
+//    QVERIFY( o->rawdata("RAW2") == QString( ba.data() ) );
+//    QVERIFY( o->rawdata( 0 ) == QString( ba.data() ) );
+//    QVERIFY( o->rawdata( 1 ) == QString( ba.data() ) );
+//    QVERIFY( o->rawdata( -1 ) == QByteArray() );
+//    QVERIFY( o->rawdata( 10 ) == QByteArray() );
     delete o;
 }
 
 
 
-void TestAMetaData::testAMetaObjectGroup()
+void TestAMetaData::testAMetaGroup()
 {
-    AMetaObjectGroup *o = new AMetaObjectGroup( QString::fromUtf8("ИмяОбъекта") );
+    AMetaGroup *o = new AMetaGroup( QString::fromUtf8("ИмяОбъекта") );
 
-    QCOMPARE( o->name(),      QString::fromUtf8("ИмяОбъекта"));
+    AMetaGroupAXXX oo;
+    printf("xxx=%s\n", oo.className().toUtf8().data() );
+
+
+    QCOMPARE( o->className(),      QString::fromUtf8("ИмяОбъекта"));
+    QCOMPARE( o->name(), QString("") );
     delete o;
+    
 }
 
 
@@ -140,7 +146,11 @@ void TestAMetaData::testAMetaObjectGroup()
 void TestAMetaData::testAMetaData()
 {
     AMetaData *o = new AMetaData();
-    QCOMPARE( o->name(), QString("MetaData") );
+    AMetaObject::setLastId( 101 );
+    QCOMPARE( o->className(), QString("MetaData") );
+    QCOMPARE( AMetaObject::lastId(), 101 );
+    QCOMPARE( AMetaObject::lastId(), 102 );
+    QCOMPARE( o->childCount(), 8 );
     delete o;
 }
 
@@ -164,7 +174,14 @@ void TestAMetaData::testAMetaDataIOXML()
 {
     AMetaDataIOXML *o = new AMetaDataIOXML();
     QString xml;
-    
+
+    AMetaData *md = AMetaData::metadata();
+    AMetaDocument *d = md->documents()->newDocument();
+    AMetaField *f;
+    f = d->fields()->newField();
+    f = d->fields()->newField();
+        
+//    delete d;
     QCOMPARE( o->write("test.cfg"), 0 );
     QCOMPARE( o->read("test1.cfg"), 0 );
     xml = o->text();

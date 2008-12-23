@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaobjectgroup.h,v 1.2 2008/12/15 22:22:48 leader Exp $
+** $Id: ametaobjectgroup.h,v 1.4 2008/12/20 21:17:49 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -41,45 +41,7 @@
 #include <QVariant>
 
 
-/*!
- *\en
- *	Metadata object for metadata script access.
- *\_en
- *\ru
- *	\brief Объект метаданных для обеспечения доступа из скриптов.
- *	Наследует QObject.
- *\_ru
- */
-class AMetaObjectGroup: public QObject
-{
-Q_OBJECT
-Q_PROPERTY( QString name READ name SCRIPTABLE true )
-public:
-    AMetaObjectGroup( const QString &groupname );
-    AMetaObjectGroup( const QString &groupname, AMetaObject *parent );
-    AMetaObjectGroup( const QString &groupname, AMetaObjectGroup *parent );
-
-    QString name();
-//        QMetaObject *metaObject(const QString &objClass, const QString &objName);
-//    QMetaObject *metaObject(const QString &objClass, const QString &objName);
-    AMetaObject *metaObject( const QString &name );
-    AMetaObject *metaObject( int idx );
-    void append( AMetaObject *object );
-    int count() const;
-    void clear();
-
-public slots:
-    QString test(){ return QString("TEST STRING");};
-
-private slots:
-    void destroyed( QObject *obj );
-
-private:
-    QList <AMetaObject *> v_metaObjects;
-};
-
-
-class ACataloguesGroup: public AMetaObjectGroup
+class ACataloguesGroup: public AMetaGroup
 {
 Q_OBJECT
 public:
@@ -92,21 +54,7 @@ public slots:
 
 
 
-class ADocumentsGroup: public AMetaObjectGroup
-{
-Q_OBJECT
-public:
-    ADocumentsGroup();
-
-public slots:
-    QString test(){ return QString("DOCUMENTS TEST STRING");};
-
-
-};
-
-
-
-class AReportsGroup: public AMetaObjectGroup
+class AReportsGroup: public AMetaGroup
 {
 Q_OBJECT
 public:
@@ -119,7 +67,7 @@ public slots:
 
 
 
-class AJournalsGroup: public AMetaObjectGroup
+class AJournalsGroup: public AMetaGroup
 {
 Q_OBJECT
 public:
@@ -132,7 +80,7 @@ public slots:
 
 
 
-class AInfoRegistersGroup: public AMetaObjectGroup
+class AInfoRegistersGroup: public AMetaGroup
 {
 Q_OBJECT
 public:
@@ -145,7 +93,7 @@ public slots:
 
 
 
-class AAccRegistersGroup: public AMetaObjectGroup
+class AAccRegistersGroup: public AMetaGroup
 {
 Q_OBJECT
 public:
@@ -158,7 +106,7 @@ public slots:
 
 
 
-class AMetaTables: public AMetaObjectGroup
+class AMetaTables: public AMetaGroup
 {
 Q_OBJECT
 public:
@@ -171,15 +119,5 @@ public slots:
 
 
 
-class AMetaForms: public AMetaObjectGroup
-{
-Q_OBJECT
-public:
-    AMetaForms();
-
-public slots:
-
-
-};
 
 #endif

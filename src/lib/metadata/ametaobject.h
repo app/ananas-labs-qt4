@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaobject.h,v 1.2 2008/12/15 22:22:48 leader Exp $
+** $Id: ametaobject.h,v 1.5 2008/12/20 21:17:49 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -47,7 +47,8 @@
 #define RC_OK		0	/**< All right - no errors */
 #define RC_ERROR	1	/**< Error while executing method */
 
-#include <QHash>
+//#include <QHash>
+#include <QMap>
 #include <QVariant>
 class AMetaObjectGroup;
 
@@ -63,52 +64,74 @@ Q_PROPERTY( QString description READ description SCRIPTABLE true )
 public:
     AMetaObject( const QString &objectclass  = QString::null, 
                  const QString &objectname = QString::null, 
-                 AMetaObjectGroup *parent = 0 );
+                 AMetaObject *parent = 0 );
 
+    ~AMetaObject();
     void setClassName( const QString &name );
 
     Q_ULONG id();
     void setId( Q_ULONG );
     QString className();
     QString name();
+    AMetaObject *rootObject();
+    AMetaObject *parentMetaObject();
+    void setParentMetaObject( AMetaObject * parent );
 
     QString description();
     void setDescription( const QString &descr );
 
     void setAttr( const QString &name, const QVariant &value );
-    void setText( const QString &name, const QString &text );
-    void setRawdata( const QString &name, const QByteArray &data );
-
     QVariant attr( const QString &name ) const;
-    QString text( const QString &name ) const;
-    QByteArray rawdata( const QString &name ) const;
-
     QVariant attr( int idx ) const;
-    QString text( int idx ) const;
-    QByteArray rawdata( int idx ) const;
-
     QString attrName( int idx ) const;
-    QString textName( int idx ) const;
-    QString rawdataName( int idx ) const;
-
     bool attrExists( const QString &name );
-    bool textExists( const QString &name );
-    bool rawdataExists( const QString &name );
-
     int attrCount() const;
-    int textCount() const;
-    int rawdataCount() const;
+
+    static int lastId();
+    static void setLastId( int id );
+
+    int childCount();
+    AMetaObject *child( int idx );
+    AMetaObject *child( const QString &name );
+    void addChild( AMetaObject * c );
+    void removeChild( AMetaObject * c );
 
 public slots:
 
 private:
+    static int v_lastId;
+    AMetaObject *v_parent;
     Q_ULONG v_id;
     QString v_className;
-    QHash <QString, QVariant> v_attr;
-    QHash <QString, QString> v_text;
-    QHash <QString, QByteArray> v_rawdata;
+    QString v_description;
+    QMap <QString, QVariant> v_attr;
+    QMap <QString, AMetaObject *> v_child;
 };
 
+
+class AMetaGroup: public AMetaObject
+{
+Q_OBJECT
+public:
+    AMetaGroup( const QString &groupname, AMetaObject *parent = 0 )
+    :AMetaObject( groupname, QString::null, parent ){};
+};
+
+
+
+template<class T>
+class  AMetaGroupA : public AMetaGroup
+{
+//    Q_OBJECT
+public:
+
+    AMetaGroupA( AMetaObject * parent = 0 )
+    :AMetaGroup( "", parent )
+    { 
+    };
+};
+
+typedef AMetaGroupA<AMetaObject> AMetaGroupAXXX;
 
 
 class AMetaCatalogue: public AMetaObject
@@ -134,8 +157,8 @@ public:
 
     QString appName();
     void setAppName( const QString &name );
-    long lastId();
-    void setLastId( long id );
+    int lastId();
+    void setLastId( int id );
     QString author();
     void setAuthor( const QString &name );
     QDate date();

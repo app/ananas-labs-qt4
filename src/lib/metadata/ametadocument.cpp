@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadocument.cpp,v 1.1 2008/12/15 22:22:48 leader Exp $
+** $Id: ametadocument.cpp,v 1.2 2008/12/20 21:17:49 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -33,9 +33,15 @@
  * \class AMetaDocument
  *
  */
-AMetaDocument::AMetaDocument()
-:AMetaObject("Document")
+AMetaDocument::AMetaDocument( AMetaObject *parent )
+:AMetaObject("Document", "", parent )
 {
+    setId( lastId() );
+    setName( QString("%1_%2").arg( tr("Document") ).arg( id() ) );
+    addChild( &v_fields );
+    addChild( &v_tables );
+    addChild( &v_forms );
+
 }
 
 
@@ -59,3 +65,16 @@ AMetaDocument::forms()
 {
     return &v_forms;
 }
+
+
+
+/*!
+ * \class ADocumentsGroup
+ *
+ */
+ADocumentsGroup::ADocumentsGroup()
+:AMetaGroup("Documents")
+{
+
+}
+

@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadataioxml.cpp,v 1.2 2008/12/13 22:19:15 leader Exp $
+** $Id: ametadataioxml.cpp,v 1.5 2008/12/20 21:17:49 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -285,22 +285,29 @@ AMetaDataIOXML::write(  const QString &name, AMetaData *md )
     QFile file( name );
 
     if ( !md ) md = AMetaData::metadata();
-//    QDomDocument xml("ananas4_configuration");
     QDomNode cur, sub;
     QDomElement node, rootnode, cfginfo, mdelement, iface, actions;
 
     xml.setContent(QString("<?xml version = '1.0' encoding = 'UTF-8'?>\n"));
     xml.appendChild( xml.implementation().createDocumentType("ananas_configuration",
                      QString::null,"ananas-cfg.dtd"));
-    rootnode = xml.createElement( md_root );
+    rootnode = AMetaObjectToXML( md );
+//xml.createElement( md_root );
     xml.appendChild( rootnode );
     rootnode = xml.documentElement();
 
+//    rootnode.appendChild( AMetaObjectToXML( md ) );
+/*    
     rootnode.appendChild( AMetaObjectToXML( md->info() ) );
     rootnode.appendChild( AMetaObjectToXML( md->global() ) );
 
-
-    node     = xml.createElement( md_info );
+    int i;
+    for ( i = 0; i< md->groupCount(); i++ ){
+        node     = xml.createElement( md->group( i )->name() );
+        rootnode.appendChild( node );
+    }
+*/
+/*    node     = xml.createElement( md_info );
     rootnode.appendChild( node );
 
 
@@ -312,7 +319,7 @@ AMetaDataIOXML::write(  const QString &name, AMetaData *md )
 
     node     = xml.createElement( md_actions );
     rootnode.appendChild( node );
-
+*/
 
     if ( !file.open( QIODevice::WriteOnly ) ) return 1;
     QTextStream ts( &file );
@@ -331,6 +338,7 @@ AMetaDataIOXML::XMLToAMetaObject( QDomElement e, AMetaObject *o )
     QDomNode cur;
     QString s, t;
     int id;
+    QVariant v;
 
 	cur = e.firstChild();
 	while (!cur.isNull()) {
@@ -340,9 +348,12 @@ AMetaDataIOXML::XMLToAMetaObject( QDomElement e, AMetaObject *o )
                 id = se.attribute( mda_id ).toInt();
                 o->setId( id );
             }
-            s = se.text();
-// qDebug() << se.tagName() << ":" << s;
-            if ( !s.isNull() ) o->setText( se.tagName(), s );
+            if ( se.hasAttribute( "type" ) ) {
+              t = se.attribute("type");
+              v.clear();
+              v = se.text();
+              if ( v.convert( QVariant::nameToType( t ) ) ) o->setAttr( se.tagName(), v );
+            }
             cur = cur.nextSibling();
 	}
 
@@ -357,13 +368,24 @@ AMetaDataIOXML::AMetaObjectToXML( AMetaObject *o )
     QDomElement e, se;
 
     e = xml.createElement( o->className() );
-    for ( i=0; i< o->textCount(); i++ ){
-       se = xml.createElement( o->textName( i ) );
-       se.appendChild( xml.createTextNode( o->text( i ) ) );
+    if ( !o->inherits("AMetaObjectGroup") ){
+      if ( !o->name().isEmpty() ) {
+          e.setAttribute("name", o->name() );
+          if ( o->id() > 0 ) e.setAttribute("id", QString::number(o->id()) );
+      }
+    }
+    for ( i=0; i< o->attrCount(); i++ ){
+       se = xml.createElement( o->attrName( i ) );
+       se.setAttribute("type", o->attr( i ).typeName() );
+       se.appendChild( xml.createTextNode( o->attr( i ).toString() ) );
        e.appendChild( se );
+    }
+    for ( i=0; i< o->childCount(); i++ ){
+        e.appendChild( AMetaObjectToXML( o->child( i ) ) );
     }
     return e;
 }
+
 
 
 QString 

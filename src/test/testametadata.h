@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: testametadata.h,v 1.5 2008/12/15 22:22:48 leader Exp $
+** $Id: testametadata.h,v 1.6 2008/12/20 21:17:49 leader Exp $
 ** 
 ** Tool for automatic running Ananas tests
 **
@@ -43,7 +43,7 @@ private slots:
 //    void toUpper();
 
     void testAMetaObject();
-    void testAMetaObjectGroup();
+    void testAMetaGroup();
     void testAMetaData();
     void testAMetaField();
     void testAMetaDataIOXML();

@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaobjectgroup.cpp,v 1.2 2008/12/15 22:22:48 leader Exp $
+** $Id: ametaobjectgroup.cpp,v 1.4 2008/12/20 21:17:49 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -43,97 +43,9 @@
 
 
 /*!
- * \class AMetaObjectGroup
+ * \class AMetaGroup
  *
  */
-AMetaObjectGroup::AMetaObjectGroup( const QString &groupname )
-:QObject()
-{
-    setObjectName( groupname );
-}
-
-
-
-
-AMetaObjectGroup::AMetaObjectGroup( const QString &groupname, AMetaObject *parent )
-:QObject( parent )
-{
-    setObjectName( groupname );
-}
-
-
-AMetaObjectGroup::AMetaObjectGroup( const QString &groupname, AMetaObjectGroup *parent )
-:QObject( parent )
-{
-    setObjectName( groupname );
-}
-
-
-QString
-AMetaObjectGroup::name()
-{
-    return objectName();
-}
-
-
-
-AMetaObject *
-AMetaObjectGroup::metaObject( const QString &name )
-{
-    return findChild<AMetaObject *>( name );
-}
-
-
-
-AMetaObject *
-AMetaObjectGroup::metaObject( int idx )
-{
-    return v_metaObjects.at( idx );
-}
-
-
-void 
-AMetaObjectGroup::append( AMetaObject *obj )
-{
-    obj->setParent( this );
-    v_metaObjects.append( obj );
-    connect( obj, SIGNAL(destroyed(QObject*)), this, SLOT(destroyed(QObject *)));
-}
-
-
-int 
-AMetaObjectGroup::count() const
-{
-    return v_metaObjects.count();
-}
-
-
-void 
-AMetaObjectGroup::clear()
-{
-    v_metaObjects.clear();
-}
-
-
-void 
-AMetaObjectGroup::destroyed( QObject *obj )
-{
-  if ( obj->inherits("AMetaObject") ){
-      v_metaObjects.removeAll( ( AMetaObject *) obj );
-  }
-}
-
-
-
-/*!
- * \class ADocumentsGroup
- *
- */
-ADocumentsGroup::ADocumentsGroup()
-:AMetaObjectGroup("Documents")
-{
-
-}
 
 
 
@@ -142,7 +54,7 @@ ADocumentsGroup::ADocumentsGroup()
  *
  */
 ACataloguesGroup::ACataloguesGroup()
-:AMetaObjectGroup("Catalogues")
+:AMetaGroup("Catalogues")
 {
 
 }
@@ -154,7 +66,7 @@ ACataloguesGroup::ACataloguesGroup()
  *
  */
 AReportsGroup::AReportsGroup()
-:AMetaObjectGroup("Reports")
+:AMetaGroup("Reports")
 {
 
 }
@@ -166,7 +78,7 @@ AReportsGroup::AReportsGroup()
  *
  */
 AJournalsGroup::AJournalsGroup()
-:AMetaObjectGroup("Journals")
+:AMetaGroup("Journals")
 {
 
 }
@@ -178,7 +90,7 @@ AJournalsGroup::AJournalsGroup()
  *
  */
 AInfoRegistersGroup::AInfoRegistersGroup()
-:AMetaObjectGroup("InfoRegisters")
+:AMetaGroup("InfoRegisters")
 {
 
 }
@@ -190,7 +102,7 @@ AInfoRegistersGroup::AInfoRegistersGroup()
  *
  */
 AAccRegistersGroup::AAccRegistersGroup()
-:AMetaObjectGroup("AccRegisters")
+:AMetaGroup("AccRegisters")
 {
 
 }
@@ -202,19 +114,10 @@ AAccRegistersGroup::AAccRegistersGroup()
  *
  */
 AMetaTables::AMetaTables()
-:AMetaObjectGroup("MetaTables")
+:AMetaGroup("MetaTables")
 {
 
 }
 
 
 
-/*!
- * \class AMetaForms
- *
- */
-AMetaForms::AMetaForms()
-:AMetaObjectGroup("MetaForms")
-{
-
-}

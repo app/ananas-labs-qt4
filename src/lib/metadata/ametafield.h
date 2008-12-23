@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametafield.h,v 1.1 2008/12/15 22:22:48 leader Exp $
+** $Id: ametafield.h,v 1.2 2008/12/20 21:17:49 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -49,12 +49,12 @@ Q_PROPERTY( bool calcsumm     READ calcSumm     SCRIPTABLE true )
 
 public:
     enum FieldTypes { Unknown, Char, String, Number, Date, Object, Document, Catalogue };
-    AMetaField();
+    AMetaField( AMetaObject *parent = 0 );
 
-    AMetaField( FieldTypes t, int st = 0, int w = 0, 
+/*    AMetaField( FieldTypes t, int st = 0, int w = 0, 
                 int d = 0, bool notnul = false, bool notneg = false, 
                 bool calcsum = false );
-
+*/
     int fieldType();
     void setFieldType( FieldTypes t );
 
@@ -81,11 +81,15 @@ private:
 };
 
 
-class AMetaFields: public AMetaObjectGroup
+class AMetaFields: public AMetaGroup
 {
 Q_OBJECT
 public:
     AMetaFields();
+    AMetaField * newField(){ return new AMetaField( this );};
+    AMetaField *field( const QString &name ){ return (AMetaField*) child( name );};
+    AMetaField *field( int idx ){ return (AMetaField*) child( idx );};
+    int fieldCount(){ return childCount(); };
 
 public slots:
 

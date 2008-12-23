@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadocument.h,v 1.1 2008/12/15 22:22:48 leader Exp $
+** $Id: ametadocument.h,v 1.2 2008/12/20 21:17:49 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -34,13 +34,14 @@
 #include "ametaobject.h"
 #include "ametaobjectgroup.h"
 #include "ametafield.h"
+#include "ametaform.h"
 
 
 class AMetaDocument: public AMetaObject
 {
 Q_OBJECT
 public:
-    AMetaDocument();
+    AMetaDocument( AMetaObject *parent = 0 );
 
 public slots:
     AMetaFields      *fields();
@@ -51,6 +52,25 @@ private:
     AMetaFields      v_fields;
     AMetaTables      v_tables;
     AMetaForms       v_forms;
+};
+
+
+
+class ADocumentsGroup: public AMetaGroup
+{
+Q_OBJECT
+public:
+    ADocumentsGroup();
+
+    AMetaDocument *newDocument(){ return new AMetaDocument( this );};
+    AMetaDocument *document( const QString &name ){ return (AMetaDocument*) child( name );};
+    AMetaDocument *document( int idx ){ return (AMetaDocument*) child( idx );};
+    int documentCount(){ return childCount(); };
+
+public slots:
+    QString test(){ return QString("DOCUMENTS TEST STRING");};
+
+
 };
 
 #endif

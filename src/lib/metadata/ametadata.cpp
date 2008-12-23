@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadata.cpp,v 1.3 2008/12/14 10:53:02 leader Exp $
+** $Id: ametadata.cpp,v 1.5 2008/12/20 21:17:49 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -39,7 +39,7 @@ AMetaData AMetaData_default;
  *
  */
 AMetaData::AMetaData()
-:AMetaObjectGroup( "MetaData", (AMetaObjectGroup *) 0 )
+:AMetaGroup( "MetaData", 0 )
 {
 /*
     int i = qRegisterMetaType<AMetaDataInfo>("AMetaDataInfo");
@@ -54,6 +54,17 @@ int id = QMetaType::type("AMetaDataInfo");
      myClassPtr = 0;
  }
 */
+    addChild( &v_info );
+    addChild( &v_global );
+
+    addChild( &v_catalogues );
+    addChild( &v_documents );
+    addChild( &v_reports );
+    addChild( &v_journals );
+    addChild( &v_inforegisters );
+    addChild( &v_accregisters );
+
+//    addChild( &v_info );
 }
 
 

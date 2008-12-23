@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametafield.cpp,v 1.1 2008/12/15 22:22:48 leader Exp $
+** $Id: ametafield.cpp,v 1.2 2008/12/20 21:17:49 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -34,9 +34,11 @@
  * \class AMetaField
  *
  */
-AMetaField::AMetaField()
-:AMetaObject("MetaField")
+AMetaField::AMetaField( AMetaObject *parent )
+:AMetaObject("MetaField","", parent )
 {
+    setId( lastId() );
+    setName( QString("%1_%2").arg( tr("Field") ).arg( id() ) );
     setFieldType( Unknown );
     setFieldSubType( 0 );
     setWidth( 0 );
@@ -47,8 +49,9 @@ AMetaField::AMetaField()
 }
 
 
-AMetaField::AMetaField( FieldTypes t, int st, int w, int d, bool notnul, bool notneg, bool calcsum )
-:AMetaObject("MetaField")
+/*
+AMetaField::AMetaField( FieldTypes t, int st, int w, int d, bool notnul, bool notneg, bool calcsum,  )
+:AMetaObject("MetaField", "", parent )
 {
     setFieldType( t );
     setFieldSubType( st );
@@ -58,7 +61,7 @@ AMetaField::AMetaField( FieldTypes t, int st, int w, int d, bool notnul, bool no
     setNotNegative( notneg );
     setCalcSumm( calcsum );
 }
-
+*/
 
 int 
 AMetaField::fieldType()
@@ -169,7 +172,7 @@ AMetaField::setCalcSumm( bool f )
  *
  */
 AMetaFields::AMetaFields()
-:AMetaObjectGroup("MetaFields")
+:AMetaGroup("MetaFields")
 {
 
 }
