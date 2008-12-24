@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: engine.cpp,v 1.4 2008/12/10 21:04:56 leader Exp $
+** $Id: engine.cpp,v 1.5 2008/12/23 20:15:32 leader Exp $
 **
 ** Code file of the Ananas Engine of Ananas
 ** Engine applications
@@ -53,6 +53,8 @@
 #include "alog.h"
 #include "acombobox.h"
 
+#include "ametaobject.h"
+
 /*!
  *	\~english
  *	Constructor
@@ -78,7 +80,7 @@ aObjectsFactory::aObjectsFactory( aEngine *e )
 
 
 	registerClass("MetaObject",&AMetaObject::staticMetaObject);
-	registerClass("MetaObjectGroup",&AMetaObjectGroup::staticMetaObject);
+	registerClass("MetaGroup",&AMetaGroup::staticMetaObject);
 	registerClass("DocumentsGroup",&ADocumentsGroup::staticMetaObject);
 	registerClass("CataloguesGroup",&ACataloguesGroup::staticMetaObject);
 	registerClass("MetaDataInfo",&AMetaDataInfo::staticMetaObject);
