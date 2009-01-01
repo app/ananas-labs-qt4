@@ -1,12 +1,14 @@
 /****************************************************************************
-** $Id: ametadataio.h,v 1.5 2008/12/24 16:19:38 leader Exp $
+** $Id: ametainfo.h,v 1.1 2008/12/24 16:19:38 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
 **
 ** Created : 20031201
 **
-** Copyright (C) 2003-2008 Valeriy Grazhdankin.  All rights reserved.
+** Copyright (C) 2003-2004 Leader InfoTech.  All rights reserved.
+** Copyright (C) Andrey Paskal <app at lrn dot ru>, Yoshkar-Ola
+** Copyright (C) 2003-2005 Grigory Panov <gr1313 at mail dot ru >, Yoshkar-Ola
 **
 ** This file is part of the Library of the Ananas
 ** automation accounting system.
@@ -26,26 +28,38 @@
 ** not clear to you.
 **
 **********************************************************************/
-#ifndef AMETADATAIO_H
-#define AMETADATAIO_H
+#ifndef AMETAINFO_H
+#define AMETAINFO_H
 
-#include <QObject>
-#include "ametadata.h"
+#include "ametaobject.h"
 
-class AMetaDataIO: public QObject
+class AMetaInfo: public AMetaObject
 {
 Q_OBJECT
+Q_PROPERTY( QString appname READ appName SCRIPTABLE true )
+Q_PROPERTY( QString author  READ author  SCRIPTABLE true )
+Q_PROPERTY( QDate   date    READ date    SCRIPTABLE true )
 public:
-    AMetaDataIO();
-    ~AMetaDataIO();
-    virtual int read( const QString &name, AMetaData *md = 0);
-    virtual int write( const QString &name, AMetaData *md = 0);
-    virtual AMetaObject *createObject( const QString &className, AMetaObject *parent = 0 ); 
-    //virtual void storeGroup( AMetaObjectGroup *g );
-//    virtual void storeGroupBegin( AMetaObjectGroup *g );
+    AMetaInfo();
+    AMetaInfo( const AMetaInfo &info );
+    ~AMetaInfo();
+    AMetaInfo& operator=(const AMetaInfo&);
 
-signals:
-    void message( int msg_class, const QString & msg );
+    QString appName();
+    void setAppName( const QString &name );
+    int lastId();
+    void setLastId( int id );
+    QString author();
+    void setAuthor( const QString &name );
+    QDate date();
+    void setDate( QDate d );
 };
+
+
+Q_DECLARE_METATYPE ( AMetaInfo )
+
+//qRegisterMetaType<AMetaDataInfo>("MetaDataInfo");
+//Q_DECLARE_METATYPE ( AMetaDataGlobal )
+
 
 #endif

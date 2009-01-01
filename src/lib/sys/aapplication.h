@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: aapplication.h,v 1.2 2008/11/21 20:58:12 leader Exp $
+** $Id: aapplication.h,v 1.3 2008/12/25 19:08:03 leader Exp $
 **
 ** Header file of the Ananas Library of Ananas
 ** Designer and Engine applications
@@ -47,6 +47,9 @@ public:
 
     AApplication(  int & argc, char ** argv, AApplicationType aat = Unknown );
     int applicationType();
+    QString applicationName();
+    QString langDir();
+    QString lang();
     
 private:
     int v_aat;        

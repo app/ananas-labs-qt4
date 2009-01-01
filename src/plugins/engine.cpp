@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: engine.cpp,v 1.5 2008/12/23 20:15:32 leader Exp $
+** $Id: engine.cpp,v 1.6 2008/12/24 17:47:41 leader Exp $
 **
 ** Code file of the Ananas Engine of Ananas
 ** Engine applications
@@ -81,10 +81,10 @@ aObjectsFactory::aObjectsFactory( aEngine *e )
 
 	registerClass("MetaObject",&AMetaObject::staticMetaObject);
 	registerClass("MetaGroup",&AMetaGroup::staticMetaObject);
-	registerClass("DocumentsGroup",&ADocumentsGroup::staticMetaObject);
-	registerClass("CataloguesGroup",&ACataloguesGroup::staticMetaObject);
-	registerClass("MetaDataInfo",&AMetaDataInfo::staticMetaObject);
-	registerClass("MetaDataGlobal",&AMetaDataGlobal::staticMetaObject);
+	registerClass("Documents",&AMetaDocuments::staticMetaObject);
+	registerClass("Catalogues",&AMetaCatalogues::staticMetaObject);
+	registerClass("MetaInfo",&AMetaInfo::staticMetaObject);
+	registerClass("MetaGlobal",&AMetaGlobal::staticMetaObject);
 
 
 	registerClass("PopupMenu",&Q3PopupMenu::staticMetaObject);

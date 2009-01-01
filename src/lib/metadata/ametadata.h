@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadata.h,v 1.4 2008/12/20 21:17:49 leader Exp $
+** $Id: ametadata.h,v 1.5 2008/12/24 16:19:38 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -37,6 +37,13 @@
 #include "ametaobject.h"
 #include "ametaobjectgroup.h"
 #include "ametadocument.h"
+#include "ametacatalogue.h"
+#include "ametainforegister.h"
+#include "ametaaccregister.h"
+#include "ametareport.h"
+#include "ametajournal.h"
+#include "ametainfo.h"
+#include "ametaglobal.h"
 
 
 #ifdef __BORLANDC__
@@ -79,28 +86,28 @@ public:
     static AMetaData* metadata();
 
 public slots:
-    AMetaDataInfo *info(){ return &v_info;};
-    AMetaDataGlobal *global(){ return &v_global;};
+    AMetaInfo *info(){ return &v_info;};
+    AMetaGlobal *global(){ return &v_global;};
 
-    ADocumentsGroup*      documents();
-    ACataloguesGroup*     catalogues();
-    AReportsGroup*        reports();
-    AJournalsGroup*       journals();
-    AInfoRegistersGroup*  inforegisters();
-    AAccRegistersGroup*   accregisters();
+    AMetaDocuments*      documents();
+    AMetaCatalogues*     catalogues();
+    AMetaReports*        reports();
+    AMetaJournals*       journals();
+    AMetaInfoRegisters*  inforegisters();
+    AMetaAccRegisters*   accregisters();
 
     QString test(){ return QString("AMETADATA TEST STRING");};
 
 private:
-    AMetaDataInfo v_info;
-    AMetaDataGlobal v_global;
+    AMetaInfo v_info;
+    AMetaGlobal v_global;
 //groups
-    ACataloguesGroup v_catalogues;
-    ADocumentsGroup v_documents;
-    AReportsGroup v_reports;
-    AJournalsGroup v_journals;
-    AInfoRegistersGroup v_inforegisters;
-    AAccRegistersGroup v_accregisters;
+    AMetaCatalogues    v_catalogues;
+    AMetaDocuments     v_documents;
+    AMetaReports       v_reports;
+    AMetaJournals      v_journals;
+    AMetaInfoRegisters v_inforegisters;
+    AMetaAccRegisters  v_accregisters;
 };
 
 #endif

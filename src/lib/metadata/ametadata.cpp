@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadata.cpp,v 1.5 2008/12/20 21:17:49 leader Exp $
+** $Id: ametadata.cpp,v 1.6 2008/12/24 16:19:38 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -83,7 +83,7 @@ AMetaData::clear()
 
 
 
-ACataloguesGroup *
+AMetaCatalogues *
 AMetaData::catalogues()
 {
     return &v_catalogues;
@@ -91,28 +91,28 @@ AMetaData::catalogues()
 
 
 
-ADocumentsGroup *
+AMetaDocuments *
 AMetaData::documents()
 {
     return &v_documents;
 }
 
 
-AReportsGroup *
+AMetaReports *
 AMetaData::reports()
 {
     return &v_reports;
 }
 
 
-AJournalsGroup *
+AMetaJournals *
 AMetaData::journals()
 {
     return &v_journals;
 }
 
 
-AInfoRegistersGroup *
+AMetaInfoRegisters *
 AMetaData::inforegisters()
 {
     return &v_inforegisters;
@@ -120,7 +120,7 @@ AMetaData::inforegisters()
 
 
 
-AAccRegistersGroup *
+AMetaAccRegisters *
 AMetaData::accregisters()
 {
     return &v_accregisters;

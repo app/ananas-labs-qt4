@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadataio.cpp,v 1.3 2008/12/24 16:19:38 leader Exp $
+** $Id: ametainfo.cpp,v 1.1 2008/12/24 16:19:38 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -27,51 +27,92 @@
 ** not clear to you.
 **
 **********************************************************************/
-
-#include <qdatetime.h>
-#include <qobject.h>
-#include <qfile.h>
-#include <qstringlist.h>
-#include <QTextStream>
-#include <QDomDocument>
-
-#include "ametadataio.h"
+#include "ametainfo.h"
 
 /*!
- * \class AMetaDataIO
+ * \class AMetaInfo
  *
  */
-AMetaDataIO::AMetaDataIO()
-:QObject()
+AMetaInfo::AMetaInfo()
+:AMetaObject("Info")
+{
+    setAppName("new");
+    setAuthor("unknown");
+    setDate( QDate::currentDate() );
+    setLastId( 100 );
+
+}
+
+
+AMetaInfo::AMetaInfo( const AMetaInfo &info )
+:AMetaObject("Info")
 {
 }
 
 
-AMetaDataIO::~AMetaDataIO()
+AMetaInfo::~AMetaInfo()
 {
+}
+
+
+AMetaInfo& 
+AMetaInfo::operator=(const AMetaInfo&)
+{
+    return *this;
+}
+
+
+QString 
+AMetaInfo::appName()
+{
+    return attr("name").toString();
+}
+
+
+void 
+AMetaInfo::setAppName( const QString &name )
+{
+    setAttr( "name", name );
 }
 
 
 int
-AMetaDataIO::read(  const QString &name, AMetaData *md )
+AMetaInfo::lastId()
 {
-    if ( !md ) md = AMetaData::metadata();
+    return attr( "lastid" ).toInt();
 }
 
 
-int
-AMetaDataIO::write(  const QString &name, AMetaData *md )
+void 
+AMetaInfo::setLastId( int id )
 {
-    if ( !md ) md = AMetaData::metadata();
+    setAttr( "lastid", id );
 }
 
 
-AMetaObject *
-AMetaDataIO::createObject( const QString &className, AMetaObject *parent )
+QString 
+AMetaInfo::author()
 {
-   AMetaObject *o = 0;
-   if ( className == "AMetaObject" ) return new AMetaObject();
-//   if ( name == "AMetaObjectGroup" ) return new AMetaObjectGroup();
+    return attr("author").toString();
+}
 
-   return o;
-} 
+
+void 
+AMetaInfo::setAuthor( const QString &name )
+{
+    setAttr( "author", name );
+}
+
+
+QDate 
+AMetaInfo::date()
+{
+    return attr("date").toDate();
+}
+
+
+void 
+AMetaInfo::setDate( QDate d )
+{
+    setAttr( "date", d );
+}

@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadataio.cpp,v 1.3 2008/12/24 16:19:38 leader Exp $
+** $Id: ametaglobal.cpp,v 1.1 2008/12/24 16:19:38 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -27,51 +27,32 @@
 ** not clear to you.
 **
 **********************************************************************/
+#include "ametaglobal.h"
 
-#include <qdatetime.h>
-#include <qobject.h>
-#include <qfile.h>
-#include <qstringlist.h>
-#include <QTextStream>
-#include <QDomDocument>
-
-#include "ametadataio.h"
 
 /*!
- * \class AMetaDataIO
+ * \class AMetaGlobal
  *
  */
-AMetaDataIO::AMetaDataIO()
-:QObject()
+AMetaGlobal::AMetaGlobal()
+:AMetaObject("Global")
 {
+    setSourceCode("function on_systemstart()\n{\n}\n");
 }
 
 
-AMetaDataIO::~AMetaDataIO()
+QString 
+AMetaGlobal::sourceCode()
 {
+    return attr("sourcecode").toString();
 }
 
 
-int
-AMetaDataIO::read(  const QString &name, AMetaData *md )
+void 
+AMetaGlobal::setSourceCode( const QString &src )
 {
-    if ( !md ) md = AMetaData::metadata();
+    setAttr( "sourcecode", src );
 }
 
 
-int
-AMetaDataIO::write(  const QString &name, AMetaData *md )
-{
-    if ( !md ) md = AMetaData::metadata();
-}
 
-
-AMetaObject *
-AMetaDataIO::createObject( const QString &className, AMetaObject *parent )
-{
-   AMetaObject *o = 0;
-   if ( className == "AMetaObject" ) return new AMetaObject();
-//   if ( name == "AMetaObjectGroup" ) return new AMetaObjectGroup();
-
-   return o;
-} 

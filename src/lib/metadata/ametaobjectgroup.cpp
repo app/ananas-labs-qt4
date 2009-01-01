@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaobjectgroup.cpp,v 1.4 2008/12/20 21:17:49 leader Exp $
+** $Id: ametaobjectgroup.cpp,v 1.5 2008/12/24 16:19:38 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -40,73 +40,6 @@
 #include "ametaobjectgroup.h"
 
 #define context_startid	100
-
-
-/*!
- * \class AMetaGroup
- *
- */
-
-
-
-/*!
- * \class ACataloguesGroup
- *
- */
-ACataloguesGroup::ACataloguesGroup()
-:AMetaGroup("Catalogues")
-{
-
-}
-
-
-
-/*!
- * \class AReportsGroup
- *
- */
-AReportsGroup::AReportsGroup()
-:AMetaGroup("Reports")
-{
-
-}
-
-
-
-/*!
- * \class AReportsGroup
- *
- */
-AJournalsGroup::AJournalsGroup()
-:AMetaGroup("Journals")
-{
-
-}
-
-
-
-/*!
- * \class AInformationRegistersGroup
- *
- */
-AInfoRegistersGroup::AInfoRegistersGroup()
-:AMetaGroup("InfoRegisters")
-{
-
-}
-
-
-
-/*!
- * \class AInformationRegistersGroup
- *
- */
-AAccRegistersGroup::AAccRegistersGroup()
-:AMetaGroup("AccRegisters")
-{
-
-}
-
 
 
 /*!

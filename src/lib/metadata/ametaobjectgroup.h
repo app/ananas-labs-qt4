@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaobjectgroup.h,v 1.4 2008/12/20 21:17:49 leader Exp $
+** $Id: ametaobjectgroup.h,v 1.5 2008/12/24 16:19:38 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -41,68 +41,6 @@
 #include <QVariant>
 
 
-class ACataloguesGroup: public AMetaGroup
-{
-Q_OBJECT
-public:
-    ACataloguesGroup();
-
-public slots:
-
-
-};
-
-
-
-class AReportsGroup: public AMetaGroup
-{
-Q_OBJECT
-public:
-    AReportsGroup();
-
-public slots:
-
-
-};
-
-
-
-class AJournalsGroup: public AMetaGroup
-{
-Q_OBJECT
-public:
-    AJournalsGroup();
-
-public slots:
-
-
-};
-
-
-
-class AInfoRegistersGroup: public AMetaGroup
-{
-Q_OBJECT
-public:
-    AInfoRegistersGroup();
-
-public slots:
-
-
-};
-
-
-
-class AAccRegistersGroup: public AMetaGroup
-{
-Q_OBJECT
-public:
-    AAccRegistersGroup();
-
-public slots:
-
-
-};
 
 
 

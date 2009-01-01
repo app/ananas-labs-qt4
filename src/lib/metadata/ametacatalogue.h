@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaform.h,v 1.3 2008/12/24 20:06:51 leader Exp $
+** $Id: ametacatalogue.h,v 1.1 2008/12/24 16:19:38 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -28,41 +28,44 @@
 ** not clear to you.
 **
 **********************************************************************/
-#ifndef AMETAFORM_H
-#define AMETAFORM_H
+#ifndef AMETACATALOGUE_H
+#define AMETACATALOGUE_H
 
 #include "ametaobject.h"
+#include "ametaobjectgroup.h"
+#include "ametafield.h"
+#include "ametaform.h"
 
-class AMetaForm: public AMetaObject
+
+class AMetaCatalogue: public AMetaObject
 {
 Q_OBJECT
 public:
-    AMetaForm( AMetaObject *parent = 0 );
+    AMetaCatalogue( AMetaObject *parent = 0 );
 
-    QString sourceCode();
-    void setSourceCode( const QString &src );
-
-    int  defaultMode();
-    void setDefaultMode( int mode );
-
-    QByteArray dialogue();
-    void setDialogue( const QByteArray &d );
+public slots:
+    AMetaFields      *fields();
+    AMetaFields      *gfields();
+    AMetaForms       *forms();
 
 private:
-    
+    AMetaFields      v_fields;
+    AMetaFields      v_gfields;
+    AMetaForms       v_forms;
 };
 
 
 
-class AMetaForms: public AMetaGroup
+class AMetaCatalogues: public AMetaGroup
 {
 Q_OBJECT
 public:
-    AMetaForms();
-    AMetaForm * newForm(){ return new AMetaForm( this );};
-    AMetaForm *form( const QString &name ){ return (AMetaForm*) child( name );};
-    AMetaForm *form( int idx ){ return (AMetaForm*) child( idx );};
-    int formCount(){ return childCount(); };
+    AMetaCatalogues();
+
+    AMetaCatalogue *newCatalogue(){ return new AMetaCatalogue( this );};
+    AMetaCatalogue *catalogue( const QString &name ){ return (AMetaCatalogue*) child( name );};
+    AMetaCatalogue *catalogue( int idx ){ return (AMetaCatalogue*) child( idx );};
+    int catalogueCount(){ return childCount(); };
 
 public slots:
 

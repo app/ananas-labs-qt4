@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: main.cpp,v 1.4 2008/12/05 21:11:54 leader Exp $
+** $Id: main.cpp,v 1.5 2008/12/25 19:08:03 leader Exp $
 **
 ** Main file of Ananas Administrator application
 **
@@ -37,40 +37,30 @@
 
 //QApplication *application = 0;
 //MainForm *mainform = 0;
-//QTranslator *translator = 0, tr_app(0), tr_lib(0), tr_plugins(0);
+QTranslator *translator = 0, tr_app(0), tr_lib(0), tr_plugins(0);
 QString lang="en", 
 	rcfile="", 
 	username="", 
 	userpassword="";
 
-int setTranslator(QString lang)
+int setTranslator(QString langdir, QString lang)
 {
-        QString langdir;
-#ifdef _Windows
-	langdir = qApp->applicationDirPath()+"/";
-#else
-	langdir = "/usr/share/ananas/translations/";
-#endif
-//	tr_app.load( langdir+"ananas-administrator-"+lang+".qm",".");
-//	tr_lib.load( langdir+"ananas-lib-"+lang+".qm",".");
-//	tr_plugins.load( langdir+"ananas-plugins-"+lang+".qm",".");
+	tr_app.load( langdir+"ananas-administrator-"+lang+".qm",".");
+	tr_lib.load( langdir+"ananas-lib-"+lang+".qm",".");
+	tr_plugins.load( langdir+"ananas-plugins-"+lang+".qm",".");
 	return 0;
 }
 
 int 
-parseCommandLine( int argc, char **argv )
+parseCommandLine(  AApplication *a )
 {
 	QString param, name, value;
-	int i;
-	char *s, locale[50]="en";
-
-	strncpy( locale, QTextCodec::locale(), sizeof( locale ) );
-	s = strchr( locale, '_' );
-	if ( s ) {
-	    *s = 0;
-	}
-        lang = locale;
-        setTranslator( lang );
+	int i, argc;
+	char **argv;
+	
+	argc = a->argc(); 
+	argv = a->argv();
+        setTranslator( a->langDir(), a->lang() );
 //	printf("locale=%s\n", locale );	
 	QString str_ru=QString::null, str_en=QString::null;
 	bool lang_setted = false;
@@ -95,7 +85,7 @@ parseCommandLine( int argc, char **argv )
 	    if (name == "--lang") {
 		lang = value;
 		lang_setted = true;
-	        setTranslator( lang );
+	        setTranslator( a->langDir(), lang );
 	    }
 	    if (name == "--rc") rcfile = value;
 	}
@@ -125,7 +115,7 @@ int main( int argc, char ** argv )
 
 	QTextCodec::setCodecForCStrings( QTextCodec::codecForName("UTF8") );
 	qApp->addLibraryPath( qApp->applicationDirPath() );
-	if ( parseCommandLine( argc, argv ) ) return 1;
+	if ( parseCommandLine( &a ) ) return 1;
 //	qApp->installTranslator( &tr_app );
 //	qApp->installTranslator( &tr_lib );
 //	qApp->installTranslator( &tr_plugins );

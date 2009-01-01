@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: main.cpp,v 1.5 2008/12/10 21:05:14 leader Exp $
+** $Id: main.cpp,v 1.6 2008/12/25 19:08:03 leader Exp $
 **
 ** Main file of Ananas Engine application
 **
@@ -48,34 +48,28 @@ QString lang="en",
 	username="",
 	userpassword="";
 
-int setTranslator(QString lang)
+
+int 
+setTranslator(QString langdir, QString lang)
 {
-        QString langdir;
-#ifdef _Windows
-	langdir = qApp->applicationDirPath()+"/translations/";
-#else
-	langdir = "/usr/share/ananas/translations/";
-#endif
 	tr_app.load( langdir+"ananas-engine-"+lang.lower()+".qm",".");
 	tr_lib.load( langdir+"ananas-lib-"+lang.lower()+".qm",".");
 	tr_plugins.load( langdir+"ananas-plugins-"+lang.lower()+".qm",".");
 	return 0;
 }
 
+
+
 int
-parseCommandLine( int argc, char **argv )
+parseCommandLine( AApplication *a )
 {
 	QString param, name, value;
-	int i;
-	char *s, locale[50]="ru";
-
-	strncpy( locale, QTextCodec::locale(), sizeof( locale ) );
-	s = strchr( locale, '_' );
-	if ( s ) {
-	    *s = 0;
-	}
-        lang = locale;
-        setTranslator( lang );
+	int i, argc;
+	char **argv;
+	
+	argc = a->argc();
+	argv = a->argv();
+        setTranslator( a->langDir(), a->lang() );
 //	printf("locale=%s\n", locale );
 	QString str_ru=QString::null, str_en=QString::null;
 	bool lang_setted = false;
@@ -101,7 +95,7 @@ parseCommandLine( int argc, char **argv )
 	    if (name == "--lang") {
 		lang = value;
 		lang_setted = true;
-	        setTranslator( lang );
+	        setTranslator( a->langDir(), lang );
 	    }
 	    if (name == "--rc") rcfile = value;
 	}
@@ -120,6 +114,8 @@ parseCommandLine( int argc, char **argv )
 	return 0;
 }
 
+
+
 int main( int argc, char ** argv )
 {
 
@@ -137,7 +133,7 @@ int main( int argc, char ** argv )
 	a.setOrganizationName("ananasgroup");
         a.setApplicationName("ananas");
 
-	if ( parseCommandLine( qApp->argc(), qApp->argv() ) ) return 1;
+	if ( parseCommandLine( &a ) ) return 1;
 	qApp->installTranslator( &tr_app );
 	qApp->installTranslator( &tr_lib );
 	qApp->installTranslator( &tr_plugins );

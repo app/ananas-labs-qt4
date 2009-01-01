@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadocument.h,v 1.2 2008/12/20 21:17:49 leader Exp $
+** $Id: ametadocument.h,v 1.3 2008/12/24 16:19:38 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -56,11 +56,11 @@ private:
 
 
 
-class ADocumentsGroup: public AMetaGroup
+class AMetaDocuments: public AMetaGroup
 {
 Q_OBJECT
 public:
-    ADocumentsGroup();
+    AMetaDocuments();
 
     AMetaDocument *newDocument(){ return new AMetaDocument( this );};
     AMetaDocument *document( const QString &name ){ return (AMetaDocument*) child( name );};

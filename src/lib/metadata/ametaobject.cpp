@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaobject.cpp,v 1.5 2008/12/20 21:17:49 leader Exp $
+** $Id: ametaobject.cpp,v 1.7 2008/12/24 20:06:51 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -64,7 +64,6 @@ AMetaObject::AMetaObject(const QString &objectclass,
     setDescription("");
     setId( 0 );
     if ( parent ) parent->addChild( this );
-//    if ( !this->inherits("AMetaObjectGroup") ) setId( lastId() );
 }
 
 
@@ -144,12 +143,14 @@ AMetaObject::setParentMetaObject( AMetaObject * parent )
 QString 
 AMetaObject::description()
 {
+//    return attr("description").toString();
     return v_description;
 }
 
 void 
 AMetaObject::setDescription( const QString &descr )
 {
+//    setAttr( "description", descr );
     v_description = descr;
 }
 
@@ -271,131 +272,35 @@ AMetaObject::removeChild( AMetaObject * c )
 }
 
 
-
-/*!
- * \class AMetaCatalogue
- *
- */
-AMetaCatalogue::AMetaCatalogue()
-:AMetaObject("Catalogue")
+QString  
+AMetaObject::varToStr( QVariant v )
 {
-    setId( lastId() );
-    setName( QString("%1_%2").arg( tr("Catalogue") ).arg( id() ) );
+    QString s;
+
+    switch ( v.type() ){
+      case QVariant::ByteArray:
+        s = v.toByteArray().toHex();
+        break;
+      default:
+        s = v.toString();
+    }
+    return s;
 }
 
 
-
-/*!
- * \class AMetaDataInfo
- *
- */
-AMetaDataInfo::AMetaDataInfo()
-:AMetaObject("Info")
+QVariant 
+AMetaObject::strToVar( const QString &str, QVariant::Type t )
 {
-    setAppName("new");
-    setAuthor("unknown");
-    setDate( QDate::currentDate() );
-    setLastId( 100 );
+    QVariant v;
 
-}
-
-
-AMetaDataInfo::AMetaDataInfo( const AMetaDataInfo &info )
-:AMetaObject("Info")
-{
-}
-
-
-AMetaDataInfo::~AMetaDataInfo()
-{
-}
-
-
-AMetaDataInfo& 
-AMetaDataInfo::operator=(const AMetaDataInfo&)
-{
-    return *this;
-}
-
-
-QString 
-AMetaDataInfo::appName()
-{
-    return attr("name").toString();
-}
-
-
-void 
-AMetaDataInfo::setAppName( const QString &name )
-{
-    setAttr( "name", name );
-}
-
-
-int
-AMetaDataInfo::lastId()
-{
-    return attr( "lastid" ).toInt();
-}
-
-
-void 
-AMetaDataInfo::setLastId( int id )
-{
-    setAttr( "lastid", id );
-}
-
-
-QString 
-AMetaDataInfo::author()
-{
-    return attr("author").toString();
-}
-
-
-void 
-AMetaDataInfo::setAuthor( const QString &name )
-{
-    setAttr( "author", name );
-}
-
-
-QDate 
-AMetaDataInfo::date()
-{
-    return attr("date").toDate();
-}
-
-
-void 
-AMetaDataInfo::setDate( QDate d )
-{
-    setAttr( "date", d );
-}
-
-
-
-/*!
- * \class AMetaDataGlobal
- *
- */
-AMetaDataGlobal::AMetaDataGlobal()
-:AMetaObject("Global")
-{
-    setSourceCode("function on_systemstart()\n{\n}\n");
-}
-
-
-QString 
-AMetaDataGlobal::sourceCode()
-{
-    return attr("sourcecode").toString();
-}
-
-
-void 
-AMetaDataGlobal::setSourceCode( const QString &src )
-{
-    setAttr( "sourcecode", src );
+    switch ( t ){
+      case QVariant::ByteArray:
+        v = QByteArray::fromHex( str.toLatin1() );
+        break;
+      default:
+        v = str;
+    }
+    if ( v.convert( t ) ) return v;
+    return QVariant();
 }
 

@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: aapplication.cpp,v 1.1 2008/11/09 21:08:09 leader Exp $
+** $Id: aapplication.cpp,v 1.3 2008/12/25 19:10:21 leader Exp $
 **
 ** Code file of the Ananas Library of Ananas
 ** Designer and Engine applications
@@ -30,12 +30,14 @@
 #include "aapplication.h"
 #include "dselectdb.h"
 #include "dlogin.h"
+#include "QTextCodec"
 
 
 AApplication::AApplication(  int & argc, char ** argv, AApplicationType aat )
     :QApplication( argc, argv, true )
 {
     v_aat = aat;
+    printf("langDir = %s\n", langDir().toUtf8().data() );
 }
 
 int
@@ -44,3 +46,33 @@ AApplication::applicationType()
     return v_aat;
 }
 
+
+QString
+AApplication::applicationName()
+{
+    char *appN[] = {"unknown","ananas","designer","administrator","srv"}; 
+    return QString(appN[v_aat]);
+}
+
+
+QString
+AApplication::langDir()
+{
+#ifdef _Windows
+	return applicationDirPath()+"/";
+#else
+	return "/usr/share/ananas4/translations/";
+#endif
+}
+
+
+QString
+AApplication::lang()
+{
+    char *s, locale[50]="en";
+
+    strncpy( locale, QTextCodec::locale(), sizeof( locale ) );
+    s = strchr( locale, '_' );
+    if ( s ) *s = 0;
+    return QString( locale );
+}

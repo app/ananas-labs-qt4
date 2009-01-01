@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: testametadata.cpp,v 1.8 2008/12/20 21:17:49 leader Exp $
+** $Id: testametadata.cpp,v 1.9 2008/12/24 20:06:51 leader Exp $
 ** 
 ** Tool for automatic running Ananas tests
 **
@@ -174,12 +174,17 @@ void TestAMetaData::testAMetaDataIOXML()
 {
     AMetaDataIOXML *o = new AMetaDataIOXML();
     QString xml;
+    char c[]={0,1,2,3,4,5,6,7,8,9,10,'1','2','3','4','5','6','7','8','9','0'};
 
     AMetaData *md = AMetaData::metadata();
     AMetaDocument *d = md->documents()->newDocument();
     AMetaField *f;
+    AMetaForm *form;
     f = d->fields()->newField();
     f = d->fields()->newField();
+    form = d->forms()->newForm();
+//    form->setDialogue( QByteArray("1234567890\000\001\002\003\004\005\006\007\010\011\012") );
+    form->setDialogue( QByteArray( c, sizeof(c) ) );
         
 //    delete d;
     QCOMPARE( o->write("test.cfg"), 0 );

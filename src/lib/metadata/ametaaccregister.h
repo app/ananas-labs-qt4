@@ -1,12 +1,12 @@
 /****************************************************************************
-** $Id: ametaform.h,v 1.3 2008/12/24 20:06:51 leader Exp $
+** $Id: ametaaccregister.h,v 1.1 2008/12/24 16:19:38 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
 **
 ** Created : 20031201
 **
-** Copyright (C) 2003-2004 Leader InfoTech.  All rights reserved.
+** Copyright (C) 2003-2004 Leader AccTech.  All rights reserved.
 ** Copyright (C) Andrey Paskal <app at lrn dot ru>, Yoshkar-Ola
 ** Copyright (C) 2003-2005 Grigory Panov <gr1313 at mail dot ru >, Yoshkar-Ola
 **
@@ -28,41 +28,44 @@
 ** not clear to you.
 **
 **********************************************************************/
-#ifndef AMETAFORM_H
-#define AMETAFORM_H
+#ifndef AMETAACCREGISTER_H
+#define AMETAACCREGISTER_H
 
 #include "ametaobject.h"
+#include "ametaobjectgroup.h"
+#include "ametafield.h"
+#include "ametaform.h"
 
-class AMetaForm: public AMetaObject
+
+class AMetaAccRegister: public AMetaObject
 {
 Q_OBJECT
 public:
-    AMetaForm( AMetaObject *parent = 0 );
+    AMetaAccRegister( AMetaObject *parent = 0 );
 
-    QString sourceCode();
-    void setSourceCode( const QString &src );
-
-    int  defaultMode();
-    void setDefaultMode( int mode );
-
-    QByteArray dialogue();
-    void setDialogue( const QByteArray &d );
+public slots:
+    AMetaFields      *fields();
+    AMetaFields      *gfields();
+    AMetaForms       *forms();
 
 private:
-    
+    AMetaFields      v_fields;
+    AMetaFields      v_gfields;
+    AMetaForms       v_forms;
 };
 
 
 
-class AMetaForms: public AMetaGroup
+class AMetaAccRegisters: public AMetaGroup
 {
 Q_OBJECT
 public:
-    AMetaForms();
-    AMetaForm * newForm(){ return new AMetaForm( this );};
-    AMetaForm *form( const QString &name ){ return (AMetaForm*) child( name );};
-    AMetaForm *form( int idx ){ return (AMetaForm*) child( idx );};
-    int formCount(){ return childCount(); };
+    AMetaAccRegisters();
+
+    AMetaAccRegister *newAccRegister(){ return new AMetaAccRegister( this );};
+    AMetaAccRegister *accReister( const QString &name ){ return (AMetaAccRegister*) child( name );};
+    AMetaAccRegister *accRegister( int idx ){ return (AMetaAccRegister*) child( idx );};
+    int accRegisterCount(){ return childCount(); };
 
 public slots:
 

@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadataio.cpp,v 1.3 2008/12/24 16:19:38 leader Exp $
+** $Id: ametareport.cpp,v 1.1 2008/12/24 16:19:38 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -27,51 +27,54 @@
 ** not clear to you.
 **
 **********************************************************************/
-
-#include <qdatetime.h>
-#include <qobject.h>
-#include <qfile.h>
-#include <qstringlist.h>
-#include <QTextStream>
-#include <QDomDocument>
-
-#include "ametadataio.h"
+#include "ametareport.h"
 
 /*!
- * \class AMetaDataIO
+ * \class AMetaReport
  *
  */
-AMetaDataIO::AMetaDataIO()
-:QObject()
+AMetaReport::AMetaReport( AMetaObject *parent )
+:AMetaObject("Report", "", parent )
 {
+    setId( lastId() );
+    setName( QString("%1_%2").arg( tr("Report") ).arg( id() ) );
+    addChild( &v_fields );
+    addChild( &v_tables );
+    addChild( &v_forms );
+
 }
 
 
-AMetaDataIO::~AMetaDataIO()
+AMetaFields *
+AMetaReport::fields()
 {
+    return &v_fields;
 }
 
 
-int
-AMetaDataIO::read(  const QString &name, AMetaData *md )
+
+AMetaTables *
+AMetaReport::tables()
 {
-    if ( !md ) md = AMetaData::metadata();
+    return &v_tables;
 }
 
 
-int
-AMetaDataIO::write(  const QString &name, AMetaData *md )
+AMetaForms *
+AMetaReport::forms()
 {
-    if ( !md ) md = AMetaData::metadata();
+    return &v_forms;
 }
 
 
-AMetaObject *
-AMetaDataIO::createObject( const QString &className, AMetaObject *parent )
-{
-   AMetaObject *o = 0;
-   if ( className == "AMetaObject" ) return new AMetaObject();
-//   if ( name == "AMetaObjectGroup" ) return new AMetaObjectGroup();
 
-   return o;
-} 
+/*!
+ * \class AMetaReports
+ *
+ */
+AMetaReports::AMetaReports()
+:AMetaGroup("Reports")
+{
+
+}
+

@@ -1,12 +1,12 @@
 /****************************************************************************
-** $Id: ametadataio.cpp,v 1.3 2008/12/24 16:19:38 leader Exp $
+** $Id: ametaaccregister.cpp,v 1.1 2008/12/24 16:19:38 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
 **
 ** Created : 20031201
 **
-** Copyright (C) 2003-2004 Leader InfoTech.  All rights reserved.
+** Copyright (C) 2003-2004 Leader AccTech.  All rights reserved.
 ** Copyright (C) Grigory Panov <gr1313 at mail.ru>, Yoshkar-Ola.
 **
 ** This file is part of the Library of the Ananas
@@ -27,51 +27,53 @@
 ** not clear to you.
 **
 **********************************************************************/
-
-#include <qdatetime.h>
-#include <qobject.h>
-#include <qfile.h>
-#include <qstringlist.h>
-#include <QTextStream>
-#include <QDomDocument>
-
-#include "ametadataio.h"
+#include "ametaaccregister.h"
 
 /*!
- * \class AMetaDataIO
+ * \class AMetaAccRegister
  *
  */
-AMetaDataIO::AMetaDataIO()
-:QObject()
+AMetaAccRegister::AMetaAccRegister( AMetaObject *parent )
+:AMetaObject("AccRegister", "", parent )
 {
+    setId( lastId() );
+    setName( QString("%1_%2").arg( tr("AccRegister") ).arg( id() ) );
+    addChild( &v_fields );
+    addChild( &v_gfields );
+    addChild( &v_forms );
+
 }
 
 
-AMetaDataIO::~AMetaDataIO()
+AMetaFields *
+AMetaAccRegister::fields()
 {
+    return &v_fields;
 }
 
 
-int
-AMetaDataIO::read(  const QString &name, AMetaData *md )
+
+AMetaFields *
+AMetaAccRegister::gfields()
 {
-    if ( !md ) md = AMetaData::metadata();
+    return &v_gfields;
 }
 
 
-int
-AMetaDataIO::write(  const QString &name, AMetaData *md )
+AMetaForms *
+AMetaAccRegister::forms()
 {
-    if ( !md ) md = AMetaData::metadata();
+    return &v_forms;
 }
 
 
-AMetaObject *
-AMetaDataIO::createObject( const QString &className, AMetaObject *parent )
-{
-   AMetaObject *o = 0;
-   if ( className == "AMetaObject" ) return new AMetaObject();
-//   if ( name == "AMetaObjectGroup" ) return new AMetaObjectGroup();
 
-   return o;
-} 
+/*!
+ * \class AMetaAccRegisters
+ *
+ */
+AMetaAccRegisters::AMetaAccRegisters()
+:AMetaGroup("AccRegisters")
+{
+
+}

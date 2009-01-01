@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: main.cpp,v 1.5 2008/12/05 21:11:54 leader Exp $
+** $Id: main.cpp,v 1.6 2008/12/25 19:08:03 leader Exp $
 **
 ** Main file of Ananas Designer application
 **
@@ -51,34 +51,40 @@ QString lang="en",
 	userpassword="";
 
 
-int setTranslator(QString lang)
+int setTranslator(QString langdir, QString lang)
 {
-        QString langdir;
-#ifdef Q_OS_WIN32
-	langdir = qApp->applicationDirPath()+"/translations/";
-#else
-	langdir = "/usr/share/ananas4/translations/";
-#endif
+//        QString langdir;
+//#ifdef Q_OS_WIN32
+//	langdir = qApp->applicationDirPath()+"/translations/";
+//#else
+//	langdir = "/usr/share/ananas4/translations/";
+//#endif
 	tr_app.load( langdir+"ananas-designer-"+lang+".qm",".");
 	tr_lib.load( langdir+"ananas-lib-"+lang+".qm",".");
 	tr_plugins.load( langdir+"ananas-plugins-"+lang+".qm",".");
 	return 0;
 }
 
+
+
 int
-parseCommandLine( int argc, char **argv )
+parseCommandLine( AApplication *a )
 {
 	QString param, name, value;
-	int i;
-	char *s, locale[50]="en";
+	int i, argc;
+	char **argv;
+	
+	argc = a->argc();
+	argv = a->argv();
+//	char *s, locale[50]="en";
 
-	strncpy( locale, QTextCodec::locale(), sizeof( locale ) );
-	s = strchr( locale, '_' );
-	if ( s ) {
-	    *s = 0;
-	}
-        lang = locale;
-        setTranslator( lang );
+//	strncpy( locale, QTextCodec::locale(), sizeof( locale ) );
+//	s = strchr( locale, '_' );
+//	if ( s ) {
+//	    *s = 0;
+//	}
+//        lang = locale;
+        setTranslator( a->langDir(), a->lang() );
 //	printf("locale=%s\n", locale );
 	QString str_ru=QString::null, str_en=QString::null;
 	bool lang_setted = false;
@@ -103,7 +109,7 @@ parseCommandLine( int argc, char **argv )
 	    if (name == "--lang") {
 		lang = value;
 		lang_setted = true;
-	        setTranslator( lang );
+	        setTranslator( a->langDir(), lang );
 	    }
 	    if (name == "--rc") rcfile = value;
 	}
@@ -143,7 +149,7 @@ int main( int argc, char ** argv )
 	int rc;
 	QPixmap pixmap;
 
-	if ( parseCommandLine( argc, argv ) ) return 1;
+	if ( parseCommandLine( &app ) ) return 1;
 	qApp->installTranslator( &tr_lib );
 	qApp->installTranslator( &tr_plugins );
 	qApp->installTranslator( &tr_app );

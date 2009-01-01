@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaform.h,v 1.3 2008/12/24 20:06:51 leader Exp $
+** $Id: ametainforegister.h,v 1.1 2008/12/24 16:19:38 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -28,41 +28,44 @@
 ** not clear to you.
 **
 **********************************************************************/
-#ifndef AMETAFORM_H
-#define AMETAFORM_H
+#ifndef AMETAINFOREGISTER_H
+#define AMETAINFOREGISTER_H
 
 #include "ametaobject.h"
+#include "ametaobjectgroup.h"
+#include "ametafield.h"
+#include "ametaform.h"
 
-class AMetaForm: public AMetaObject
+
+class AMetaInfoRegister: public AMetaObject
 {
 Q_OBJECT
 public:
-    AMetaForm( AMetaObject *parent = 0 );
+    AMetaInfoRegister( AMetaObject *parent = 0 );
 
-    QString sourceCode();
-    void setSourceCode( const QString &src );
-
-    int  defaultMode();
-    void setDefaultMode( int mode );
-
-    QByteArray dialogue();
-    void setDialogue( const QByteArray &d );
+public slots:
+    AMetaFields      *fields();
+    AMetaFields      *gfields();
+    AMetaForms       *forms();
 
 private:
-    
+    AMetaFields      v_fields;
+    AMetaFields      v_gfields;
+    AMetaForms       v_forms;
 };
 
 
 
-class AMetaForms: public AMetaGroup
+class AMetaInfoRegisters: public AMetaGroup
 {
 Q_OBJECT
 public:
-    AMetaForms();
-    AMetaForm * newForm(){ return new AMetaForm( this );};
-    AMetaForm *form( const QString &name ){ return (AMetaForm*) child( name );};
-    AMetaForm *form( int idx ){ return (AMetaForm*) child( idx );};
-    int formCount(){ return childCount(); };
+    AMetaInfoRegisters();
+
+    AMetaInfoRegister *newInfoRegister(){ return new AMetaInfoRegister( this );};
+    AMetaInfoRegister *infoReister( const QString &name ){ return (AMetaInfoRegister*) child( name );};
+    AMetaInfoRegister *infoRegister( int idx ){ return (AMetaInfoRegister*) child( idx );};
+    int infoRegisterCount(){ return childCount(); };
 
 public slots:
 

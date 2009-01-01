@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametaobject.h,v 1.5 2008/12/20 21:17:49 leader Exp $
+** $Id: ametaobject.h,v 1.7 2008/12/24 20:06:51 leader Exp $
 **
 ** Header file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -87,8 +87,6 @@ public:
     bool attrExists( const QString &name );
     int attrCount() const;
 
-    static int lastId();
-    static void setLastId( int id );
 
     int childCount();
     AMetaObject *child( int idx );
@@ -96,6 +94,11 @@ public:
     void addChild( AMetaObject * c );
     void removeChild( AMetaObject * c );
 
+    static int lastId();
+    static void setLastId( int id );
+    static QString  varToStr( QVariant v );
+    static QVariant strToVar( const QString &str, QVariant::Type t );
+ 
 public slots:
 
 private:
@@ -132,54 +135,5 @@ public:
 };
 
 typedef AMetaGroupA<AMetaObject> AMetaGroupAXXX;
-
-
-class AMetaCatalogue: public AMetaObject
-{
-Q_OBJECT
-public:
-    AMetaCatalogue();
-};
-
-
-
-class AMetaDataInfo: public AMetaObject
-{
-Q_OBJECT
-Q_PROPERTY( QString appname READ appName SCRIPTABLE true )
-Q_PROPERTY( QString author  READ author  SCRIPTABLE true )
-Q_PROPERTY( QDate   date    READ date    SCRIPTABLE true )
-public:
-    AMetaDataInfo();
-    AMetaDataInfo( const AMetaDataInfo &info );
-    ~AMetaDataInfo();
-    AMetaDataInfo& operator=(const AMetaDataInfo&);
-
-    QString appName();
-    void setAppName( const QString &name );
-    int lastId();
-    void setLastId( int id );
-    QString author();
-    void setAuthor( const QString &name );
-    QDate date();
-    void setDate( QDate d );
-};
-
-
-class AMetaDataGlobal: public AMetaObject
-{
-Q_OBJECT
-public:
-    AMetaDataGlobal();
-
-    QString sourceCode();
-    void setSourceCode( const QString &src );
-
-};
-
-Q_DECLARE_METATYPE ( AMetaDataInfo )
-
-//qRegisterMetaType<AMetaDataInfo>("MetaDataInfo");
-//Q_DECLARE_METATYPE ( AMetaDataGlobal )
 
 #endif

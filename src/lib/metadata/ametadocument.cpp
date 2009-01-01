@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: ametadocument.cpp,v 1.2 2008/12/20 21:17:49 leader Exp $
+** $Id: ametadocument.cpp,v 1.3 2008/12/24 16:19:38 leader Exp $
 **
 ** Code file of the Ananas configuration objects of Ananas
 ** Designer and Engine applications
@@ -72,7 +72,7 @@ AMetaDocument::forms()
  * \class ADocumentsGroup
  *
  */
-ADocumentsGroup::ADocumentsGroup()
+AMetaDocuments::AMetaDocuments()
 :AMetaGroup("Documents")
 {
 
