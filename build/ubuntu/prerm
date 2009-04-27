@@ -21,12 +21,12 @@ case "$1" in
     remove)
 	rm -f /usr/share/ananas/translations/*.qm
 	rm -f /usr/share/ananas/templates/*.*
-	rm -f /usr/share/ananas/inventory/templ_*.odt
-	rm -f /usr/share/ananas/inventory/templ_*.ods
-	rm -f /etc/ananas/inventory.*
-	rm -f /etc/ananas/inventory-demo.*
-	rm -f /etc/ananas/inventory_grouprc
-	rm -f /etc/ananas/.*
+#	rm -f /usr/share/ananas/inventory/templ_*.odt
+#	rm -f /usr/share/ananas/inventory/templ_*.ods
+#	rm -f /etc/ananas/inventory.*
+#	rm -f /etc/ananas/inventory-demo.*
+#	rm -f /etc/ananas/inventory_grouprc
+#	rm -f /etc/ananas/.*
 	[ -e /usr/share/ananas/inventory ] && rmdir --ignore-fail-on-non-empty /usr/share/ananas/inventory
 	[ -e /usr/share/ananas/translations ] && rmdir --ignore-fail-on-non-empty /usr/share/ananas/translations
 	[ -e /usr/share/ananas/template ] && rmdir --ignore-fail-on-non-empty /usr/share/ananas/templates

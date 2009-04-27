@@ -79,10 +79,8 @@ install: build
 	BINDIR=/usr/bin INCLUDEDIR=/usr/include/ananas 
 	#cd ../doc && qmake doc.pro -o Makefile && make install INSTALL_ROOT=$(CURDIR)/debian/ananas \
 	#DOCDIR=$(CURDIR)/debian/ananas/usr/share/doc/ananas
-	mkdir -p $(CURDIR)/debian/ananas/etc/ananas
 	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/translations
 	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/templates
-	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/inventory
 	mkdir -p $(CURDIR)/debian/ananas/usr/share/applications
 	mkdir -p $(CURDIR)/debian/ananas/usr/share/pixmaps
 	mkdir -p $(CURDIR)/debian/ananas/usr/lib/menu
@@ -104,6 +102,8 @@ install: build
 	cp -f ./build/icons/*.png $(CURDIR)/debian/ananas/usr/share/pixmaps/
 
 	# inventory
+#	mkdir -p $(CURDIR)/debian/ananas/etc/ananas
+#	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/inventory
 #	cp -f ./applications/inventory/inventory.cfg $(CURDIR)/debian/ananas/etc/ananas/
 #	cp -f ./applications/inventory/inventory.rc $(CURDIR)/debian/ananas/etc/ananas/
 #	cp -f ./applications/inventory/inventory_grouprc $(CURDIR)/debian/ananas/etc/ananas/

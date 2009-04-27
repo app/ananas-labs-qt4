@@ -21,20 +21,20 @@ case "$1" in
     configure)
 
 	#starts mysql server 
-	[ -e /etc/init.d/mysql ] && /etc/init.d/mysql status|grep stopped  > /dev/null && /etc/init.d/mysql start > /dev/null || :
+#	[ -e /etc/init.d/mysql ] && /etc/init.d/mysql status|grep stopped  > /dev/null && /etc/init.d/mysql start > /dev/null || :
 	#creates databases
-	mysql -u root -e "create database ananas_inventory character set utf8" > /dev/null 2>&1 && mysql -u root \
-	ananas_inventory < /usr/share/ananas/inventory/inventory.sql || :
-	mysql -u root -e "create database ananas_inventory_demo character set utf8" > /dev/null 2>&1 && mysql -u root \
-	ananas_inventory_demo < /usr/share/ananas/inventory/inventory-demo.sql || :
+#	mysql -u root -e "create database ananas_inventory character set utf8" > /dev/null 2>&1 && mysql -u root \
+#	ananas_inventory < /usr/share/ananas/inventory/inventory.sql || :
+#	mysql -u root -e "create database ananas_inventory_demo character set utf8" > /dev/null 2>&1 && mysql -u root \
+#	ananas_inventory_demo < /usr/share/ananas/inventory/inventory-demo.sql || :
 
 
 	#creates system base for mysql
-	mysqlshow -u root| grep ananas_system > /dev/null || mysqladmin -u root create ananas_system || :
+#	mysqlshow -u root| grep ananas_system > /dev/null || mysqladmin -u root create ananas_system || :
 
-	ln -fs  /usr/lib/ananas/qt3plugins/designer/libananasplugin.so /usr/lib/libananasplugin.so
-	chmod 666 /etc/ananas/* || :
-	chmod 777 /etc/ananas
+	ln -fs  /usr/lib/ananas/qt4plugins/designer/libananasplugin.so /usr/lib/libananasplugin.so
+#	chmod 666 /etc/ananas/* || :
+#	chmod 777 /etc/ananas
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
