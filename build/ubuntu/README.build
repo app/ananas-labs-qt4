@@ -1,0 +1,90 @@
+Это инструкция по сборке дистрибутива ananas в виде одного deb пакета.
+
+При сборке используется архив ananas-0.9.5.tar.gz
+Сборка в Ubuntu при помощи pbuilder & co.
+Подразумевается, что среда сборки pbuilder настроена и готова для сборки пакетов.
+Если нет - читай документацию "Ubuntu packaging guide" packagingguide.pdf
+и инструкцию в конце этого файла.
+
+1. Создаем новый пустой каталог в произвольном месте, например
+mkdir -p ~/tmp/ananas-build
+
+2. Копируем в него архив исходников, который
+допустим лежит в корне домашней папке
+cp ~/ananas-0.9.5.tar.gz ~/tmp/ananas-build/
+
+3. Переходим в новую папку и распаковываем архив
+cd ~/tmp/ananas-build
+tar zxf ananas-0.9.5.tar.gz
+
+4. Дальше выполняем команды
+cd ananas-0.9.5
+dh_make -e ananasproject@googlegroups.com -f ../ananas-0.9.5.tar.gz
+
+В последней команде email используется для выбора pgp ключа для подписи пакета и dsc файла.
+Так что указываете идентификатор ключа, который есть у вас.
+
+5. Дальше
+debuild -S
+sudo $HOME/bin/pbuilder-gutsy build ../ananas_0.9.5-1.dsc
+
+Результат сборки будет положен в каталог, который у вас указан в параметре BUILDRESULT
+файла конфигурации pbuilder. Пример -- ниже.
+
+
+Да и еще. Для сборки 
+потребуется пакет qsa-x11-free...deb, лежащий в доступном для pbuilder репозитарии,
+так как по состоянию на 2007-12-22 ни один из общеизвестных и общедоступных репозитариев
+Ubuntu не содержит такого пакета. 
+В инструкции ниже показано как настроить свой репозитарий с таким пакетом.
+
+=====
+
+Вспомогательная информация по настройке cреды сборки pbuilde & co.
+1. устанавливаем необходимые пакеты 
+sudo apt-get install build-essential
+sudo apt-get install devscripts
+sudo apt-get install debhelper
+sudo apt-get install dh-make
+sudo apt-get install fakeroot
+sudo apt-get install lintian
+sudo apt-get install linda
+sudo apt-get install pbuilder
+
+2. создаем каталоги, копируем файлы
+mkdir -p ~/pbuilder/result
+mkdir -p ~/bin
+cp /usr/share/doc/pbuilder/examples/pbuilder-distribution.sh ~/bin/pbuilder-gutsy
+cp /etc/pbuilderrc ~/.pbuilderrc
+
+3. подправляем конфиг ~/.pbuilderrc
+BUILDPLACE=$HOME/pbuilder/build/
+BUILDRESULT=$HOME/pbuilder/result/
+MIRRORSITE=http://localhost/cdrom0
+OTHERMIRROR="deb http://localhost/result ./"
+
+4. делаем доступными по http локальные репозитории
+sudo ln -s /media/cdrom0 /var/www/
+sudo ln -s $HOME/pbuilder/result /var/www/
+
+5. складываем в репозитарий result готовый deb пакет qsa, если его еще нет там
+(для сборки qsa OTHERMIRROR нужно отключить и перезапустить pbuilder-gutsy create)
+cp ~/qsa-x11-free_1.1.4-1_i386.deb $HOME/pbuilder/result
+cd $HOME/pbuilder/result 
+dpkg-scanpackages . /dev/null |gzip -9 > Packages.gz
+
+6. проверяем запущен ли apache2
+sudo /etc/init.d/apache2 start
+
+7. проверяем доступность DVD диска
+mount |grep cdrom0
+
+8. создаем среду сборки
+$HOME/bin/pbuilder-gutsy create
+
+
+Если все прошло успешно должен появиться файл ненулевого размера
+$HOME/pbuilder/gutsy-base.tgz
+
+Можно переходить к действиям, описанным в начале этого файла.
+
