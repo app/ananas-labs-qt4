@@ -23,5 +23,11 @@ win32 {
 #    LIBS += -L/src/tradeequip/lib -ltradeequip
 }
 
-DESTDIR     		= ..
-#win32:DLLDESTDIR	= ..
+win32:DESTDIR = ..
+
+unix{
+        libext.path = $(LIBDIR)/ananas
+        libext.files = libaextte.so
+        INSTALLS += libext
+}
+

@@ -56,4 +56,16 @@ RESOURCES +=admin.qrc
 TRANSLATIONS = \
     ../../translations/ananas-administrator-en.ts \
     ../../translations/ananas-administrator-ru.ts 
+
+
+unix {
+        aadmin.path = $(BINDIR)
+        aadmin.files = ananas4-administrator
+        aadmin.extra = cp -df ananas4-administrator $(INSTALL_ROOT)$(BINDIR)
+     }
+
+INSTALLS += aadmin
+
+
+
 	

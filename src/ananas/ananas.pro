@@ -43,4 +43,4 @@ win32{
 #    ananas.extra = CALL create_base.bat
 }    
 
-#INSTALLS += ananas
+INSTALLS += ananas

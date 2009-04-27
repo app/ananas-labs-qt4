@@ -66,9 +66,9 @@ win32 {
     lplugin.extra = copy ananasplugin4.* $(QTDIR)\lib
 }  
 
-#INSTALLS += lplugin 
+INSTALLS += lplugin 
 unix{
-#    INSTALLS += lpluginheader
+    INSTALLS += lpluginheader
 }
 
 include ( actionbutton/actionbutton.pri )

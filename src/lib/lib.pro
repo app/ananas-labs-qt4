@@ -119,9 +119,9 @@ win32 {
 #    alibheader.files += tmp\ui\*h
       }
 
-#INSTALLS += alib
+INSTALLS += alib
 unix{
-#    INSTALLS += alibheader
+    INSTALLS += alibheader
 }
 
 include(metadata/metadata.pri)

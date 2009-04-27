@@ -178,5 +178,5 @@ unix {
 #	acfg.files= testwrite.cfg
      }	
 
-#INSTALLS += adesigner
+INSTALLS += adesigner
 
