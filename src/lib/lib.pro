@@ -103,7 +103,7 @@ TRANSLATIONS = \
 unix{
     alib.path = $(LIBDIR) 
     alib.files = libananas4.so.$$VERSION
-    alib.extra = cp -df libananas4.so* $(INSTALL_ROOT)$(LIBDIR)
+    alib.extra = cp -df $(DESTDIR)/libananas4.so* $(INSTALL_ROOT)$(LIBDIR)
 
     alibheader.path = $(INCLUDEDIR)
     alibheader.files = $$HEADERS
