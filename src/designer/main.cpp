@@ -161,7 +161,7 @@ int main( int argc, char ** argv )
 #else
 	pixmap = QPixmap( "/usr/share/ananas4/designer/locale/designer-splash-"+lang+".png" );
 //	qApp->addLibraryPath( "/usr/lib/ananas4/" );
-	qApp->setLibraryPaths( QStringList() <<"/usr/lib/ananas4/" );
+//	qApp->setLibraryPaths( QStringList() <<"/usr/lib/ananas4/" );
 #endif
 	foreach (QString path, app.libraryPaths())
     	    printf("%s\n", path.toUtf8().data());
