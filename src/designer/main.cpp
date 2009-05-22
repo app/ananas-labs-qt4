@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: main.cpp,v 1.6 2008/12/25 19:08:03 leader Exp $
+** $Id: main.cpp,v 1.7 2009/05/22 08:03:55 app Exp $
 **
 ** Main file of Ananas Designer application
 **
