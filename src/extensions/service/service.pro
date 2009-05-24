@@ -4,6 +4,7 @@ SOURCES	+= aextservice.cpp
 HEADERS	+= aextservice.h 
 
 include ( ../../ananas.pri )
+include ( ../../lib/lib.pri )
 
 shared {
 win32:DEFINES+= ANANAS_DLL
@@ -15,7 +16,7 @@ TEMPLATE	=lib
 CONFIG	+= plugin
 
 INCLUDEPATH	+= ../../lib 
-LIBS	+= -L../../lib -lananas
+LIBS	+= -L../../../lib -lananas4
 
 LANGUAGE	= C++
 win32:DESTDIR = ..

@@ -117,15 +117,15 @@ aExtSERVICE::GetRcFileName() const
 QString 
 aExtSERVICE::GetRcValue( QString paramName ) const
 {
-	if ( !paramName || paramName.isNull() ) 
+	if ( paramName.isNull() ) 
 	{
-		aLog::print(aLog::MT_ERROR, tr("Empty rc file parameter name. Can't read such parameter from rc file."));
+		aLog::print(aLog::Error, tr("Empty rc file parameter name. Can't read such parameter from rc file."));
 		return "";
 	}
 	QString paramValue = db->cfg.rc.value( paramName );
-	if ( !paramValue || paramValue.isEmpty() ) 
+	if ( paramValue.isEmpty() ) 
 	{	
-		aLog::print(aLog::MT_ERROR,tr("rc file parameter '%1' not found or empty.").arg(paramName));
+		aLog::print(aLog::Error,tr("rc file parameter '%1' not found or empty.").arg(paramName));
 		return "";
 	}
 	return paramValue;
