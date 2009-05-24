@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: aextguid.cpp,v 1.2 2007/09/19 06:32:06 app Exp $
+** $Id: aextguid.cpp,v 1.1 2009/05/24 18:34:42 app Exp $
 **
 ** Code file of the Report Result Object of Ananas
 ** Designer and Engine applications
