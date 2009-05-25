@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: asqltable.h,v 1.1 2008/11/05 21:16:28 leader Exp $
+** $Id: asqltable.h,v 1.2 2009/05/25 16:35:10 app Exp $
 **
 ** Header file of the Ananas database table of Ananas
 ** Designer and Engine applications
@@ -96,6 +96,7 @@ public:
 	virtual QStringList	getUserFields();
 	virtual ERR_Code 	setMarkDeleted( bool Deleted );
 	virtual bool 		isMarkDeleted();
+	QString 		sqlFieldName ( const QString & userFieldName ) const;
 
 	virtual bool New();
 	virtual bool Copy();

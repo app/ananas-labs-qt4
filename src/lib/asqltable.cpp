@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: asqltable.cpp,v 1.3 2008/11/09 21:09:11 leader Exp $
+** $Id: asqltable.cpp,v 1.4 2009/05/25 16:35:10 app Exp $
 **
 ** Code file of the Ananas database table of Ananas
 ** Designer and Engine applications
@@ -1109,3 +1109,12 @@ aDataTable::Update()
 	return true;
 }
 
+/**
+ */
+QString
+aDataTable::sqlFieldName ( const QString & userFieldName ) const {
+	if (fnames[userFieldName] ) {
+		return *fnames[ userFieldName ];
+	}
+	return QString::QString("");
+}
