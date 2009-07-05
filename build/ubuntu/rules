@@ -34,10 +34,9 @@ configure-stamp:
 #	cd ../.. && tar zxf ananas-0.9.5/tmp/ananas-0.9.5.tgz && \
 #	rm -Rf  ananas-0.9.5/tmp
 
-	cd ..
 	pwd
 	ls -la /home/app/tmp/compiled/ananas-0.9.5.tgz
-	tar vzxf /home/app/tmp/compiled/ananas-0.9.5.tgz
+	cd .. && tar zxf /home/app/tmp/compiled/ananas-0.9.5.tgz
 	
 	touch configure-stamp
 
