@@ -29,14 +29,8 @@ configure-stamp:
 	# Временная заглушка для откладки процесса сборки пакета
 	# Используем архив с ранее откомпилированным Ананасом, что бы ускорить процедуру сборки пакета
 	# Если вы не занимаетесь отладкой сборки пакета, а собираете Ананас, закоментируйте этот блок кода.
-#	mkdir tmp
-#	cd tmp && wget http://localhost/tmp/compiled/ananas-0.9.5.tgz && \
-#	cd ../.. && tar zxf ananas-0.9.5/tmp/ananas-0.9.5.tgz && \
-#	rm -Rf  ananas-0.9.5/tmp
 
-	pwd
-	ls -la /home/app/tmp/compiled/ananas-0.9.5.tgz
-	cd .. && tar zxf /home/app/tmp/compiled/ananas-0.9.5.tgz --exclude debian
+#	cd .. && tar zxf /home/app/tmp/compiled/ananas-0.9.5.tgz --exclude debian
 	
 	touch configure-stamp
 
@@ -49,8 +43,8 @@ build-stamp: configure-stamp
 	# Add here commands to compile the package.
 
 	# Makes ananas
-#	$(MAKE) -j 4
-#	$(MAKE) tr
+	$(MAKE) -j 4
+	$(MAKE) tr
 
 	touch $@
 
@@ -74,8 +68,6 @@ install: build
 #	rm -f `find src doc -name Makefile`
 #	qmake src/src.pro -o src/Makefile
 
-#	du -hs
-#	cat /tmp/buildd/ananas-0.9.5/src/Makefile
 	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/translations
 	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/templates
 	mkdir -p $(CURDIR)/debian/ananas/usr/share/applications
