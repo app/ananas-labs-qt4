@@ -36,7 +36,7 @@ configure-stamp:
 
 	pwd
 	ls -la /home/app/tmp/compiled/ananas-0.9.5.tgz
-	cd .. && tar zxf /home/app/tmp/compiled/ananas-0.9.5.tgz
+	cd .. && tar zxf /home/app/tmp/compiled/ananas-0.9.5.tgz --exclude debian
 	
 	touch configure-stamp
 
@@ -74,8 +74,8 @@ install: build
 #	rm -f `find src doc -name Makefile`
 #	qmake src/src.pro -o src/Makefile
 
-	du -hs
-	cat /tmp/buildd/ananas-0.9.5/src/Makefile
+#	du -hs
+#	cat /tmp/buildd/ananas-0.9.5/src/Makefile
 	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/translations
 	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/templates
 	mkdir -p $(CURDIR)/debian/ananas/usr/share/applications
