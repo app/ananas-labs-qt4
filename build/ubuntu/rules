@@ -33,6 +33,8 @@ configure-stamp:
 #	cd tmp && wget http://localhost/tmp/compiled/ananas-0.9.5.tgz && \
 #	cd ../.. && tar zxf ananas-0.9.5/tmp/ananas-0.9.5.tgz && \
 #	rm -Rf  ananas-0.9.5/tmp
+	cd ..
+	tar zxf /home/app/tmp/compiled/ananas-0.9.5.tgz
 	
 	touch configure-stamp
 
@@ -45,10 +47,7 @@ build-stamp: configure-stamp
 	# Add here commands to compile the package.
 
 	# Makes ananas
-	# Закоментированно временно для отладки процесса сборки пакета
-#	rm -f `find src doc -name Makefile`
-#	/usr/share/qt4/bin/qmake src/src.pro -o src/Makefile
-	$(MAKE)
+	$(MAKE) -j 4
 	$(MAKE) tr
 
 	touch $@
