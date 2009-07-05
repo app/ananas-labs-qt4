@@ -33,7 +33,10 @@ configure-stamp:
 #	cd tmp && wget http://localhost/tmp/compiled/ananas-0.9.5.tgz && \
 #	cd ../.. && tar zxf ananas-0.9.5/tmp/ananas-0.9.5.tgz && \
 #	rm -Rf  ananas-0.9.5/tmp
+
 	cd ..
+	pwd
+	ls -la /home/app/tmp/compiled/ananas-0.9.5.tgz
 	tar zxf /home/app/tmp/compiled/ananas-0.9.5.tgz
 	
 	touch configure-stamp
@@ -72,6 +75,7 @@ install: build
 #	rm -f `find src doc -name Makefile`
 #	qmake src/src.pro -o src/Makefile
 
+	du -hs
 	cd src && \
 	$(MAKE) install \
 	INSTALL_ROOT=$(CURDIR)/debian/ananas LIBDIR=/usr/lib \
