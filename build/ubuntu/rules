@@ -76,17 +76,17 @@ install: build
 
 	du -hs
 	cat /tmp/buildd/ananas-0.9.5/src/Makefile
+	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/translations
+	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/templates
+	mkdir -p $(CURDIR)/debian/ananas/usr/share/applications
+	mkdir -p $(CURDIR)/debian/ananas/usr/share/pixmaps
+	mkdir -p $(CURDIR)/debian/ananas/usr/lib/menu
 	cd src && \
 	$(MAKE) install \
 	INSTALL_ROOT=$(CURDIR)/debian/ananas LIBDIR=/usr/lib \
 	BINDIR=/usr/bin INCLUDEDIR=/usr/include/ananas 
 	#cd ../doc && qmake doc.pro -o Makefile && make install INSTALL_ROOT=$(CURDIR)/debian/ananas \
 	#DOCDIR=$(CURDIR)/debian/ananas/usr/share/doc/ananas
-	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/translations
-	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/templates
-	mkdir -p $(CURDIR)/debian/ananas/usr/share/applications
-	mkdir -p $(CURDIR)/debian/ananas/usr/share/pixmaps
-	mkdir -p $(CURDIR)/debian/ananas/usr/lib/menu
 
 	cp -f ./translations/*.qm $(CURDIR)/debian/ananas/usr/share/ananas/translations
 	cp -f ./src/designer/templates/*.* $(CURDIR)/debian/ananas/usr/share/ananas/templates
