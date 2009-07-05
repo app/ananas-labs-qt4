@@ -47,8 +47,8 @@ build-stamp: configure-stamp
 	# Add here commands to compile the package.
 
 	# Makes ananas
-	$(MAKE) -j 4
-	$(MAKE) tr
+#	$(MAKE) -j 4
+#	$(MAKE) tr
 
 	touch $@
 
