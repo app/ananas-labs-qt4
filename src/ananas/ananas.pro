@@ -35,12 +35,13 @@ TRANSLATIONS = \
     ../../translations/ananas-engine-ru.ts 
     
 unix {
-    ananas.path = $(BINDIR)
-    ananas.files = ananas4
+    target.path = $(BINDIR)
+#    ananas.files = ananas4
 }
 win32{
 #    ananas.path =.
 #    ananas.extra = CALL create_base.bat
 }    
 
-INSTALLS += ananas
+INSTALLS += target
+

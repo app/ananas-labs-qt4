@@ -1,4 +1,4 @@
-ananas (0.9.5-1) unstable; urgency=low
+ananas4 (0.9.5-1) unstable; urgency=low
 
   * Initial release of debian package
   * Новое расширение для прямой работы с SQL сервером. Предназначено для 

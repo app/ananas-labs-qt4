@@ -101,9 +101,12 @@ TRANSLATIONS = \
     ../../translations/ananas-lib-ru.ts 
     
 unix{
-    alib.path = $(LIBDIR) 
-    alib.files = libananas4.so.$$VERSION
-    alib.extra = cp -df $(DESTDIR)/libananas4.so* $(INSTALL_ROOT)$(LIBDIR)
+    target.path = $(LIBDIR) 
+    target.files = libananas4.so.$$VERSION
+#    target.extra = cp -df $(DESTDIR)/libananas4.so* $(INSTALL_ROOT)$(LIBDIR)
+#    alib.path = $(LIBDIR) 
+#    alib.files = libananas4.so.$$VERSION
+#    alib.extra = cp -df $(DESTDIR)/libananas4.so* $(INSTALL_ROOT)$(LIBDIR)
 
     alibheader.path = $(INCLUDEDIR)
     alibheader.files = $$HEADERS
@@ -117,10 +120,11 @@ win32 {
 #    alibheader.path = $(INCLUDEDIR)
 #    alibheader.files = $$HEADERS
 #    alibheader.files += tmp\ui\*h
-      }
+    INSTALLS += alib
+}
 
-INSTALLS += alib
 unix{
+    INSTALLS += target
     INSTALLS += alibheader
 }
 

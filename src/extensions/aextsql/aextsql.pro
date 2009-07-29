@@ -24,7 +24,7 @@ win32:DESTDIR = ..
 #win32:DLLDESTDIR	= ..
 
 unix{
-	libext.path = $(LIBDIR)/ananas 
-	libext.files = libaextsql.so
-	INSTALLS += libext
+	target.path = $(LIBDIR)/ananas 
+#	libext.files = libaextsql.so
+	INSTALLS += target
 }

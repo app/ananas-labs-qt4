@@ -52,22 +52,23 @@ TRANSLATIONS = \
 
 #SLASH = /
 unix {
-    lplugin.path = $(QTDIR)/plugins/designer
-    lplugin.files = libananasplugin4.so
-    lplugin.extra = cp -f $(DESTDIR)/libananasplugin4.so $(INSTALL_ROOT)$(LIBDIR) || true
+    target.path = $(QTDIR)/plugins/designer
+#    lplugin.files = libananasplugin4.so
+#    lplugin.extra = cp -f $(DESTDIR)/libananasplugin4.so $(INSTALL_ROOT)$(LIBDIR) || true
     lpluginheader.path = $(INCLUDEDIR)
     lpluginheader.files = $$HEADERS
 }  
 
 win32 {
-    target.path = $(QTDIR)\plugins\designer
+#   target.path = $(QTDIR)\plugins\designer
     lplugin.path = $(QTDIR)\plugins\designer
     lplugin.files = ananasplugin4.*
     lplugin.extra = copy ananasplugin4.* $(QTDIR)\lib
+    INSTALLS += lplugin 
 }  
 
-INSTALLS += lplugin 
 unix{
+    INSTALLS +=target  
     INSTALLS += lpluginheader
 }
 
