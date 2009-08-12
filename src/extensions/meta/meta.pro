@@ -16,7 +16,7 @@ LANGUAGE	= C++
 win32:DESTDIR = ..
 
 unix{
-        target.path = $(LIBDIR)/ananas
+        target.path = $$(LIBDIR)/ananas4
 #        libmeta.files = libaext_meta.so
         INSTALLS += libmeta
 }

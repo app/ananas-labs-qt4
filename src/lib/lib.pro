@@ -101,20 +101,20 @@ TRANSLATIONS = \
     ../../translations/ananas-lib-ru.ts 
     
 unix{
-    target.path = $(LIBDIR) 
+    target.path = $$(LIBDIR) 
     target.files = libananas4.so.$$VERSION
 #    target.extra = cp -df $(DESTDIR)/libananas4.so* $(INSTALL_ROOT)$(LIBDIR)
 #    alib.path = $(LIBDIR) 
 #    alib.files = libananas4.so.$$VERSION
 #    alib.extra = cp -df $(DESTDIR)/libananas4.so* $(INSTALL_ROOT)$(LIBDIR)
 
-    alibheader.path = $(INCLUDEDIR)
+    alibheader.path = $$(INCLUDEDIR)
     alibheader.files = $$HEADERS
     alibheader.files += .ui/*h
     }
 
 win32 {
-    alib.path = $(QTDIR)\lib
+    alib.path = $$(QTDIR)\lib
     alib.files += ananas4.dll
     alib.files += ananas4.lib
 #    alibheader.path = $(INCLUDEDIR)

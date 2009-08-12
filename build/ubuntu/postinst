@@ -32,7 +32,7 @@ case "$1" in
 	#creates system base for mysql
 #	mysqlshow -u root| grep ananas_system > /dev/null || mysqladmin -u root create ananas_system || :
 
-	ln -fs /usr/lib/libananasplugin.so /usr/lib/ananas/qt4plugins/designer/libananasplugin.so
+	ln -fs /usr/lib/libananasplugin.so /usr/lib/ananas4/libananasplugin.so
 #	chmod 666 /etc/ananas/* || :
 #	chmod 777 /etc/ananas
     ;;

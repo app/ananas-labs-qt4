@@ -35,7 +35,7 @@ TRANSLATIONS = \
     ../../translations/ananas-engine-ru.ts 
     
 unix {
-    target.path = $(BINDIR)
+    target.path = $$(BINDIR)
 #    ananas.files = ananas4
 }
 win32{

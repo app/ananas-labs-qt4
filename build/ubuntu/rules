@@ -24,14 +24,6 @@ configure-stamp:
 	dh_testdir
 	# Add here commands to configure the package.
 
-	# ananas
-	
-	# Временная заглушка для откладки процесса сборки пакета
-	# Используем архив с ранее откомпилированным Ананасом, что бы ускорить процедуру сборки пакета
-	# Если вы не занимаетесь отладкой сборки пакета, а собираете Ананас, закоментируйте этот блок кода.
-
-#	cd .. && tar zxf /home/app/tmp/compiled/ananas-0.9.5.tgz --exclude debian
-	
 	touch configure-stamp
 
 
@@ -112,8 +104,6 @@ install: build
 	rm -Rf $(CURDIR)/debian/ananas/usr/include/ananas || :
 	rm -f $(CURDIR)/debian/ananas/usr/share/doc/ananas/*.tex || :
 
-	# QSA
-#	cp /usr/share/qt4/lib/libqsa* $(CURDIR)/debian/ananas/usr/lib/
 # Build architecture-independent files here.
 binary-indep: build install
 # We have nothing to do by default.
