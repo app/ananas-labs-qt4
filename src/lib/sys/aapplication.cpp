@@ -37,7 +37,7 @@ AApplication::AApplication(  int & argc, char ** argv, AApplicationType aat )
     :QApplication( argc, argv, true )
 {
     v_aat = aat;
-    printf("langDir = %s\n", langDir().toUtf8().data() );
+    //printf("langDir = %s\n", langDir().toUtf8().data() );
 }
 
 int

@@ -1,6 +1,10 @@
 include(../plugins/plugins.pri)
 include(lib.pri)
 
+QT += script
+QT += scripttools
+
+
 TARGET = ananas4
 TEMPLATE = lib 
 shared:CONFIG += dll

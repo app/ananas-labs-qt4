@@ -42,7 +42,8 @@
 #include <qstring.h>
 #include <qfile.h>
 #include <qdir.h>
-#include <qsinterpreter.h>
+//#include <qsinterpreter.h>
+
 //--#include <qbutton.h>
 #include <qpushbutton.h>
 //--#include <qfocusdata.h>

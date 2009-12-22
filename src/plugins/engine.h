@@ -33,9 +33,13 @@
 #define ENGINE_H
 #include <qobject.h>
 #include <q3popupmenu.h>
-#include <qsobjectfactory.h>
-#include <qsproject.h>
-#include <qsinterpreter.h>
+
+//#include <qsobjectfactory.h>
+//#include <qsproject.h>
+//#include <qsinterpreter.h>
+#include <qscriptengine.h>
+#include <qscriptenginedebugger.h>
+
 //Added by qt3to4:
 #include <QTimerEvent>
 #include <qwidgetplugin.h>
@@ -51,7 +55,9 @@
 
 class aEngine;
 class aWidget;
-class QSInterpreter;
+class QScriptEngine;
+
+
 
 /*!
  * \~english
@@ -62,7 +68,7 @@ class QSInterpreter;
  *	Наследует QSObjectFactory.
  * \~
  */
-class QT_WIDGET_PLUGIN_EXPORT aObjectsFactory : public QSObjectFactory
+class QT_WIDGET_PLUGIN_EXPORT aObjectsFactory
 {
 public:
         aEngine   *engine;
@@ -131,7 +137,8 @@ public:
  *	ссылка на интерпретатор скрипта.
  *	\~
 */
-	QSInterpreter*	code;
+        QScriptEngine*	code;
+        QScriptEngineDebugger debugger;
 /*!
  *	\~english
  *	link to script project.
@@ -139,7 +146,7 @@ public:
  *	ссылка на проект.
  *	\~
 */
-    QSProject	project;
+    //QSProject	project;
 /*!
  *	\~english
  *	number to form

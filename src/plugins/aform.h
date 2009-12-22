@@ -37,8 +37,10 @@
 
 #include <qobject.h>
 #include <q3buttongroup.h>
-#include <qsproject.h>
-#include <qsinterpreter.h>
+//#include <qsproject.h>
+//#include <qsinterpreter.h>
+
+
 //--#include <qsargument.h>
 #include <qmutex.h>
 //Added by qt3to4:

@@ -260,31 +260,40 @@ aEngine::init( const QString &rcfile )
 	"";
 
 	bool ok = false;
-	if ( db->init( rcfile ) ) {
-		md = &db->cfg;
-		code = project.interpreter();
-//		code->setErrorMode(QSInterpreter::Notify);
-		code->setErrorMode(QSInterpreter::Nothing);
-		connect(code, SIGNAL( error ( const QString &, QObject *, const QString &, int )),
-			this, SLOT  ( error ( const QString &, QObject *, const QString &, int )));
-		code->addObjectFactory( new QSInputDialogFactory );
-		code->addObjectFactory( new aObjectsFactory( this ) );
-		code->addObjectFactory( new QSUtilFactory );
-		project.addObject( this );
-		project.addObject( md );
-		project.addObject( AMetaData::metadata() );
-		mGlobal = md->sText( md->find( md->find( mdc_metadata ), md_globals, 0 ), md_sourcecode );
-		if ( ! mGlobal.isEmpty() ) {
-//			project.createScript("global", mGlobal);
-//			project.createScript(this, mGlobal );
-//			project.createScript( "globalmodule", sysf );
-//			project.createScript( this, sourcePreprocessor(mGlobal));
-			project.createScript( "globalmodule", sysf+sourcePreprocessor(mGlobal));
-//			code->evaluate(sourcePreprocessor(mGlobal));
-		} else {
+        if ( ! db->init( rcfile ) ) {
+            return false;
+        }
+
+        md = &db->cfg;
+        code = new QScriptEngine();
+        debugger = new QScriptEngineDebugger();
+        debugger->attachTo(code); //окно дебагера появится при ошибке выполнении скрипта
+
+        //code->addObjectFactory( new QSInputDialogFactory );
+        code->addObjectFactory( new aObjectsFactory( this ) );
+        //code->addObjectFactory( new QSUtilFactory );
+
+        //project.addObject( this );
+
+        // Объект sys часто используется для вывода сообщений в окно сообщений
+        QScriptValue ananasEngineObject = code.newQObject(this);
+        code.globalObject().setProperty("sys", ananasEngineObject);
+
+
+        //project.addObject( md );
+        // Похоже не используется
+        QScriptValue ananasMetadataObject = code.newQObject(md*);
+        code.globalObject().setProperty("Metadata", ananasMetadataObject);
+
+//                project.addObject( AMetaData::metadata() );
+        QScriptValue ananasMetadataData = code.newQObject(md*);
+        code.globalObject().setProperty("MetaData", ananasMetadataData);
+        mGlobal = md->sText( md->find( md->find( mdc_metadata ), md_globals, 0 ), md_sourcecode );
+        if ( ! mGlobal.isEmpty() ) {
+                code->evaluate(sysf+sourcePreprocessor(mGlobal));
+        } else {
 //                        printf("Global module is empty\n");
-                }
-	} else return false;
+        }
 	return true;
 }
 
