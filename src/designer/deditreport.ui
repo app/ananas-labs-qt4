@@ -70,7 +70,7 @@
        </attribute>
        <layout class="QGridLayout" >
         <item row="0" column="0" >
-         <widget class="QSEditor" native="1" name="eModule" />
+         <widget class="ScriptEdit" native="1" name="eModule" />
         </item>
        </layout>
       </widget>
@@ -126,16 +126,16 @@
    <header>q3textedit.h</header>
   </customwidget>
   <customwidget>
-   <class>QSEditor</class>
+   <class>ScriptEdit</class>
    <extends>QWidget</extends>
-   <header>qseditor.h</header>
+   <header>scriptedit.h</header>
   </customwidget>
  </customwidgets>
  <includes>
   <include location="local" >mdtree.h</include>
   <include location="local" >aliaseditor.h</include>
   <include location="local" >mainform.h</include>
-  <include location="local" >qseditor.h</include>
+  <include location="local" >scriptedit.h</include>
  </includes>
  <resources/>
  <connections/>

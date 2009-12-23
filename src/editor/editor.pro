@@ -1,5 +1,5 @@
 TEMPLATE = lib
 #DESTDIR = ../lib
-TARGET = qtscripteditor
+TARGET = qtscriptedit
 #DEFINES += Q_SCRIPTDEBUG_BUILD_LIB
 include(editor.pri)

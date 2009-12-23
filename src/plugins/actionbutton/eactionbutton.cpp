@@ -4,7 +4,7 @@
 #include <qimage.h>
 #include <qpixmap.h>
 
-#include <qseditor.h>
+//#include <qseditor.h>
 #include <stdlib.h>
 
 /*

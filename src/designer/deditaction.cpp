@@ -9,8 +9,9 @@
 #include <QPixmap>
 #include "acfg.h"
 #include <qtabbar.h>
-#include <qsinterpreter.h>
-#include <qseditor.h>
+//#include <qsinterpreter.h>
+//#include <qseditor.h>
+#include <scriptedit.h>
 
 /*
  *  Constructs a dEditAction as a child of 'parent', with the
@@ -71,7 +72,7 @@ void dEditAction::setData( ActionListViewItem * o )
     st = md->attr ( obj, mda_type);
     if ( st == "0" ) cbType->setCurrentItem( 0 );
     else if ( st == "1" ) cbType->setCurrentItem( 1 );
-    eModule->setText( md->sText( obj, md_sourcecode ) );
+    eModule->setPlainText( md->sText( obj, md_sourcecode ) );
     active = md->findChild( obj, md_active_picture, 0 );
     if ( !active.isNull() ) {     // set active mode picture if exists
  bRemoveActive->setEnabled( TRUE );
@@ -176,7 +177,7 @@ void dEditAction::updateMD()
  if ( cbType->currentItem() == 1 )
  {
      md->setAttr( obj, mda_type, "1" );
-     md->setSText( obj, md_sourcecode, eModule->text() );
+     md->setSText( obj, md_sourcecode, eModule->toPlainText() );
  }
 }
 
@@ -185,7 +186,7 @@ void dEditAction::init()
 {
 
     delete statusBar();
-    eModule->setInterpreter(new QSInterpreter());
+    //eModule->setInterpreter(new QSInterpreter());
 //    tabWidget2->page(1)->hide() ;
 //    tabWidget2->setTabEnabled ( tabWidget2->page(1), FALSE );
 }

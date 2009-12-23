@@ -33,7 +33,7 @@
 #define ANANASMAINFORM_H
 #include <qvariant.h>
 #include <qworkspace.h>
-#include <qsinterpreter.h>
+//#include <qsinterpreter.h>
 #include <qdialog.h>
 #include <qstringlist.h>
 #include <qworkspace.h>

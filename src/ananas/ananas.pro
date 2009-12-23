@@ -1,7 +1,10 @@
 include (../plugins/plugins.pri)
 include (../lib/lib.pri)
 include (../ananas.pri)
-load(qsa)
+#load(qsa)
+QT += script
+QT += scripttools
+
 
 TARGET = ananas4
 TEMPLATE = app

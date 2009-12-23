@@ -6,8 +6,8 @@
 
 #include <qstatusbar.h>
 #include "acfg.h"
-#include <qsinterpreter.h>
-#include <qseditor.h>
+//#include <qsinterpreter.h>
+//#include <qseditor.h>
 
 /*
  *  Constructs a dEditReport as a child of 'parent', with the
@@ -52,14 +52,14 @@ void dEditReport::setData( aListViewItem *o )
 	setCaption( tr("Report:") + md->attr( obj, mda_name ) );
 	eName->setText( md->attr( obj, mda_name ) );
 	eDescription->setText( md->sText( obj, md_description ) );
-	eModule->setText( md->sText( obj, md_sourcecode ) );
+        eModule->setPlainText( md->sText( obj, md_sourcecode ) );
 }
 
 
 void dEditReport::init()
 {
 	delete statusBar();
-	eModule->setInterpreter(new QSInterpreter());
+//	eModule->setInterpreter(new QSInterpreter());
 }
 
 
@@ -72,7 +72,7 @@ void dEditReport::updateMD()
 	item->setText( 0, eName->text().stripWhiteSpace() );
 	md->setAttr( obj, mda_name, eName->text().stripWhiteSpace() );
 	md->setSText( obj, md_description, eDescription->text() );
-	md->setSText( obj, md_sourcecode, eModule->text() );
+        md->setSText( obj, md_sourcecode, eModule->toPlainText() );
 }
 
 void dEditReport::destroy()

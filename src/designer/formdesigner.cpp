@@ -153,7 +153,7 @@ aFormDesigner::fileSaveAll()
     for (i=0; i< workbench()->formWindowCount(); i++){
         w = workbench()->formWindow( i );
         workbench()->saveForm(w->editor());
-        printf("w=%s\n", w->windowTitle().toUtf8().data());
+        //printf("w=%s\n", w->windowTitle().toUtf8().data());
     }
 }
 

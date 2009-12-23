@@ -10,17 +10,17 @@
 #include <qfile.h>
 #include <qstatusbar.h>
 #include "acfg.h"
-#include "qsproject.h"
-#include "qsscript.h"
-#include <qsinterpreter.h>
+//#include "qsproject.h"
+//#include "qsscript.h"
+//#include <qsinterpreter.h>
 #include <qdialog.h>
 //--#include <qwidgetfactory.h>
 #include <QFormBuilder>
 #include <qobject.h>
 #include <q3textstream.h>
 #include <qbuffer.h>
-#include <qsinterpreter.h>
-#include <qseditor.h>
+//#include <qsinterpreter.h>
+//#include <qseditor.h>
 #include <q3process.h>
 #include <qapplication.h>
 
@@ -68,7 +68,7 @@ void dEditDialog::languageChange()
 void dEditDialog::init()
 {
 	delete statusBar();
-	eModule->setInterpreter(new QSInterpreter());
+//	eModule->setInterpreter(new QSInterpreter());
 //	fd = new aFormDesigner();
 }
 
@@ -94,7 +94,7 @@ void dEditDialog::setData( aListViewItem *o )
 		al->setData();
 		eName->setText( md->attr( obj, mda_name ) );
 		eDescription->setText( md->sText( obj, md_description ) );
-		eModule->setText( md->sText( obj, md_sourcecode ) );
+                eModule->setPlainText( md->sText( obj, md_sourcecode ) );
 		eFormFile->setText( QString("inputform_")+QString::number(item->id)+QString(".ui"));
 		setCaption( tr("Form:") + eName->text() );
 		parentClass = md->objClass( md->parent ( md->parent( obj ) ) );
@@ -268,7 +268,7 @@ void dEditDialog::updateMD()
 	md->setAttr( obj, mda_type, cbFormMode->currentItem() );
 	md->setAttr( obj, mda_readonly, cbReadOnly->isChecked() );
 	md->setSText( obj, md_description, eDescription->text() );
-	md->setSText( obj, md_sourcecode, eModule->text() );
+        md->setSText( obj, md_sourcecode, eModule->toPlainText() );
 //	ui.arg(cbDefault->currentItem());
 //	md->setSText( obj, md_defaultmod, QString( "%1" ).arg( cbDefault->currentItem() ) );
 	int i = (1<<md_form_new) * cbNew->isChecked() + \

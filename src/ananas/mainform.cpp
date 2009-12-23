@@ -99,9 +99,13 @@ MainForm::init()
     if ( !initEngine() ) return false;
     connect( menubar, SIGNAL(activated(int)), &engine, SLOT(on_MenuBar(int)) );
     languageChange();
-    engine.project.addObject(menubar);
-    engine.project.addObject(this);
-    engine.project.addObject(statusBar());
+//    engine.project.addObject(menubar);
+//    engine.project.addObject(this);
+//    engine.project.addObject(statusBar());
+    engine.code->newQObject(menubar);
+    engine.code->newQObject(this);
+    engine.code->newQObject(statusBar());
+
     languageChange();
     engine.on_systemstart();
     return true;
