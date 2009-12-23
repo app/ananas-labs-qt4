@@ -26,4 +26,4 @@ unix{
 #	libext.files = libaextservice.so
         INSTALLS += target
 }
-
+QT += scripttools
