@@ -97,7 +97,7 @@
        </attribute>
        <layout class="QGridLayout" >
         <item row="1" column="0" >
-         <widget class="QSEditor" native="1" name="eStrViewF" >
+         <widget class="ScriptEdit" native="1" name="eStrViewF" >
           <property name="enabled" >
            <bool>true</bool>
           </property>
@@ -114,7 +114,7 @@
        </attribute>
        <layout class="QGridLayout" >
         <item row="1" column="0" >
-         <widget class="QSEditor" native="1" name="eStrViewFG" >
+         <widget class="ScriptEdit" native="1" name="eStrViewFG" >
           <property name="enabled" >
            <bool>true</bool>
           </property>
@@ -183,9 +183,9 @@
    <header>q3textedit.h</header>
   </customwidget>
   <customwidget>
-   <class>QSEditor</class>
+   <class>ScriptEdit</class>
    <extends>QWidget</extends>
-   <header>qseditor.h</header>
+   <header>scriptedit.h</header>
   </customwidget>
  </customwidgets>
  <includes>
@@ -193,8 +193,7 @@
   <include location="local" >aliaseditor.h</include>
   <include location="local" >mainform.h</include>
   <include location="local" >roleeditor.h</include>
-  <include location="local" >qseditor.h</include>
-  <include location="local" >qseditor.h</include>
+  <include location="local" >scriptedit.h</include>
  </includes>
  <resources/>
  <connections>

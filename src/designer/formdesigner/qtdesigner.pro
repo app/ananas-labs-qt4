@@ -4,7 +4,7 @@ include ( ../../ananas.pri )
 TEMPLATE = lib
 TARGET   = qt4designer
 
-INCLUDEPATH += 
+INCLUDEPATH += ./private
 
 DEFINES  += 
 

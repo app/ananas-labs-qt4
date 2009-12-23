@@ -5,8 +5,8 @@
 #include <qpixmap.h>
 
 #include <qstatusbar.h>
-#include <qsinterpreter.h>
-#include <qseditor.h>
+//#include <qsinterpreter.h>
+//#include <qseditor.h>
 #include "acfg.h"
 
 /*
@@ -62,7 +62,7 @@ void dEditCat::setData( aListViewItem *o )
     e = md->find( obj, md_element ); // Find Element context
     sv = md->find( g, md_string_view ); // Group string view
 //====================================
-    eStrViewFG->setText( md->sText( sv, md_svfunction ) );
+    eStrViewFG->setPlainText( md->sText( sv, md_svfunction ) );
     eSvG->insertItem( "[ standart function ]" );
     eSvG->insertItem( "[ user function ]" );
     fid = md->sText( sv, md_fieldid ).toInt();
@@ -85,7 +85,7 @@ void dEditCat::setData( aListViewItem *o )
 
 //====================================
     sv = md->find( e, md_string_view );
-    eStrViewF->setText( md->sText( sv, md_svfunction ) );
+    eStrViewF->setPlainText( md->sText( sv, md_svfunction ) );
     eSv->insertItem( "[ standart function ]" );
     eSv->insertItem( "[ user function ]" );
     fid = md->sText( sv, md_fieldid ).toInt();
@@ -111,7 +111,7 @@ void dEditCat::setData( aListViewItem *o )
 void dEditCat::init()
 {
 	delete statusBar();
-	eStrViewF->setInterpreter( new QSInterpreter() );
+//	eStrViewF->setInterpreter( new QSInterpreter() );
 	eStrViewF->setEnabled( FALSE );
 }
 
@@ -131,7 +131,7 @@ void dEditCat::updateMD()
 	//======== Element view save
 	sv = md->find( e, md_string_view );
 	if ( sv.isNull() ) sv = md->insert( e, md_string_view );
-	md->setSText( sv, md_svfunction, eStrViewF->text() );
+        md->setSText( sv, md_svfunction, eStrViewF->toPlainText() );
 	if ( eSv->currentItem() == 0 ) md->setAttr( sv, mda_stdf, "1" );
 	else {
 	    md->setAttr( sv, mda_stdf, "0" );
@@ -141,7 +141,7 @@ void dEditCat::updateMD()
 	//======== Group view save
 	sv = md->find( g, md_string_view );
 	if ( sv.isNull() ) sv = md->insert( g, md_string_view );
-	md->setSText( sv, md_svfunction, eStrViewFG->text() );
+        md->setSText( sv, md_svfunction, eStrViewFG->toPlainText() );
 	if ( eSvG->currentItem() == 0 ) md->setAttr( sv, mda_stdf, "1" );
 	else {
 	    md->setAttr( sv, mda_stdf, "0" );

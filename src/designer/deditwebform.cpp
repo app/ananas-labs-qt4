@@ -6,8 +6,8 @@
 
 #include <qstatusbar.h>
 #include "acfg.h"
-#include <qsinterpreter.h>
-#include <qseditor.h>
+//#include <qsinterpreter.h>
+//#include <qseditor.h>
 
 /*
  *  Constructs a dEditWebForm as a child of 'parent', with the
@@ -44,8 +44,8 @@ void dEditWebForm::languageChange()
 void dEditWebForm::init()
 {
 	delete statusBar();
-	eServerModule->setInterpreter(new QSInterpreter());
-	eClientModule->setInterpreter(new QSInterpreter());
+//	eServerModule->setInterpreter(new QSInterpreter());
+//	eClientModule->setInterpreter(new QSInterpreter());
 }
 
 void dEditWebForm::destroy()
@@ -69,8 +69,8 @@ void dEditWebForm::setData( aListViewItem *o )
 	setCaption( tr("Web form:") + md->attr( obj, mda_name ) );
 	eName->setText( md->attr( obj, mda_name ) );
 	eDescription->setText( md->sText( obj, md_description ) );
-	eServerModule->setText( md->sText( obj, md_servermodule ) );
-	eClientModule->setText( md->sText( obj, md_clientmodule ) );
+        eServerModule->setPlainText( md->sText( obj, md_servermodule ) );
+        eClientModule->setPlainText( md->sText( obj, md_clientmodule ) );
 	eFormSource->setText( md->sText( obj, md_formsource ) );
 }
 
@@ -83,7 +83,7 @@ void dEditWebForm::updateMD()
 	item->setText( 0, eName->text().stripWhiteSpace() );
 	md->setAttr( obj, mda_name, eName->text().stripWhiteSpace() );
 	md->setSText( obj, md_description, eDescription->text() );
-	md->setSText( obj, md_servermodule, eServerModule->text() );
-	md->setSText( obj, md_clientmodule, eClientModule->text() );
+        md->setSText( obj, md_servermodule, eServerModule->toPlainText() );
+        md->setSText( obj, md_clientmodule, eClientModule->toPlainText() );
 	md->setSText( obj, md_formsource, eFormSource->text() );
 }

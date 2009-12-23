@@ -7,8 +7,8 @@ CONFIG += designer
 
 DESTDIR = ../../bin
 
-INCLUDEPATH += . ./formdesigner ../lib ../../tmp/ui/ananas ../plugins
-LIBS += -L../../lib -lananas4 -L../../lib/designer -lananasplugin4 -lqt4-qdataschema
+INCLUDEPATH += . ./formdesigner ./formdesigner/private  ../lib ../../tmp/ui/ananas ../plugins ../editor
+LIBS += -L../../lib -lananas4 -lqt4designer -L../../lib/designer -lananasplugin4 -lqt4-qdataschema -L../editor -lqtscriptedit
 unix {
     #LIBS += -L$(QTINC)/QtDesigner
     LIBS += -lQtDesignerComponents
@@ -28,7 +28,9 @@ UI_DIR = ../../tmp/ui/$$TARGET
 #INCLUDEPATH	+= ../lib ../lib/tmp/ui ../lib/.ui ./formdesigner /usr/lib
 
 include ( ../ananas.pri )
-load(qsa)
+#load(qsa)
+QT += script
+QT += scripttools
 
 HEADERS	= \
     actiontree.h \

@@ -6,8 +6,8 @@
 
 #include <qstatusbar.h>
 #include "acfg.h"
-#include <qsinterpreter.h>
-#include <qseditor.h>
+//#include <qsinterpreter.h>
+//#include <qseditor.h>
 
 /*
  *  Constructs a dEditDoc as a child of 'parent', with the
@@ -44,8 +44,8 @@ void dEditDoc::languageChange()
 void dEditDoc::init()
 {
 	delete statusBar();
-	eModule->setInterpreter( new QSInterpreter() );
-	eStrViewF->setInterpreter( new QSInterpreter() );
+//	eModule->setInterpreter( new QSInterpreter() );
+//	eStrViewF->setInterpreter( new QSInterpreter() );
 	eStrViewF->setEnabled( FALSE );
 }
 
@@ -76,9 +76,9 @@ void dEditDoc::setData( aListViewItem *o )
     setCaption( tr("Document:") + md->attr( obj, mda_name ) );
     eName->setText( md->attr( obj, mda_name ) );
     eDescription->setText( md->sText( obj, md_description ) );
-    eModule->setText( md->sText( obj, md_sourcecode ) );
+    eModule->setPlainText( md->sText( obj, md_sourcecode ) );
     sv = md->find( obj, md_string_view );
-    eStrViewF->setText( md->sText( sv, md_svfunction ) );
+    eStrViewF->setPlainText( md->sText( sv, md_svfunction ) );
     eSv->insertItem( "[ standart function ]" );
     eSv->insertItem( "[ user function ]" );
     fid = md->sText( sv, md_fieldid ).toInt();
@@ -110,10 +110,10 @@ void dEditDoc::updateMD()
 	item->setText( 0, eName->text().stripWhiteSpace() );
 	md->setAttr( obj, mda_name, eName->text().stripWhiteSpace() );
 	md->setSText( obj, md_description, eDescription->text() );
-	md->setSText( obj, md_sourcecode, eModule->text() );
+        md->setSText( obj, md_sourcecode, eModule->toPlainText() );
 	sv = md->find( obj, md_string_view );
 	if ( sv.isNull() ) sv = md->insert( obj, md_string_view );
-	md->setSText( sv, md_svfunction, eStrViewF->text() );
+        md->setSText( sv, md_svfunction, eStrViewF->toPlainText() );
 	if ( eSv->currentItem() == 0 ) md->setAttr( sv, mda_stdf, "1" );
 	else {
 	    md->setAttr( sv, mda_stdf, "0" );

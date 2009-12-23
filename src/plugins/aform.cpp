@@ -43,6 +43,8 @@
 #include <qfile.h>
 #include <qdir.h>
 //#include <qsinterpreter.h>
+#include <QScriptValue>
+#include <QScriptEngine>
 
 //--#include <qbutton.h>
 #include <qpushbutton.h>
@@ -337,14 +339,14 @@ aForm::init()
 		connectSlots();
 		if ( !sModule.isEmpty() )
 		{
-		//	engine->project.addObject(this);
-			engine->project.interpreter()->evaluate(sModule,this );
+//                        engine->project.interpreter()->evaluate(sModule,this );
+                        engine->code->evaluate(sModule);
 			aLog::print(aLog::Debug, tr("aForm load form module script"));
-			QStringList lst = engine->project.interpreter()->functions(this);
-			for(uint i=0; i<lst.count();i++)
-			{
-				aLog::print(aLog::Debug, tr("aForm defined function %1").arg(lst[i]));
-			}
+//			QStringList lst = engine->project.interpreter()->functions(this);
+//			for(uint i=0; i<lst.count();i++)
+//			{
+//				aLog::print(aLog::Debug, tr("aForm defined function %1").arg(lst[i]));
+//			}
 		}
 		else
 		{
@@ -402,10 +404,14 @@ aForm::Show()
 {
 	if ( form )
 	{
-		if ( engine->project.interpreter()->functions( this ).findIndex("on_formstart")!=-1)
-		{
-			engine->project.interpreter()->call("on_formstart", QVariantList(), this);
-		}
+//		if ( engine->project.interpreter()->functions( this ).findIndex("on_formstart")!=-1)
+//		{
+//			engine->project.interpreter()->call("on_formstart", QVariantList(), this);
+//		}
+                if ( engine->code->globalObject().property("on_formstart").isValid() ){
+                    engine->code->globalObject().property("on_formstart").call();
+                }
+
 		form->show();
 		((QWidget*)form->parent())->move(0,0);
 		connect( form, SIGNAL(destroyed()), this, SLOT(close()) );
@@ -485,23 +491,24 @@ aForm::turn_on(){
  */
 int
 aForm::SignIn(){
-	QVariant res;
+        QScriptValue res;
 	if ( form && !mainWidget->dataObject()->IsConducted())
 	{
-		if ( engine->project.interpreter()->functions( this ).findIndex("on_conduct")!=-1)
-		{
-			res  = engine->project.interpreter()->call("on_conduct",QVariantList(), this);
-		}
+//		if ( engine->project.interpreter()->functions( this ).findIndex("on_conduct")!=-1)
+//		{
+//			res  = engine->project.interpreter()->call("on_conduct",QVariantList(), this);
+//		}
+                if ( engine->code->globalObject().property("on_conduct").isValid() ){
+                    res = engine->code->globalObject().property("on_conduct").call();
+                }
+
 	}
-	//--if(res.type()==QSArgument::Variant)
-	{
-		// if return false
-		if(res.toBool()==false && res.type()!=QVariant::Invalid)
-		{
-			aLog::print(aLog::Info, tr("aForm conduct: function on_conduct() return false, document not conducted"));
-			return 0;
-		}
-	}
+        // if return false
+        if(res.isValid() && res.toBool() == false )
+        {
+                aLog::print(aLog::Info, tr("aForm conduct: function on_conduct() return false, document not conducted"));
+                return 0;
+        }
 	return mainWidget->TurnOn();
 }
 
@@ -1266,11 +1273,14 @@ aForm::SetFocus(){
 
 void
 aForm::on_button(){
-	if ( engine->project.interpreter()->functions(this).findIndex("on_button")!=-1)
-	{
-		engine->project.interpreter()->call("on_button",QVariantList()<<sender()->name(),this);
-//		engine->code->evaluate("on_button(\""+sender()->name()+"\")", this);
-	}
+//	if ( engine->project.interpreter()->functions(this).findIndex("on_button")!=-1)
+//	{
+//		engine->project.interpreter()->call("on_button",QVariantList()<<sender()->name(),this);
+//	}
+        if ( engine->code->globalObject().property("on_button").isValid() ){
+            engine->code->globalObject().property("on_button").call();
+        }
+
 }
 
 
@@ -1326,9 +1336,12 @@ aForm::on_lostfocus(){
 void
 aForm::on_form_close(){
 	if(!engine) return;
-	if ( engine->project.interpreter()->functions(this).findIndex("on_formstop")!=-1) {
-		engine->project.interpreter()->call("on_formstop", QVariantList(),this);
-	}
+//	if ( engine->project.interpreter()->functions(this).findIndex("on_formstop")!=-1) {
+//		engine->project.interpreter()->call("on_formstop", QVariantList(),this);
+//	}
+        if ( engine->code->globalObject().property("on_formstop").isValid() ){
+            engine->code->globalObject().property("on_formstop").call();
+        }
 }
 
 
@@ -1374,15 +1387,21 @@ void
 aForm::on_valueChanged( const QString & name, const QVariant & val )
 {
 
-	if ( engine->project.interpreter()->functions(this).findIndex("on_valuechanged")!=-1)
-	{
-		Q3ValueList<QVariant> lst;
-		lst << name;
-		lst << val;
-//		if(!val.isNull() && !val.isValid()) v = val;
-		engine->project.interpreter()->call("on_valuechanged",QVariantList(lst), this);
-	//	printf("aForm change value field %s to %s\n",(const char*)name.local8Bit(), val.toString().ascii());
-	}
+//	if ( engine->project.interpreter()->functions(this).findIndex("on_valuechanged")!=-1)
+//	{
+//		Q3ValueList<QVariant> lst;
+//		lst << name;
+//		lst << val;
+//		engine->project.interpreter()->call("on_valuechanged",QVariantList(lst), this);
+//	}
+        if ( engine->code->globalObject().property("on_valuechanged").isValid() ){
+            QScriptValueList list;
+            list.append(QScriptValue(name));
+            list.append( engine->code->newVariant(val));
+            engine->code->globalObject().property("on_valuechanged")
+                    .call(QScriptValue(),list);
+        }
+
 }
 
 
@@ -1390,33 +1409,23 @@ void
 aForm::on_tabvalueChanged(int row, int col)
 {
 
-	if ( engine->project.interpreter()->functions(this).findIndex("on_tabupdate")!=-1)
-	{
-		Q3ValueList<QVariant> lst;
-		lst << row;
-		lst << col;
-		lst << sender()->name();
-
-		engine->project.interpreter()->call("on_tabupdate",QVariantList(lst), this);
-	}
-/*
-	const QObject *sobj=sender();
-	QString objName=widgetName((QObject *) sobj);
-	cfg_message(0, "value changed %s (%s)\n", (const char *) objName.utf8(), (const char *) dbobject->className());
-	cfg_message(0, "classname %s\n", (const char *) sobj->className());
-	if (strcmp(sobj->className(),"QAnanasDBTable")==0) {
-//	if (sobj->className()=="QAnanasDBField") {
-*/
-/*		cfg_message(0,"OK");
-		if (dbobject->className()=="QAdoc"){
-			((QAdoc *)dbobject)->setfield(objName, s);
-		}
-		if (dbobject->className()=="QAcat"){
-			cfg_message(0,"Поле справочника %s=%s\n",(const char *) objName.utf8(), (const char *) s.utf8());
-			((QAcat *)dbobject)->setfield(objName, s);
-		}
-*/
+//	if ( engine->project.interpreter()->functions(this).findIndex("on_tabupdate")!=-1)
+//	{
+//		Q3ValueList<QVariant> lst;
+//		lst << row;
+//		lst << col;
+//		lst << sender()->name();
+//
+//		engine->project.interpreter()->call("on_tabupdate",QVariantList(lst), this);
 //	}
+        if ( engine->code->globalObject().property("on_tabupdate").isValid() ){
+            QScriptValueList list;
+            list << row;
+            list << col;
+            list << sender()->name();
+            engine->code->globalObject().property("on_tabupdate")
+                    .call(QScriptValue(),list);
+        }
 }
 
 
@@ -1432,20 +1441,33 @@ aForm::on_dbtablerow( QSqlRecord *r )
 		aSQLTable *t = o->table();
 		id = t->value(0).toULongLong();
         }
-	if ( engine->project.interpreter()->functions(this).findIndex("on_tablerow")!=-1) {
-		engine->project.interpreter()->call("on_tablerow", QVariantList()<<sender()->name(), this);
-	}
+//	if ( engine->project.interpreter()->functions(this).findIndex("on_tablerow")!=-1) {
+//		engine->project.interpreter()->call("on_tablerow", QVariantList()<<sender()->name(), this);
+//	}
+        if ( engine->code->globalObject().property("on_tablerow").isValid() ){
+            QScriptValueList list;
+            list << sender()->name();
+            engine->code->globalObject().property("on_tablerow")
+                    .call(QScriptValue(),list);
+        }
 }
 
 void
 aForm::on_event( const QString &source, const QString &data )
 {
-	Q3ValueList<QVariant> lst;
-	lst << source;
-	lst << data;
-	if ( engine->project.interpreter()->functions(this).findIndex("on_event")!=-1) {
-		engine->project.interpreter()->call("on_event", QVariantList(lst), this);
-	}
+//	Q3ValueList<QVariant> lst;
+//	lst << source;
+//	lst << data;
+//	if ( engine->project.interpreter()->functions(this).findIndex("on_event")!=-1) {
+//		engine->project.interpreter()->call("on_event", QVariantList(lst), this);
+//	}
+        if ( engine->code->globalObject().property("on_event").isValid() ){
+            QScriptValueList list;
+            list << source;
+            list << data;
+            engine->code->globalObject().property("on_event")
+                    .call(QScriptValue(),list);
+        }
 }
 
 
@@ -1465,12 +1487,19 @@ aForm::on_tabselected( qulonglong uid )
 void
 aForm::on_tablerow( qulonglong uid )
 {
-	Q3ValueList<QVariant> lst;
-	lst << sender()->name();
-	lst << QString("%1").arg(uid);
-	if ( engine->project.interpreter()->functions(this).findIndex("on_tabrowselected")!=-1) {
-		engine->project.interpreter()->call("on_tabrowselected", QVariantList(lst), this);
-	}
+//	Q3ValueList<QVariant> lst;
+//	lst << sender()->name();
+//	lst << QString("%1").arg(uid);
+//	if ( engine->project.interpreter()->functions(this).findIndex("on_tabrowselected")!=-1) {
+//		engine->project.interpreter()->call("on_tabrowselected", QVariantList(lst), this);
+//	}
+        if ( engine->code->globalObject().property("on_tabrowselected").isValid() ){
+            QScriptValueList list;
+            list << sender()->name();
+            list << QString("%1").arg(uid);
+            engine->code->globalObject().property("on_tabrowselected")
+                    .call(QScriptValue(),list);
+        }
 }
 
 int

@@ -3,6 +3,8 @@ TARGET	= ananas4-administrator
 include ( ../lib/lib.pri )
 include ( ../plugins/plugins.pri )
 include ( ../ananas.pri )
+QT += script
+QT += scripttools
 
 
 TEMPLATE	= app
@@ -10,7 +12,7 @@ LANGUAGE	= C++
 DESTDIR = ../../bin
 
 LIBS	+= -L../../lib -lananas4 
-LIBS    += -L../../lib/designer -lananasplugin4 -lqt4-qdataschema -L$(QTDIR)/lib -lqsa
+LIBS    += -L../../lib/designer -lananasplugin4 -lqt4-qdataschema -L$(QTDIR)/lib
 
 INCLUDEPATH	+= ../lib ../lib/tmp/ui ../lib/.ui
 

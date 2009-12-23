@@ -6,14 +6,14 @@
 
 #include "acfg.h"
 #include "qlayout.h"
-#include "qsproject.h"
-#include "qsscript.h"
+//#include "qsproject.h"
+//#include "qsscript.h"
 //#include "qseditor.h"
-#include <qsinterpreter.h>
+//#include <qsinterpreter.h>
 #include <qstatusbar.h>
 
 #ifndef QSA_NO_IDE
-#include "qsworkbench.h"
+//#include "qsworkbench.h"
 #endif
 
 /*
@@ -60,7 +60,7 @@ void dEditCfg::init()
 //	eModule=NULL;
 //	eModule = new QSEditor(tabWidget->page(2), "global module");
 //	l->addWidget(eModule, 5, 5, 0);
-	eModule->setInterpreter(new QSInterpreter());
+//	eModule->setInterpreter(new QSInterpreter());
 }
 
 
@@ -105,7 +105,7 @@ void dEditCfg::setData( aListViewItem *o )
 	eDate->setText( md->info( md_info_date ) );
 	eDescription->setText( md->info( md_info_remark ) );
 	globals = md->find( obj, md_globals, 0 );
-	eModule->setText( md->sText( globals, md_sourcecode ) );
+        eModule->setPlainText( md->sText( globals, md_sourcecode ) );
 
 /*
 	n=cfgobj_count(context, aot_remark);
@@ -147,7 +147,7 @@ void dEditCfg::updateMD()
 	if (eDBType->currentItem()==1) md->rc.setValue( "dbtype", "mysql" );
 	if (eDBType->currentItem()==2) md->rc.setValue( "dbtype", "postgres" );
 	globals = md->find( obj, md_globals, 0 );
-	md->setSText( globals, md_sourcecode, eModule->text() );
+        md->setSText( globals, md_sourcecode, eModule->toPlainText() );
 
 /*
 	if (cancelupdate) return;

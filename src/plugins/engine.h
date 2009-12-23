@@ -39,6 +39,7 @@
 //#include <qsinterpreter.h>
 #include <qscriptengine.h>
 #include <qscriptenginedebugger.h>
+#include <QScriptValue>
 
 //Added by qt3to4:
 #include <QTimerEvent>
@@ -138,7 +139,7 @@ public:
  *	\~
 */
         QScriptEngine*	code;
-        QScriptEngineDebugger debugger;
+        QScriptEngineDebugger* debugger;
 /*!
  *	\~english
  *	link to script project.
