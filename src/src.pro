@@ -1,8 +1,8 @@
 TEMPLATE = subdirs
+SUBDIRS += editor
 SUBDIRS  += lib plugins
 SUBDIRS += designer/formdesigner designer ananas admin
 SUBDIRS += extensions
-SUBDIRS += editor
 
 #TRANSLATIONS = \
 #    ../translations/ananas-en.ts \
