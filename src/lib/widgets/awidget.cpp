@@ -516,8 +516,10 @@ aWidget::widgetEditor(  QWidget *object, QDialog *editor )
 aWidget *
 aWidget::parentContainer( QWidget *w )
 {
+        QWidget* prev;
         while ( w )
 	{
+                prev = w;
                 w = w->parentWidget();
                 if ( w )
 		{
@@ -527,6 +529,7 @@ aWidget::parentContainer( QWidget *w )
 			}
 		}
         }
+        if (!w) w = prev;
         return ( aWidget *) w;
 }
 
