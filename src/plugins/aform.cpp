@@ -258,13 +258,14 @@ aForm::init()
 			//--form = QWidgetFactory::create( &b );
 			QFormBuilder fb;
 			fb.addPluginPath(QCoreApplication::applicationDirPath() /*"/plugins/designer"*/);
-			/*QList<QDesignerCustomWidgetInterface*> l = fb.customWidgets();
+                        fb.addPluginPath("/usr/lib/ananas/");
+                        /*QList<QDesignerCustomWidgetInterface*> l = fb.customWidgets();
 			int i;
 			for (i=0; i<l.size(); i++)
 			{
 			    aLog::print(aLog::Info, l[i]->name());
 			}*/
-            form = fb.load(&b);
+                        form = fb.load(&b);
 			aLog::print(aLog::Info, tr("aForm form create from ui ok"));
 			b.close();
 		}
