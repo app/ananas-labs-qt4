@@ -696,18 +696,12 @@ aEngine::OpenForm(QString fname, int mode, aObject* selecter)//Q_ULLONG ido)
 	aCfgItem object, form;
 
 	form = md->find(fname);
-	if(!form.isNull())
-	{
-		object = md->parent(md->parent(form));
-		if(object.isNull()) return 0;
-		qulonglong ido =0;
-		if(selecter) ido = selecter->sysValue("id").toULongLong();
-		return openForm(atoi(md->attr(object,mda_id)), atoi(md->attr(form,mda_id)), mode, mode, ido);
-	}
-	else
-	{
-		return 0;
-	}
+        if(form.isNull()) return 0;
+        object = md->parent(md->parent(form));
+        if(object.isNull()) return 0;
+        qulonglong ido =0;
+        if(selecter) ido = selecter->sysValue("id").toULongLong();
+        return openForm(atoi(md->attr(object,mda_id)), atoi(md->attr(form,mda_id)), mode, mode, ido);
 }
 
 
