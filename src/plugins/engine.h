@@ -179,7 +179,7 @@ public slots:
 	void Message(int n, const QString &msg );
 	void StatusMessage( const QString &msg );
 	void settimer(int sec, QString proc);
-	aForm * OpenForm(QString fname, int mode=0, aObject * selecter=0);//Q_ULLONG ido=0);
+        bool OpenForm(QString fname, int mode=0, aObject * selecter=0);//Q_ULLONG ido=0);
 	QVariant value( const QString &name );
 	void setValue( const QString &name, QVariant value = QVariant::Invalid );
 
