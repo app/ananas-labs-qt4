@@ -12,8 +12,8 @@ TEMPLATE = app
 DESTDIR = ../../bin
 
 INCLUDEPATH += ../lib ../../tmp/ui/ananas ../plugins
-LIBS += -L../../lib -lananas4 -L../../lib/designer -lananasplugin4 
-#LIBS += -L../../lib -lananas4 -L../../lib/designer -lananasplugin4 -lqt4-qdataschema 
+#LIBS += -L../../lib -lananas4 -L../../lib/designer -lananasplugin4 
+LIBS += -L../../lib -lananas4 -L../../lib/designer -lananasplugin4 -lqt4-qdataschema 
 
 HEADERS = \
     mainform.h

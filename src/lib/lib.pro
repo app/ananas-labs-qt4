@@ -15,7 +15,7 @@ DLLDESTDIR = ../../bin
 
 INCLUDEPATH += ../lib ../plugins
 LIBS += -L../../lib
-#LIBS +=-lqt4-dataschema
+LIBS +=-lqt4-dataschema
 
 shared {
     win32:DEFINES += ANANAS_DLL
