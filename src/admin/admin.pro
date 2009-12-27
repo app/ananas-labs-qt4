@@ -61,7 +61,7 @@ TRANSLATIONS = \
 
 
 unix {
-        target.path = $$(BINDIR)
+        target.path = $(BINDIR)
 #        aadmin.files = ananas4-administrator
 #        aadmin.extra = cp -df ananas4-administrator $(INSTALL_ROOT)$(BINDIR)
      }
