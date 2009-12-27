@@ -22,7 +22,7 @@ LANGUAGE	= C++
 win32:DESTDIR = ..
 
 unix{
-        target.path = $$(LIBDIR)/ananas4
+        target.path = /$(LIBDIR)/ananas4
 #        libext.files = libaextxml.so
         INSTALLS += target
 }

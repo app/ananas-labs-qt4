@@ -13,3 +13,8 @@ LIBS += -lQtDesignerComponents
 
 DESTDIR = ../../../lib
 DLLDESTDIR = ../../../bin
+unix {
+	VERSION 	= 1.0.0
+	target.path = /$(LIBDIR)
+	INSTALLS += target
+}
