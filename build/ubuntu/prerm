@@ -19,8 +19,8 @@ set -e
 
 case "$1" in
     remove)
-	rm -f /usr/share/ananas/translations/*.qm
-	rm -f /usr/share/ananas/templates/*.*
+#	rm -f /usr/share/ananas/translations/*.qm
+#	rm -f /usr/share/ananas/templates/*.*
 #	rm -f /usr/share/ananas/inventory/templ_*.odt
 #	rm -f /usr/share/ananas/inventory/templ_*.ods
 #	rm -f /etc/ananas/inventory.*
