@@ -2,12 +2,12 @@ Source: ananas4
 Section: utils
 Priority: optional
 Maintainer: Andrey Paskal (app) <apaskal@gmail.com>
-Build-Depends: debhelper (>= 5), qt4-dev-tools, libqt4-dev, libmysqlclient-dev, libqsa1-qt4-dev, libqt4-qdataschema
+Build-Depends: debhelper (>= 5), qt4-dev-tools, libqt4-dev, libmysqlclient-dev, libqt4-qdataschema
 Standards-Version: 3.7.2
 
 Package: ananas4
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, zip, unzip, libqtgui4, mysql-client (>=4.1), mysql-server (>=4.1), libqsa1-qt4, libqt4-qdataschema
+Depends: ${shlibs:Depends}, ${misc:Depends}, zip, unzip, libqtgui4, mysql-client (>=4.1), mysql-server (>=4.1), libqt4-scripttools, libqt4-qdataschema
 Description: Runtime and development environment of Finance Applications
 Description-ru:  Среда разработки и исполнения прикладных решений автоматизации оперативного, бухгалтерского и других видов учета.
  Учет товаров и рассчетов на компьютере.
