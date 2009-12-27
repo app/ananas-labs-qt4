@@ -28,17 +28,12 @@ win32 {
 #  CONFIG += dll
 }
 
-#LIBS += -L$(QTDIR)/plugins/designer -lqsa  # Why? -L../designer -lformdesigner
 unix{
     LIBS        +=  -L/usr/X11R6/lib/
 }
 win32 {
     #LIBS        += -L..\..\plugins -lananasplugin
 }
-
-#MOC_DIR = ../../tmp/moc/$$TARGET
-#OBJECTS_DIR = ../../tmp/obj/$$TARGET
-#UI_DIR = ../../tmp/ui/$$TARGET
 
 include ( ../ananas.pri )
 
@@ -105,14 +100,8 @@ TRANSLATIONS = \
     ../../translations/ananas-lib-ru.ts 
     
 unix{
-    target.path = $(LIBDIR) 
-#    target.files = libananas4.so.$$VERSION
-#    target.extra = cp -df $(DESTDIR)/libananas4.so* $(INSTALL_ROOT)$(LIBDIR)
-#    alib.path = $(LIBDIR) 
-#    alib.files = libananas4.so.$$VERSION
-#    alib.extra = cp -df $(DESTDIR)/libananas4.so* $(INSTALL_ROOT)$(LIBDIR)
-
-    alibheader.path = $(INCLUDEDIR)
+    target.path = /$(LIBDIR)
+    alibheader.path = /$(INCLUDEDIR)
     alibheader.files = $$HEADERS
     alibheader.files += .ui/*h
     }
@@ -132,9 +121,9 @@ unix{
     INSTALLS += alibheader
 }
 
-include(metadata/metadata.pri)
-include(dialogs/dialogs.pri)
-include(objects/objects.pri)
-include(widgets/widgets.pri)
-include(report/report.pri)
-include(sys/sys.pri)
+#include(metadata/metadata.pri)
+#include(dialogs/dialogs.pri)
+#include(objects/objects.pri)
+#include(widgets/widgets.pri)
+#include(report/report.pri)
+#include(sys/sys.pri)
