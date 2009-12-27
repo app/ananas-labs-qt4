@@ -12,7 +12,8 @@ LANGUAGE	= C++
 DESTDIR = ../../bin
 
 LIBS	+= -L../../lib -lananas4 
-LIBS    += -L../../lib/designer -lananasplugin4 -lqt4-qdataschema -L$(QTDIR)/lib
+LIBS    += -L../../lib/designer -lananasplugin4 -L$(QTDIR)/lib
+#LIBS    += -L../../lib/designer -lananasplugin4 -lqt4-qdataschema -L$(QTDIR)/lib
 
 INCLUDEPATH	+= ../lib ../lib/tmp/ui ../lib/.ui
 
