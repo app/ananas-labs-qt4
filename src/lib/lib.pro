@@ -121,9 +121,9 @@ unix{
     INSTALLS += alibheader
 }
 
-#include(metadata/metadata.pri)
-#include(dialogs/dialogs.pri)
-#include(objects/objects.pri)
-#include(widgets/widgets.pri)
-#include(report/report.pri)
-#include(sys/sys.pri)
+include(metadata/metadata.pri)
+include(dialogs/dialogs.pri)
+include(objects/objects.pri)
+include(widgets/widgets.pri)
+include(report/report.pri)
+include(sys/sys.pri)
