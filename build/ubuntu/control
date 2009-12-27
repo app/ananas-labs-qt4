@@ -1,5 +1,5 @@
 Source: ananas4
-Section: Office
+Section: utils
 Priority: optional
 Maintainer: Andrey Paskal (app) <apaskal@gmail.com>
 Build-Depends: debhelper (>= 5), qt4-dev-tools, libqt4-dev, libmysqlclient-dev, libqsa1-qt4-dev, libqt4-qdataschema

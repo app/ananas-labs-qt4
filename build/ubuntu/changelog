@@ -1,4 +1,4 @@
-ananas4 (0.9.5-1) unstable; urgency=low
+ananas4 (0.9.5-1~ppa1) karmic; urgency=high
 
   * Initial release of debian package
   * Новое расширение для прямой работы с SQL сервером. Предназначено для 
