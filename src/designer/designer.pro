@@ -174,7 +174,7 @@ TRANSLATIONS = \
     ../../translations/ananas-designer-ru.ts 
 
 unix {
-	target.path = $$(BINDIR)
+	target.path = /$(BINDIR)
 #	adesigner.files = ananas-designer
 #	acfg.path = /etc/ananas
 #	acfg.files= testwrite.cfg

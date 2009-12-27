@@ -54,10 +54,10 @@ TRANSLATIONS = \
 
 #SLASH = /
 unix {
-    target.path = $(LIBDIR)
+    target.path = /$(LIBDIR)
 #    lplugin.files = libananasplugin4.so
 #    lplugin.extra = cp -f $(DESTDIR)/libananasplugin4.so $(INSTALL_ROOT)$(LIBDIR) || true
-    lpluginheader.path = $(INCLUDEDIR)
+    lpluginheader.path = /$(INCLUDEDIR)
     lpluginheader.files = $$HEADERS
 }  
 
