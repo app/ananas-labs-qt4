@@ -2,7 +2,7 @@ Source: ananas4
 Section: utils
 Priority: optional
 Maintainer: Andrey Paskal (app) <apaskal@gmail.com>
-Build-Depends: debhelper (>= 5), qt4-dev-tools, libqt4-dev, libmysqlclient-dev, libqt4-qdataschema
+Build-Depends: debhelper (>= 5), qt4-dev-tools, libqt4-dev, libmysqlclient-dev, libqt4-qdataschema, qt4-qmake, libqtassistantclient-dev
 Standards-Version: 3.7.2
 
 Package: ananas4
