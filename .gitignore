@@ -1,0 +1,10 @@
+.moc
+.obj
+.ui
+*.so
+*.so.1*
+*.o
+src/**/Makefile
+qrc_*.cpp
+moc_*.cpp
+bin
