@@ -1126,7 +1126,7 @@ aForm::TabDBValue(const QString &tname, int row, int col)
 QVariant
 aForm::tabValue(const QString &tname, int row, int col, bool dbval)
 {
-	QVariant res=QString::QString("Unknown");
+	QVariant res=QString("Unknown");
 	QObject *w;
 	QStringList l;
 	w = Widget( tname );

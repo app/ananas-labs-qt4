@@ -1116,5 +1116,6 @@ aDataTable::sqlFieldName ( const QString & userFieldName ) const {
 	if (fnames[userFieldName] ) {
 		return *fnames[ userFieldName ];
 	}
-	return QString::QString("");
+	// return QString::QString("");
+	return QString("");
 }
