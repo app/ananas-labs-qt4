@@ -22,11 +22,12 @@ first: all
 all: Makefile
 	cd src && $(QMAKE) && $(MAKE)
 clean:
-	rm -fr rpm
+	rm -fr rpm lib/
+	rm -f src/extensions/libaextexample.so
 	rm -f $(NAME).spec
 	rm -fr *~
 	rm -f translations/*.qm
-	cd src && $(QMAKE) && $(MAKE) clean
+	cd src && $(QMAKE) && $(MAKE) distclean
 
 tr:
 	lrelease translations/*.ts
