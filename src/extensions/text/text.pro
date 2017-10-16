@@ -10,13 +10,13 @@ win32:DEFINES   += ANANAS_NO_DLL
 }
 TEMPLATE	=lib
 CONFIG	+= plugin
-LIBS	+= -L../../../lib -lananas4
+LIBS	+= -L../../../lib -lananas
 INCLUDEPATH	+= ../../lib 
 LANGUAGE	= C++
 win32:DESTDIR = ..
 
 unix{
-        target.path = /$(LIBDIR)/ananas4
+        target.path = /$(LIBDIR)/ananas
 #        libext.files = libaexttext.so
         INSTALLS += target
 }

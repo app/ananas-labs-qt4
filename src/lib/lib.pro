@@ -5,7 +5,7 @@ QT += script
 QT += scripttools
 
 
-TARGET = ananas4
+TARGET = ananas
 TEMPLATE = lib 
 shared:CONFIG += dll
 unix:VERSION = 1.0.1
@@ -107,8 +107,8 @@ unix{
 
 win32 {
     alib.path = $$(QTDIR)\lib
-    alib.files += ananas4.dll
-    alib.files += ananas4.lib
+    alib.files += ananas.dll
+    alib.files += ananas.lib
 #    alibheader.path = $(INCLUDEDIR)
 #    alibheader.files = $$HEADERS
 #    alibheader.files += tmp\ui\*h

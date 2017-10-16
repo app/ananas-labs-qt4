@@ -1,11 +1,11 @@
-Source: ananas4
+Source: ananas
 Section: utils
 Priority: optional
 Maintainer: Andrey Paskal (app) <apaskal@gmail.com>
 Build-Depends: debhelper (>= 5), qt4-dev-tools, libqt4-dev, libmysqlclient-dev, libqt4-qdataschema, qt4-qmake, libqtassistantclient-dev
 Standards-Version: 3.7.2
 
-Package: ananas4
+Package: ananas
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, zip, unzip, libqtgui4, mysql-client (>=4.1), mysql-server (>=4.1), libqt4-scripttools, libqt4-qdataschema
 Description: Runtime and development environment of Finance Applications

@@ -1,4 +1,4 @@
-NAME    = ananas4
+NAME    = ananas
 VERSION = $(shell cat VERSION)
 NAMEV  = $(NAME)-$(VERSION)
 MAKE = make

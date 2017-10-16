@@ -1,5 +1,5 @@
 #project for Administrator application from Ananas automation accounting system
-TARGET	= ananas4-administrator
+TARGET	= ananas-administrator
 include ( ../lib/lib.pri )
 include ( ../plugins/plugins.pri )
 include ( ../ananas.pri )
@@ -11,8 +11,8 @@ TEMPLATE	= app
 LANGUAGE	= C++
 DESTDIR = ../../bin
 
-LIBS	+= -L../../lib -lananas4 
-LIBS    += -L../../lib/designer -lananasplugin4 -lqt4-qdataschema -L$(QTDIR)/lib
+LIBS	+= -L../../lib -lananas 
+LIBS    += -L../../lib/designer -lananasplugin -lqt4-qdataschema -L$(QTDIR)/lib
 
 INCLUDEPATH	+= ../lib ../lib/tmp/ui ../lib/.ui
 
@@ -62,8 +62,8 @@ TRANSLATIONS = \
 
 unix {
         target.path = /$(BINDIR)
-#        aadmin.files = ananas4-administrator
-#        aadmin.extra = cp -df ananas4-administrator $(INSTALL_ROOT)$(BINDIR)
+#        aadmin.files = ananas-administrator
+#        aadmin.extra = cp -df ananas-administrator $(INSTALL_ROOT)$(BINDIR)
      }
 
 INSTALLS += target

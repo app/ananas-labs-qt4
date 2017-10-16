@@ -17,14 +17,14 @@ TEMPLATE	=lib
 CONFIG	+= plugin
 
 INCLUDEPATH	+= ../../lib 
-LIBS	+= -L../../../lib -lananas4
+LIBS	+= -L../../../lib -lananas
 
 LANGUAGE	= C++
 win32:DESTDIR = ..
 #win32:DLLDESTDIR	= ..
 
 unix{
-	target.path = /$(LIBDIR)/ananas4 
+	target.path = /$(LIBDIR)/ananas 
 #	libext.files = libaextsql.so
 	INSTALLS += target
 }

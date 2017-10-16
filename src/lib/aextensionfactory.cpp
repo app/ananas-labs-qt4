@@ -59,7 +59,7 @@ AExtensionFactoryPrivate::AExtensionFactoryPrivate()
 #ifdef Q_OS_WIN32
     extensionsDirName = qApp->applicationDirPath()+"/extensions";
 #else
-    extensionsDirName = "/usr/lib/ananas4";
+    extensionsDirName = "/usr/lib/ananas";
 #endif
 
     hash.clear();

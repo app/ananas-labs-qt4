@@ -61,7 +61,7 @@ AApplication::langDir()
 #ifdef _Windows
 	return applicationDirPath()+"/";
 #else
-	return "/usr/share/ananas4/translations/";
+	return "/usr/share/ananas/translations/";
 #endif
 }
 

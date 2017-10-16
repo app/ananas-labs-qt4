@@ -59,20 +59,20 @@ install: build
 
 	# Add here commands to install the package into debian/ananas.
 
-	mkdir -p $(CURDIR)/debian/ananas4/usr/share/ananas4/translations
-	mkdir -p $(CURDIR)/debian/ananas4/usr/share/ananas4/templates
-	mkdir -p $(CURDIR)/debian/ananas4/usr/share/applications
-	mkdir -p $(CURDIR)/debian/ananas4/usr/share/pixmaps
-	mkdir -p $(CURDIR)/debian/ananas4/usr/lib/menu
+	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/translations
+	mkdir -p $(CURDIR)/debian/ananas/usr/share/ananas/templates
+	mkdir -p $(CURDIR)/debian/ananas/usr/share/applications
+	mkdir -p $(CURDIR)/debian/ananas/usr/share/pixmaps
+	mkdir -p $(CURDIR)/debian/ananas/usr/lib/menu
 	cd src && \
 	$(MAKE) install \
-	INSTALL_ROOT=$(CURDIR)/debian/ananas4 LIBDIR=/usr/lib \
-	BINDIR=/usr/bin INCLUDEDIR=/usr/include/ananas4 
+	INSTALL_ROOT=$(CURDIR)/debian/ananas LIBDIR=/usr/lib \
+	BINDIR=/usr/bin INCLUDEDIR=/usr/include/ananas 
 	#cd ../doc && qmake doc.pro -o Makefile && make install INSTALL_ROOT=$(CURDIR)/debian/ananas \
 	#DOCDIR=$(CURDIR)/debian/ananas/usr/share/doc/ananas
 
-	cp -f ./translations/*.qm $(CURDIR)/debian/ananas4/usr/share/ananas4/translations
-	cp -f ./src/designer/templates/*.* $(CURDIR)/debian/ananas4/usr/share/ananas4/templates
+	cp -f ./translations/*.qm $(CURDIR)/debian/ananas/usr/share/ananas/translations
+	cp -f ./src/designer/templates/*.* $(CURDIR)/debian/ananas/usr/share/ananas/templates
 
 
 	# clear debug info
@@ -83,9 +83,9 @@ install: build
 #	strip $(CURDIR)/debian/$(package)/usr/lib/ananas/qt4plugins/sqldrivers/libqsqlmysqlu.so
 	
 
-	cp -f ./build/menus/kde/ananas.desktop $(CURDIR)/debian/ananas4/usr/share/applications/
-	cp -f ./build/menus/kde/ananas-designer.desktop $(CURDIR)/debian/ananas4/usr/share/applications/
-	cp -f ./build/icons/*.png $(CURDIR)/debian/ananas4/usr/share/pixmaps/
+	cp -f ./build/menus/kde/ananas.desktop $(CURDIR)/debian/ananas/usr/share/applications/
+	cp -f ./build/menus/kde/ananas-designer.desktop $(CURDIR)/debian/ananas/usr/share/applications/
+	cp -f ./build/icons/*.png $(CURDIR)/debian/ananas/usr/share/pixmaps/
 
 	# inventory
 #	mkdir -p $(CURDIR)/debian/ananas/etc/ananas
@@ -102,7 +102,7 @@ install: build
 
 #	rm -Rf $(CURDIR)/debian/ananas/usr/include/ananas || :
 #	rm -f $(CURDIR)/debian/ananas/usr/share/doc/ananas/*.tex || :
-	find $(CURDIR)/debian/ananas4/ || :
+	find $(CURDIR)/debian/ananas/ || :
 
 # Build architecture-independent files here.
 binary-indep: build install

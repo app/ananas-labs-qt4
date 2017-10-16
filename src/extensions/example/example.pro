@@ -9,7 +9,7 @@ win32:DEFINES+= ANANAS_DLL
 win32:DEFINES   += ANANAS_NO_DLL
 }
 TEMPLATE	=lib
-LIBS	+= -L../../../lib -lananas4
+LIBS	+= -L../../../lib -lananas
 CONFIG		+= plugin
 INCLUDEPATH	+= ../../lib 
 LANGUAGE	= C++

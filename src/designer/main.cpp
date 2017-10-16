@@ -57,7 +57,7 @@ int setTranslator(QString langdir, QString lang)
 //#ifdef Q_OS_WIN32
 //	langdir = qApp->applicationDirPath()+"/translations/";
 //#else
-//	langdir = "/usr/share/ananas4/translations/";
+//	langdir = "/usr/share/ananas/translations/";
 //#endif
 	tr_app.load( langdir+"ananas-designer-"+lang+".qm",".");
 	tr_lib.load( langdir+"ananas-lib-"+lang+".qm",".");
@@ -159,9 +159,9 @@ int main( int argc, char ** argv )
 	pixmap = QPixmap( qApp->applicationDirPath()+"/designer-splash-"+lang+".png" );
 	qApp->addLibraryPath( qApp->applicationDirPath() );
 #else
-	pixmap = QPixmap( "/usr/share/ananas4/designer/locale/designer-splash-"+lang+".png" );
-//	qApp->addLibraryPath( "/usr/lib/ananas4/" );
-//	qApp->setLibraryPaths( QStringList() <<"/usr/lib/ananas4/" );
+	pixmap = QPixmap( "/usr/share/ananas/designer/locale/designer-splash-"+lang+".png" );
+//	qApp->addLibraryPath( "/usr/lib/ananas/" );
+//	qApp->setLibraryPaths( QStringList() <<"/usr/lib/ananas/" );
 #endif
 	foreach (QString path, app.libraryPaths())
     	    printf("%s\n", path.toUtf8().data());

@@ -26,7 +26,7 @@ win32 {
 win32:DESTDIR = ..
 
 unix{
-        target.path = $$(LIBDIR)/ananas4
+        target.path = $$(LIBDIR)/ananas
 #        libext.files = libaextte.so
         INSTALLS += target
 }

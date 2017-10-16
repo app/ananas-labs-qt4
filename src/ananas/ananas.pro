@@ -6,14 +6,14 @@ QT += script
 QT += scripttools
 
 
-TARGET = ananas4
+TARGET = ananas
 TEMPLATE = app
 
 DESTDIR = ../../bin
 
 INCLUDEPATH += ../lib ../../tmp/ui/ananas ../plugins
-#LIBS += -L../../lib -lananas4 -L../../lib/designer -lananasplugin4 
-LIBS += -L../../lib -lananas4 -L../../lib/designer -lananasplugin4 -lqt4-qdataschema 
+#LIBS += -L../../lib -lananas -L../../lib/designer -lananasplugin 
+LIBS += -L../../lib -lananas -L../../lib/designer -lananasplugin -lqt4-qdataschema 
 
 HEADERS = \
     mainform.h
@@ -33,7 +33,7 @@ TRANSLATIONS = \
     
 unix {
     target.path = /$(BINDIR)
-#    ananas.files = ananas4
+#    ananas.files = ananas
 }
 win32{
 #    ananas.path =.

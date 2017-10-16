@@ -1,4 +1,4 @@
-ananas4 (0.9.5-1~ppa1) karmic; urgency=high
+ananas (0.9.6-1~ppa.1) xenial; urgency=high
 
   * Initial release of debian package
   * Новое расширение для прямой работы с SQL сервером. Предназначено для 
@@ -29,4 +29,4 @@ ananas4 (0.9.5-1~ppa1) karmic; urgency=high
   * Обновлены изображения на заставках, отображаемых при запуске Ананаса и 
   Дизайнера. 
 
- -- Andrey Paskal (app) <apaskal@gmail.com>  Sun, 18 Jan 2009 12:13:55 +0300
+ -- Ananas Project <project@ananas.su>  Mon, 16 Oct 2017 16:00:11 +0300

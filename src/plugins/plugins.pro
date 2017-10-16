@@ -1,5 +1,5 @@
 #!define TARGET first for correct temporray paths definitions
-TARGET = ananasplugin4
+TARGET = ananasplugin
 
 include( plugins.pri )
 include( ../lib/lib.pri )
@@ -15,7 +15,7 @@ DESTDIR = ../../lib/designer
 DLLDESTDIR = ../../bin
 
 INCLUDEPATH += ../plugins ../lib 
-LIBS += -L../../lib -lananas4 
+LIBS += -L../../lib -lananas 
 
 shared {
     win32:DEFINES+= QT_PLUGIN # ANANAS_DLL
@@ -55,8 +55,8 @@ TRANSLATIONS = \
 #SLASH = /
 unix {
     target.path = /$(LIBDIR)
-#    lplugin.files = libananasplugin4.so
-#    lplugin.extra = cp -f $(DESTDIR)/libananasplugin4.so $(INSTALL_ROOT)$(LIBDIR) || true
+#    lplugin.files = libananasplugin.so
+#    lplugin.extra = cp -f $(DESTDIR)/libananasplugin.so $(INSTALL_ROOT)$(LIBDIR) || true
     lpluginheader.path = /$(INCLUDEDIR)
     lpluginheader.files = $$HEADERS
 }  
@@ -64,8 +64,8 @@ unix {
 win32 {
 #   target.path = $(QTDIR)\plugins\designer
     lplugin.path = $(QTDIR)\plugins\designer
-    lplugin.files = ananasplugin4.*
-    lplugin.extra = copy ananasplugin4.* $(QTDIR)\lib
+    lplugin.files = ananasplugin.*
+    lplugin.extra = copy ananasplugin.* $(QTDIR)\lib
     INSTALLS += lplugin 
 }  
 
