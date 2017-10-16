@@ -1,4 +1,4 @@
-ananas (0.9.6-1~ppa.1) xenial; urgency=high
+ananas (0.9.6-1) xenial; urgency=high
 
   * Initial release of debian package
   * Новое расширение для прямой работы с SQL сервером. Предназначено для 
