@@ -14,7 +14,7 @@ DESTDIR = ../../lib
 DLLDESTDIR = ../../bin
 
 INCLUDEPATH += ../lib ../plugins
-LIBS += -L../../lib -lqt4-qdataschema
+LIBS += -L../../lib -lqdataschema
 
 shared {
     win32:DEFINES += ANANAS_DLL

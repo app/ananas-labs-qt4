@@ -13,7 +13,7 @@ DESTDIR = ../../bin
 
 INCLUDEPATH += ../lib ../../tmp/ui/ananas ../plugins
 #LIBS += -L../../lib -lananas -L../../lib/designer -lananasplugin 
-LIBS += -L../../lib -lananas -L../../lib/designer -lananasplugin -lqt4-qdataschema 
+LIBS += -L../../lib -lananas -L../../lib/designer -lananasplugin -lqdataschema 
 
 HEADERS = \
     mainform.h

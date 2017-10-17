@@ -8,7 +8,7 @@ CONFIG += designer
 DESTDIR = ../../bin
 
 INCLUDEPATH += . ./formdesigner ./formdesigner/private  ../lib ../../tmp/ui/ananas ../plugins ../editor
-LIBS += -L../../lib -lananas -lqt4designer -L../../lib/designer -lananasplugin -lqt4-qdataschema -L../editor -lqtscriptedit
+LIBS += -L../../lib -lananas -lqt4designer -L../../lib/designer -lananasplugin -lqdataschema -L../editor -lqtscriptedit
 unix {
     #LIBS += -L$(QTINC)/QtDesigner
     LIBS += -lQtDesignerComponents

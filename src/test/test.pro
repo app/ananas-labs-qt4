@@ -17,4 +17,4 @@ FORMS	=
 TEMPLATE	=app
 INCLUDEPATH	+= ../lib ../plugins
 LIBS	+= -L$(QTDIR)/lib -lqsa -L../../lib -lananas
-LIBS	+= -L../../lib/designer -lananasplugin -lqt4-qdataschema
+LIBS	+= -L../../lib/designer -lananasplugin -lqdataschema
