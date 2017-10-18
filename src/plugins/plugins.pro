@@ -54,7 +54,8 @@ TRANSLATIONS = \
 
 #SLASH = /
 unix {
-    target.path = /$(LIBDIR)
+#    target.path = /$(LIBDIR)
+    target.path = /$(LIBDIR)/ananas/designer
 #    lplugin.files = libananasplugin.so
 #    lplugin.extra = cp -f $(DESTDIR)/libananasplugin.so $(INSTALL_ROOT)$(LIBDIR) || true
     lpluginheader.path = /$(INCLUDEDIR)

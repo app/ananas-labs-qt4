@@ -160,7 +160,8 @@ int main( int argc, char ** argv )
 	qApp->addLibraryPath( qApp->applicationDirPath() );
 #else
 	pixmap = QPixmap( "/usr/share/ananas/designer/locale/designer-splash-"+lang+".png" );
-//	qApp->addLibraryPath( "/usr/lib/ananas/" );
+  qApp->addLibraryPath( "/usr/lib/ananas/" );
+  qApp->addLibraryPath( "/usr/lib/ananas/designer/" );
 //	qApp->setLibraryPaths( QStringList() <<"/usr/lib/ananas/" );
 #endif
 	foreach (QString path, app.libraryPaths())
