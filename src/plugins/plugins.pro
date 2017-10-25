@@ -9,7 +9,7 @@ QT += script
 QT += scripttools
 
 TEMPLATE = lib
-shared:CONFIG += dll plugin
+shared:CONFIG += dll plugin debug
 
 DESTDIR = ../../lib/designer
 DLLDESTDIR = ../../bin
