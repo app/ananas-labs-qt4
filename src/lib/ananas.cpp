@@ -52,22 +52,22 @@ bool
 ANANAS_EXPORT
 ananas_login( QString &rcfile, QString &username, QString &userpassword, aDatabase *db, int appId )
 {
-    dSelectDB dselectdb;
-    dLogin dlogin;
-        
-    if ( rcfile.isEmpty() ) {
-        if (dselectdb.exec()==QDialog::Accepted) rcfile = dselectdb.rcfile;
-    }
-    if ( !rcfile.isEmpty() ) {
-    	if (dlogin.exec()==QDialog::Accepted) {
-	    username = dlogin.username;
-	    userpassword = dlogin.password;
-            if ( !db ) db = aDatabase::database();
-	    if ( !db->init( rcfile ) ) return false;
-	    return ( db->login( username, userpassword, appId ) );
-	} return false;
-    }
-    return false;
+  dSelectDB dselectdb;
+  dLogin dlogin;
+
+  if ( rcfile.isEmpty() ) {
+    if (dselectdb.exec()==QDialog::Accepted) rcfile = dselectdb.rcfile;
+  }
+  if ( !rcfile.isEmpty() ) {
+    if (dlogin.exec()==QDialog::Accepted) {
+      username = dlogin.username;
+      userpassword = dlogin.password;
+      if ( !db ) db = aDatabase::database();
+      if ( !db->init( rcfile ) ) return false;
+      return ( db->login( username, userpassword, appId ) );
+    } return false;
+  }
+  return false;
 }
 
 
