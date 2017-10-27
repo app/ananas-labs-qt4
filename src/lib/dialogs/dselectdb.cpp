@@ -59,7 +59,6 @@ void dSelectDB::languageChange()
 
 void dSelectDB::init()
 {
-	aLog::init("ananas.log", aLog::Debug);
 	createMenu();
 	progressBar1->hide();
 	QString fname;

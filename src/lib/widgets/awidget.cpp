@@ -44,7 +44,7 @@
 #include "wdbtable.h"
 #include "aform.h"
 #include "alog.h"
-
+#include <qapplication.h>
 
 /*!
  *\en
@@ -406,8 +406,6 @@ aWidget::getObjectData( QWidget *object )
         emit( getData( object ) );
 }
 
-
-
 /*!
  *\en
  *	Return toplevel metadata configuration.
@@ -420,11 +418,12 @@ aCfg*
 aWidget::getMd()
 {
 	aCfg *md = 0;
-	QWidget *mw = topLevelWidget();
-	if (mw->name() == QString("ananas-designer_mainwindow") )
-	{
-		connect( this, SIGNAL( getMd( aCfg ** ) ), mw, SLOT( getMd( aCfg ** ) ));
-		emit ( getMd( &md ) );
+	foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+		if (widget->name() == QString("ananas-designer_mainwindow") )
+		{
+			connect( this, SIGNAL( getMd( aCfg ** ) ), widget, SLOT( getMd( aCfg ** ) ));
+			emit ( getMd( &md ) );
+		}
 	}
 	return md;
 }

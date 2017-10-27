@@ -12,12 +12,12 @@ public:
     dEditDialog(QWidget* parent = 0, const char* name = 0, Qt::WindowFlags fl = Qt::WType_TopLevel);
     ~dEditDialog();
 
-    int docId;
+    qulonglong docId;
     aAliasEditor *al;
     aFormDesigner *fd;
     aListViewItem *item;
 
-    virtual int getDocId();
+    virtual qulonglong getDocId();
 
 public slots:
     virtual void init();
@@ -27,6 +27,8 @@ public slots:
     virtual void EditModule();
     virtual void updateMD();
 
+signals:
+	void setId(qulonglong* id);
 protected slots:
     virtual void languageChange();
 

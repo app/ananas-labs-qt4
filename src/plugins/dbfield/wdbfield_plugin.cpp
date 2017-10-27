@@ -25,7 +25,7 @@
 
 #include "wdbfield_taskmenu.h"
 #include "wdbfield.h"
-
+#include <alog.h>
 
 wDBFieldPlugin::wDBFieldPlugin(QObject *parent)
     : QObject(parent), m_initialized(false)
@@ -55,7 +55,7 @@ void wDBFieldPlugin::initialize(QDesignerFormEditorInterface *core)
                                 Q_TYPEID(QDesignerTaskMenuExtension));
 
     m_initialized = true;
-    printf("dbfield inited\n");
+    aLog::debug("wDBFieldPlugin::initialize, dbfield initialized\n");
 }
 
 QWidget *wDBFieldPlugin::createWidget(QWidget *parent)

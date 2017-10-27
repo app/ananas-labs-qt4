@@ -40,8 +40,8 @@
 #include "formdesigner.h"
 
 MainForm *mainform = 0;
-aWindowsList *mainformwl = 0;
-QWorkspace *mainformws = 0;
+// aWindowsList *mainformwl = 0;
+// QWorkspace *mainformws = 0;
 //QApplication *application = 0;
 QTranslator *translator = 0, tr_app(0), tr_lib(0), tr_plugins(0);
 aFormDesigner *formdesigner = 0;
@@ -49,7 +49,8 @@ QString lang="en",
 	rcfile="",
 	username="",
 	userpassword="";
-
+aDatabase* database= NULL;
+aCfgRc rc;
 
 int setTranslator(QString langdir, QString lang)
 {
@@ -128,28 +129,40 @@ parseCommandLine( AApplication *a )
 	return 0;
 }
 
-
 int main( int argc, char ** argv )
 {
 	AApplication app ( argc, argv, AApplication::Designer );
-	MainForm *w = new MainForm();
+	MainForm *appWindow = new MainForm();
 //#ifndef _Windows
-        QTextCodec::setCodecForCStrings( QTextCodec::codecForName("UTF8") );
+	QTextCodec::setCodecForCStrings( QTextCodec::codecForName("UTF8") );
 //#endif
 
     // Для QSettings
 	app.setOrganizationName("ananasgroup");
-        app.setApplicationName("ananas");
+	app.setApplicationName("ananas");
 
-	mainform = w;
-	mainformws = mainform->ws;
-	mainformwl = mainform->wl;
+	mainform = appWindow;
+	// mainformws = mainform->ws;
+	// mainformwl = mainform->wl;
 //	application = &app;
 //	dSelectDB dselectdb;
-	int rc;
 	QPixmap pixmap;
+	QString configWorkDir = QDir::homeDirPath()+"./ananas";
+	QString logLevel =  "0";
 
 	if ( parseCommandLine( &app ) ) return 1;
+	if ( !rcfile.isEmpty() )
+	{
+		rc.read( rcfile );
+		configWorkDir = rc.value("workdir", configWorkDir);
+		logLevel = rc.value("debug", "0");
+		
+	}
+	if (logLevel == "0" || logLevel == "1" || logLevel == "2")
+		aLog::init( configWorkDir+"/ananas.log", logLevel.toInt() );
+	else
+		aLog::init( configWorkDir+"/ananas.log", 0 );
+
 	qApp->installTranslator( &tr_lib );
 	qApp->installTranslator( &tr_plugins );
 	qApp->installTranslator( &tr_app );
@@ -160,43 +173,67 @@ int main( int argc, char ** argv )
 	qApp->addLibraryPath( qApp->applicationDirPath() );
 #else
 	pixmap = QPixmap( "/usr/share/ananas/designer/locale/designer-splash-"+lang+".png" );
-  qApp->addLibraryPath( "/usr/lib/ananas/" );
-  qApp->addLibraryPath( "/usr/lib/ananas/designer/" );
+	qApp->addLibraryPath( "/usr/lib/ananas/" );
+	qApp->addLibraryPath( "/usr/lib/ananas/designer/" );
 //	qApp->setLibraryPaths( QStringList() <<"/usr/lib/ananas/" );
 #endif
 	foreach (QString path, app.libraryPaths())
-    	    printf("%s\n", path.toUtf8().data());
+		aLog::debug(QString("libraryPaths list item " ) + path);
      
 	if ( pixmap.isNull() )
 	pixmap = QPixmap( ":/images/designer-splash-en.png" );
    	QSplashScreen *splash = new QSplashScreen( pixmap );
-	if ( ananas_login( rcfile, username, userpassword, 0, AApplication::Designer ) ){
-		splash->show();
-		splash->message( QObject::tr("Init application"), Qt::AlignBottom, Qt::white );
-		w->rcfile = rcfile;
-		qApp->setMainWidget( w );
-		splash->message( QObject::tr("Init forms designer"), Qt::AlignBottom, Qt::white  );
-   		formdesigner = new aFormDesigner();
 
-		//--formdesigner->reparent( mainformws, 0, QPoint( 5, 5 ), false );
-//		mainformws->addWindow(formdesigner);
-		formdesigner->setCaption( QObject::tr("Dialog forms designer") );
-		formdesigner->hide();
-		w->show();
-		splash->clear();
-       		splash->finish( w );
-       		delete splash;
-		qApp->connect( qApp, SIGNAL( lastWindowClosed() ), qApp, SLOT( quit() ) );
-		mainform->configOpen();
-//		QTextCodec::setCodecForCStrings( QTextCodec::codecForName("UTF8") );
 
-		rc = app.exec();
-		if( w ) delete w;
-		w=0;
-		aLog::close();
-		ananas_logout();
-		return rc;
+	dSelectDB dialogDBSelect;
+
+	if ( rcfile.isEmpty() )
+	{
+		if (dialogDBSelect.exec()==QDialog::Accepted) rcfile = dialogDBSelect.rcfile;
 	}
+	if ( !rcfile.isEmpty() )
+	{
+		if ( !database ) database = aDatabase::database();
+		if ( !database->init( rcfile ) )
+		{
+			aLog::error("Unable to use rcfile " + rcfile);
+			return 1;
+		}
+	}
+	else
+	{
+		aLog::debug("No rcfile selected or available?");
+		return 0;
+	}
+
+	splash->show();
+	splash->message( QObject::tr("Init application"), Qt::AlignBottom, Qt::white );
+	appWindow->rcfile = rcfile;
+	appWindow->md = &database->cfg;
+	qApp->setMainWidget( appWindow );
+	splash->message( QObject::tr("Init forms designer"), Qt::AlignBottom, Qt::white  );
+	formdesigner = new aFormDesigner();
+
+	//--formdesigner->reparent( mainformws, 0, QPoint( 5, 5 ), false );
+	//		mainformws->addWindow(formdesigner);
+	formdesigner->setCaption( QObject::tr("Dialog forms designer") );
+	formdesigner->hide();
+	appWindow->show();
+	splash->clear();
+	splash->finish( appWindow );
+	delete splash;
+	qApp->connect( qApp, SIGNAL( lastWindowClosed() ), qApp, SLOT( quit() ) );
+	// mainform->configOpen();
+	appWindow->configOpen();
+	//		QTextCodec::setCodecForCStrings( QTextCodec::codecForName("UTF8") );
+
+	int res = app.exec();
+	// if( appWindow ) delete appWindow;
+	// appWindow=0;
+	// aLog::close();
+	// ananas_logout();
+	// return rc;
+
 	aLog::close();
-	return 0;
+	return res;
 }
