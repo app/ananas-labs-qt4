@@ -74,6 +74,7 @@ wDBTable::wDBTable( QString objtype,  QWidget *parent, const char *name )
 	objtype = "";
 	defColWidth = 100; //default column width
 	tableInd = -1;
+	doc_id = 0;
 	inEditMode = false;
 	searchWidget = 0;
 	searchMode = false;
@@ -167,8 +168,19 @@ wDBTable::getDefIdList() const
  *	\~
  */
 qulonglong
-wDBTable::getId() const
+wDBTable::getId()
 {
+	if (doc_id == 0)
+	{
+		foreach (QWidget *widget, QApplication::topLevelWidgets())
+		{
+			if (widget->name() == QString("ananas-designer_mainwindow") )
+			{
+				connect( this, SIGNAL( getId( qulonglong * ) ), widget, SLOT( getId( qulonglong * ) ));
+				emit ( getId( &doc_id ) );
+			}
+		}
+	}
 	return doc_id;
 }
 
@@ -341,6 +353,28 @@ wDBTable::~wDBTable()
 	cur=0;
 }
 
+/*!
+ *\en
+ *	Return toplevel metadata configuration.
+ *\_en
+ *\ru
+ *	Возвращает объект конфигурации для виджета верхнего уровня.
+ *\_ru
+ */
+aCfg*
+wDBTable::getMd()
+{
+	foreach (QWidget *widget, QApplication::topLevelWidgets())
+	{
+		if (widget->name() == QString("ananas-designer_mainwindow") )
+		{
+			connect( this, SIGNAL( getMd( aCfg ** ) ), widget, SLOT( getMd( aCfg ** ) ));
+			emit ( getMd( &md ) );
+		}
+	}
+	return md;
+}
+
 
 
 /*!
@@ -354,17 +388,18 @@ wDBTable::~wDBTable()
 void
 wDBTable::init()// aDatabase *adb )
 {
-	int id=0;
+	qulonglong id=0;
 	aCfgItem o, o_table;
 	aCfgItem mditem, docitem;
 
 	// set up pixmap for calculated fields
 
 	cur = new Q3SqlCursor("cur",false);
-	md = aWidget::parentContainer(this)->getMd();
-	if ( md )
+	md = getMd();
+	id = getId();
+	aLog::debug("wDBTable::init(), metadata object id="+QString::number(id));
+	if ( md && id != 0)
 	{
-		id = aWidget::parentContainer(this)->getId();
 		o = md->find(id);
 		QString objClass = md->objClass(o);
 		if(objClass==md_document)
@@ -385,6 +420,7 @@ wDBTable::init()// aDatabase *adb )
 	}
 	else
 	{
+		aLog::debug("wDBTable::init(), Can't get metadata or metaobject Id");
 //		verticalHeader()->hide();
 //		printf("name engin\n");
 	}

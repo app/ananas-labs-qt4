@@ -17,7 +17,7 @@ public:
     CfgForm *cfgform;
     QString rcfile;
     aCfg *md;
-    int lastFormId;
+    qulonglong lastFormId;
     int lastTabId;
     aWindowsList *wl;
     //--QSettings designer_settings;
@@ -48,7 +48,9 @@ public slots:
     virtual void fileNew();
     virtual void connectSignals( CfgForm * cf );
     virtual void getMd( aCfg * * md );
-    virtual int getId();
+    virtual aCfg* getMetadata();
+    virtual void setId(qulonglong* id);
+    virtual void getId(qulonglong* id);
     virtual void addTab( int uid, const QString & winName );
     // -- Help for add to workspace
     virtual void addTab(QWidget* window) {

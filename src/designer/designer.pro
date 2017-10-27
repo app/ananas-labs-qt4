@@ -3,7 +3,7 @@ include(../lib/lib.pri)
 TARGET = ananas-designer
 TEMPLATE = app
 
-CONFIG += designer
+CONFIG += designer debug
 
 DESTDIR = ../../bin
 

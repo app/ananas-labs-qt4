@@ -30,19 +30,10 @@
 #ifndef ALOG_H
 #define ALOG_H
 
-//#include	"ananas.h"
 #include	"ananasglobal.h"
 #include 	<qstring.h>
 #include 	<qfile.h>
 
-
-// for bcc32.exe compatibility 
-// in file wingdi.h 
-// #define ERROR 0
-
-//#ifdef Q_OS_WIN32
-//#define ERROR IRROR
-//#endif
 
 /*!
  *	\~english
@@ -55,44 +46,25 @@ class ANANAS_EXPORT aLog
 {
 	public:
 	enum MessageType { Error, Info, Debug };
-//	enum status { 
-		/*!
-		 * \~english Error
-		 * \~russian Сообщение об ошибке
-		 * \~
-		 */
-/*		 
-#ifdef Q_OS_WIN32
-	static const int IRROR;//,
-#else
-	static const int ERROR;
-#endif
-*/		/*!
-		 * \~english Info 
-		 * \~russian Информационное сообщение
-		 * \~
-		 */
-//	static const int INFO;//,
-		/*!
-		 * \~english Info 
-		 * \~russian Отладочное сообщение
-		 * \~
-		 */
-//	static const int DEBUG;// };
 
 	static void 	print( int status, const QString &text);
+	static void 	debug( QString const &text);
+	static void 	error( QString const &message);
+	static void 	info( QString const &text);
 	static void 	printr(	const QString &text);
-	static void	init( const QString &logname="", int loglevel=0);
+	static void	init( const QString &logname="", int loglevel=0, bool echoToConsole = true);
 	static void 	close();
 	static QString 	getLogName();
 	
 	
 	private:
 	aLog();
+	static bool createDotAnanasDir();
 	static QString logName;
 	static int logLevel;
-	static QFile f;
+	static QFile logFileRef;
 	static bool msg_was_show;
-	
+	static bool initialized;	
+	static bool echoRequired;
 };
 #endif// ALOG_H

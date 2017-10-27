@@ -68,6 +68,7 @@ void dEditDialog::languageChange()
 void dEditDialog::init()
 {
 	delete statusBar();
+	docId =  0;
 //	eModule->setInterpreter(new QSInterpreter());
 //	fd = new aFormDesigner();
 }
@@ -98,6 +99,7 @@ void dEditDialog::setData( aListViewItem *o )
 		eFormFile->setText( QString("inputform_")+QString::number(item->id)+QString(".ui"));
 		setCaption( tr("Form:") + eName->text() );
 		parentClass = md->objClass( md->parent ( md->parent( obj ) ) );
+		docId = md->id(md->parent(md->parent( obj )));
 		if ( parentClass == md_document ) {
 //			cbFormMode->insertItem(QObject::tr("Document"));
 		}
@@ -129,6 +131,13 @@ void dEditDialog::setData( aListViewItem *o )
 
 void dEditDialog::EditForm()
 {
+	foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+		if (widget->name() == QString("ananas-designer_mainwindow") )
+		{
+			connect( this, SIGNAL( setId( qulonglong * ) ), widget, SLOT( setId( qulonglong * ) ));
+			emit ( setId( &docId ));
+		}
+    }
 
 	aCfg *md = item->md;
 	aCfgItem obj = item->obj, o;
@@ -136,7 +145,6 @@ void dEditDialog::EditForm()
 	QFile f( eFormFile->text() );
 //	char* arg;
 //	int rc;
-	aLog::print(aLog::Debug,tr("dEditDialog edit form"));
 	//MainForm *mw = (MainForm*) topLevelWidget();
 	//printf("end getting pointer to Main form\n");
 	QStringList env;
@@ -331,7 +339,7 @@ void dEditDialog::formPreview()
 
 
 
-int dEditDialog::getDocId()
+qulonglong dEditDialog::getDocId()
 {
     return docId;
 }

@@ -121,6 +121,8 @@ aCfgRc::read(const QString &fname)
 		stream.setEncoding(Q3TextStream::UnicodeUTF8);
 		while ( !stream.eof() ) {
 			line = stream.readLine(); // line of text excluding '\n'
+			if ( line.trimmed().startsWith("#") ) // skip comments line
+				continue;
 			k = line.section("=",0,0);
 			v = line.section("=",1,100); if ( v.isNull() ) v = "";
 			values.insert( k, new QString( v ) );

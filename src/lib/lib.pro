@@ -7,7 +7,7 @@ QT += scripttools
 
 TARGET = ananas
 TEMPLATE = lib 
-shared:CONFIG += dll
+shared:CONFIG += dll debug
 unix:VERSION = 1.0.1
 
 DESTDIR = ../../lib

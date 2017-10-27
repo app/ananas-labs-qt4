@@ -133,7 +133,7 @@ public:
 	QStringList	getDefHeaders()	const;
 	QStringList	getColWidth() 	const;
 	QStringList	getDefIdList()	const;
-	qulonglong	getId() 	const;
+	qulonglong	getId();
 	int 		getTblInd() 	const;
 	bool		getOpenEditor() const;
 	int		getDefColWidth() const;
@@ -154,6 +154,7 @@ public:
 	void 	setContainerType( QString name)	{ container_type = name; };
 	QPixmap systemIcon();
 	virtual int Select( ANANAS_UID db_uid );
+	aCfg*	getMd();
 public slots:
 	Q3ValueList<int> getBindList();
 	void 	setWFieldEditor();
@@ -248,6 +249,8 @@ signals:
 */
 	void viewRequest();
 	// end
+	void getMd( aCfg ** );
+	void getId( qulonglong * );
 
 private slots:
 	//void select( Q_ULLONG group );

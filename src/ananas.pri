@@ -3,7 +3,7 @@ CONFIG	+= qt warn_on release thread
 #LANGUAGE = C++
 
 QT += qt3support sql xml
-CONFIG += warn_on designer
+CONFIG += debug warn_on designer
 
 unix {
     UI_DIR = .ui
@@ -21,4 +21,5 @@ win32 {
 #    LIBS	+= -L..\..\plugins -lananasplugin
 }
 
-INCLUDEPATH +=$(QTDIR)/include/qdataschema
+# INCLUDEPATH +=$(QTDIR)/include/qdataschema
+INCLUDEPATH +=$$[QT_INSTALL_HEADERS]/qdataschema

@@ -38,7 +38,7 @@
 #include "edbfield.h"
 #include "wdbfield.h"
 #include "addfdialog.h"
-//--#include "mainform.h"
+#include <alog.h>
 
 
 
@@ -175,6 +175,10 @@ wDBField::init()
 		// get id of container object - catalogue or document
 		id = aWidget::parentContainer(this)->getId();
 		head = md->find(id);
+	}
+	else
+	{
+		aLog::debug("wDBField::init(), Can't get metadata or metaobject Id");
 	}
 }
 

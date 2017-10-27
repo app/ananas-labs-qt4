@@ -195,6 +195,7 @@ void MainForm::init()
     TBToolbar->setShown( FALSE );
     tbTabs->setShown( FALSE );
     lastTabId = 0;
+	lastFormId = 0;
     configSaveAction->setVisible( FALSE );
 }
 
@@ -368,6 +369,11 @@ void MainForm::getMd( aCfg **md )
 	*md = &cf->cfg;
 }
 
+aCfg* MainForm::getMetadata()
+{
+	return md;
+}
+
 /*!
 Get current configuration form
 */
@@ -392,10 +398,15 @@ MainForm::activeWindow()
 	return ws->activeWindow();
 }
 
-
-int MainForm::getId()
+void MainForm::setId( qulonglong* id )
 {
-    return  lastFormId;
+	lastFormId= *id;
+}
+
+void
+MainForm::getId(qulonglong* objId)
+{
+	*objId = lastFormId;
 }
 
 
