@@ -1,0 +1,25 @@
+# Comments allowed here!
+
+# Database file of internal (sqlite) type
+dbname=inventory.db
+dbtype=internal
+
+# no authentication and connection params required for internal database type
+dbpass=
+dbuser=
+dbhost=
+dbport=
+
+# User gets this name in selection dialog on Ananas start up
+dbtitle=Inventory application caption
+
+# CHANGE THIS
+# Change this to point to application file on you host
+configfile=/home/app/ananas/inventory/inventory.cfg
+
+# CHANGE THIS
+# Log file will be created here. 
+workdir=/home/app/ananas/inventory
+
+# debug levels: 0 - show errors only, 1 - show errors and info messages, 2 - show errors, info and debug messages 
+debug=2
