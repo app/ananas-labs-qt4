@@ -23,3 +23,4 @@ win32 {
 
 # INCLUDEPATH +=$(QTDIR)/include/qdataschema
 INCLUDEPATH +=$$[QT_INSTALL_HEADERS]/qdataschema
+INCLUDEPATH +=$$[QT_INSTALL_DATA]/include/qdataschema
